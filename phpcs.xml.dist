@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<ruleset name="Golive Audit">
+	<description>WordPress coding standards for Golive Audit.</description>
+
+	<file>golive-audit.php</file>
+	<file>uninstall.php</file>
+	<file>src</file>
+	<file>tests</file>
+
+	<arg name="extensions" value="php"/>
+	<arg name="colors"/>
+	<arg value="ps"/>
+
+	<config name="minimum_wp_version" value="6.2"/>
+	<config name="testVersion" value="7.4-"/>
+
+	<rule ref="WordPress">
+		<!-- Classes are loaded by a PSR-4 autoloader, so class-*.php file names do not apply. -->
+		<exclude name="WordPress.Files.FileName"/>
+		<!-- Short ternaries and similar are fine in modern PHP. -->
+		<exclude name="Universal.Operators.DisallowShortTernary"/>
+		<!-- Typed signatures document themselves; docblocks are written where they add information (non-obvious types, @throws, @param meaning). -->
+		<exclude name="Squiz.Commenting.FunctionComment.Missing"/>
+		<exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
+		<exclude name="Squiz.Commenting.ClassComment.Missing"/>
+		<exclude name="Squiz.Commenting.VariableComment.Missing"/>
+		<exclude name="Generic.Commenting.DocComment.MissingShort"/>
+		<!-- "//end foreach" markers add noise in short methods. -->
+		<exclude name="Squiz.Commenting.LongConditionClosingComment"/>
+	</rule>
+
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="golive-audit"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="golive_audit"/>
+				<element value="GoliveAudit"/>
+				<element value="GOLIVE_AUDIT"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Tests use fixtures, stubs and helper functions that are not shipped. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<exclude-pattern>tests/*</exclude-pattern>
+	</rule>
+	<rule ref="Squiz.Commenting">
+		<exclude-pattern>tests/*</exclude-pattern>
+	</rule>
+	<rule ref="WordPress.Security.EscapeOutput">
+		<exclude-pattern>tests/*</exclude-pattern>
+	</rule>
+</ruleset>

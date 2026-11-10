@@ -1,0 +1,977 @@
+# Copyright (C) 2026 YOUR NAME
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Golive Audit 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/golive-audit\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-30T10:44:35+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: golive-audit\n"
+
+#. Plugin Name of the plugin
+#: golive-audit.php
+#: src/Admin/AdminPage.php:23
+#: src/Admin/AdminPage.php:24
+#: src/Admin/AdminPage.php:35
+msgid "Golive Audit"
+msgstr ""
+
+#. Description of the plugin
+#: golive-audit.php
+msgid "Launch-readiness and client-handoff audit for WordPress sites: environment-aware checks, a readiness report and WP-CLI support."
+msgstr ""
+
+#. Author of the plugin
+#: golive-audit.php
+msgid "YOUR NAME"
+msgstr ""
+
+#: src/Admin/AdminPage.php:38
+msgid "The dashboard has not been built. Run \"npm install && npm run build\" in the plugin folder."
+msgstr ""
+
+#: src/Admin/AdminPage.php:42
+msgid "Golive Audit needs JavaScript. You can still use WP-CLI: wp golive-audit run"
+msgstr ""
+
+#: src/Admin/ExportHandler.php:32
+msgid "You are not allowed to export this report."
+msgstr ""
+
+#: src/Admin/ExportHandler.php:41
+msgid "Unknown export format."
+msgstr ""
+
+#. translators: %s: environment name, e.g. "local".
+#: src/Audit/AuditRunner.php:48
+#, php-format
+msgid "Not applicable to the \"%s\" environment."
+msgstr ""
+
+#: src/Audit/Categories.php:17
+msgid "SEO & visibility"
+msgstr ""
+
+#: src/Audit/Categories.php:18
+msgid "Environment & URLs"
+msgstr ""
+
+#: src/Audit/Categories.php:19
+msgid "Content"
+msgstr ""
+
+#: src/Audit/Categories.php:20
+msgid "Privacy & legal"
+msgstr ""
+
+#: src/Audit/Categories.php:21
+msgid "Security basics"
+msgstr ""
+
+#: src/Audit/Categories.php:22
+msgid "Email"
+msgstr ""
+
+#: src/Audit/Categories.php:23
+msgid "Language & region"
+msgstr ""
+
+#. translators: %s: short error code.
+#: src/Audit/Result.php:80
+#, php-format
+msgid "This check could not be completed (%s)."
+msgstr ""
+
+#: src/Checklist/Catalog.php:22
+msgid "Business / brochure site"
+msgstr ""
+
+#: src/Checklist/Catalog.php:23
+msgid "Blog / publication"
+msgstr ""
+
+#: src/Checklist/Catalog.php:24
+msgid "Online shop"
+msgstr ""
+
+#: src/Checklist/Catalog.php:33
+msgid "Infrastructure"
+msgstr ""
+
+#: src/Checklist/Catalog.php:34
+msgid "Quality assurance"
+msgstr ""
+
+#: src/Checklist/Catalog.php:35
+msgid "Privacy & compliance"
+msgstr ""
+
+#: src/Checklist/Catalog.php:36
+msgid "Handover"
+msgstr ""
+
+#: src/Checklist/Catalog.php:78
+msgid "A full backup exists and a restore has been tested"
+msgstr ""
+
+#: src/Checklist/Catalog.php:83
+msgid "DNS is configured and the SSL certificate renews automatically"
+msgstr ""
+
+#: src/Checklist/Catalog.php:88
+msgid "Redirects from the old site's URLs are in place (for redesigns)"
+msgstr ""
+
+#: src/Checklist/Catalog.php:93
+msgid "Every form was submitted and the notification emails arrived"
+msgstr ""
+
+#: src/Checklist/Catalog.php:98
+msgid "The site was tested in the main browsers and on mobile"
+msgstr ""
+
+#: src/Checklist/Catalog.php:103
+msgid "A helpful 404 page exists"
+msgstr ""
+
+#: src/Checklist/Catalog.php:108
+msgid "Analytics and Search Console are set up"
+msgstr ""
+
+#: src/Checklist/Catalog.php:113
+msgid "Cookie consent and privacy requirements are handled for the target markets"
+msgstr ""
+
+#: src/Checklist/Catalog.php:118
+msgid "Hosting, domain and admin credentials are handed over to the client"
+msgstr ""
+
+#: src/Checklist/Catalog.php:131
+msgid "The RSS feed works and any newsletter sign-up is tested"
+msgstr ""
+
+#: src/Checklist/Catalog.php:136
+msgid "Author profiles, categories and tags have been reviewed"
+msgstr ""
+
+#: src/Checklist/Catalog.php:149
+msgid "The payment gateway is in live mode and a real test order was placed"
+msgstr ""
+
+#: src/Checklist/Catalog.php:154
+msgid "Terms, returns and shipping pages are published"
+msgstr ""
+
+#: src/Checklist/Catalog.php:159
+msgid "Order and shipping emails were tested end to end"
+msgstr ""
+
+#: src/Checks/AdminEmailCheck.php:33
+msgid "Administration email address is real"
+msgstr ""
+
+#: src/Checks/AdminEmailCheck.php:47
+msgid "Set a monitored address in Settings > General so WordPress notifications reach the site owner."
+msgstr ""
+
+#: src/Checks/AdminEmailCheck.php:50
+msgid "The administration email address is missing or invalid."
+msgstr ""
+
+#. translators: %s: email domain, e.g. "example.com".
+#: src/Checks/AdminEmailCheck.php:59
+#, php-format
+msgid "The administration email address uses a placeholder or reserved domain (%s)."
+msgstr ""
+
+#: src/Checks/AdminEmailCheck.php:67
+msgid "The administration email address uses a non-placeholder domain."
+msgstr ""
+
+#: src/Checks/AdminUsersCheck.php:22
+msgid "Administrator accounts are limited and not guessable"
+msgstr ""
+
+#: src/Checks/AdminUsersCheck.php:33
+msgid "a user named \"admin\" exists"
+msgstr ""
+
+#. translators: 1: number of administrators, 2: recommended maximum.
+#: src/Checks/AdminUsersCheck.php:41
+#, php-format
+msgid "%1$d administrator accounts exist (more than %2$d)"
+msgstr ""
+
+#: src/Checks/AdminUsersCheck.php:48
+msgid "No \"admin\" user was found and the number of administrators is small."
+msgstr ""
+
+#. translators: %s: list of problems.
+#: src/Checks/AdminUsersCheck.php:54
+#, php-format
+msgid "Account hygiene: %s."
+msgstr ""
+
+#: src/Checks/AdminUsersCheck.php:57
+msgid "Rename or replace the \"admin\" login and give people only the role they need."
+msgstr ""
+
+#: src/Checks/CommentDefaultsCheck.php:20
+msgid "Comment and pingback defaults are intentional"
+msgstr ""
+
+#: src/Checks/CommentDefaultsCheck.php:31
+msgid "pingbacks and trackbacks are enabled for new content"
+msgstr ""
+
+#: src/Checks/CommentDefaultsCheck.php:39
+msgid "new comments are published without any moderation"
+msgstr ""
+
+#: src/Checks/CommentDefaultsCheck.php:43
+msgid "Comment and pingback defaults look intentional."
+msgstr ""
+
+#. translators: %s: list of problems.
+#: src/Checks/CommentDefaultsCheck.php:49
+#, php-format
+msgid "Discussion defaults: %s."
+msgstr ""
+
+#: src/Checks/CommentDefaultsCheck.php:52
+msgid "Review Settings > Discussion: disable pingbacks unless needed and require moderation or a previously approved comment."
+msgstr ""
+
+#: src/Checks/DebugLogCheck.php:23
+msgid "No leftover debug.log in wp-content"
+msgstr ""
+
+#: src/Checks/DebugLogCheck.php:32
+msgid "No debug.log file was found in wp-content."
+msgstr ""
+
+#: src/Checks/DebugLogCheck.php:36
+msgid "A debug.log file exists in wp-content."
+msgstr ""
+
+#: src/Checks/DebugLogCheck.php:37
+msgid "Review and delete it, turn off WP_DEBUG_LOG on live sites, and make sure your server does not serve .log files."
+msgstr ""
+
+#: src/Checks/DefaultContentCheck.php:23
+msgid "Default sample content has been removed"
+msgstr ""
+
+#: src/Checks/DefaultContentCheck.php:34
+msgid "the \"Hello world!\" post"
+msgstr ""
+
+#: src/Checks/DefaultContentCheck.php:38
+msgid "the \"Sample Page\" page"
+msgstr ""
+
+#: src/Checks/DefaultContentCheck.php:42
+msgid "No default sample content was found."
+msgstr ""
+
+#. translators: %s: list of leftover items, e.g. 'the "Hello world!" post, the "Sample Page" page'.
+#: src/Checks/DefaultContentCheck.php:48
+#, php-format
+msgid "Published sample content is still present: %s."
+msgstr ""
+
+#: src/Checks/DefaultContentCheck.php:51
+msgid "Delete or replace the default sample post and page before launch."
+msgstr ""
+
+#: src/Checks/FileEditorCheck.php:20
+msgid "The dashboard file editor is disabled"
+msgstr ""
+
+#: src/Checks/FileEditorCheck.php:29
+msgid "The dashboard file editor is disabled."
+msgstr ""
+
+#: src/Checks/FileEditorCheck.php:33
+msgid "Administrators can edit theme and plugin code from the dashboard."
+msgstr ""
+
+#: src/Checks/FileEditorCheck.php:34
+msgid "Add define( 'DISALLOW_FILE_EDIT', true ); to wp-config.php so a compromised admin account cannot change code from the browser."
+msgstr ""
+
+#: src/Checks/FrontPageCheck.php:20
+msgid "The front page is configured correctly"
+msgstr ""
+
+#: src/Checks/FrontPageCheck.php:29
+msgid "The front page shows the latest posts."
+msgstr ""
+
+#: src/Checks/FrontPageCheck.php:36
+msgid "The static front page is published."
+msgstr ""
+
+#: src/Checks/FrontPageCheck.php:41
+msgid "A static front page is enabled but no page is selected."
+msgstr ""
+
+#: src/Checks/FrontPageCheck.php:42
+msgid "The selected static front page is missing or not published."
+msgstr ""
+
+#: src/Checks/FrontPageCheck.php:43
+msgid "Pick a published page as the homepage in Settings > Reading."
+msgstr ""
+
+#: src/Checks/MailTransportCheck.php:23
+msgid "Outgoing email uses a configured transport"
+msgstr ""
+
+#: src/Checks/MailTransportCheck.php:36
+msgid "A custom mail transport is configured. Delivery itself is not verified, so send a test message."
+msgstr ""
+
+#: src/Checks/MailTransportCheck.php:40
+msgid "No custom mail transport was detected, so WordPress will use PHP mail()."
+msgstr ""
+
+#: src/Checks/MailTransportCheck.php:41
+msgid "Configure SMTP or a transactional email service and send a real test message, because form notifications and password resets often go missing otherwise."
+msgstr ""
+
+#: src/Checks/NoindexCheck.php:22
+msgid "Search engine visibility matches the environment"
+msgstr ""
+
+#: src/Checks/NoindexCheck.php:41
+msgid "Search engines are discouraged from indexing this production site."
+msgstr ""
+
+#: src/Checks/NoindexCheck.php:42
+msgid "Untick \"Discourage search engines from indexing this site\" in Settings > Reading. If this site is not production, set WP_ENVIRONMENT_TYPE or run the audit with another environment."
+msgstr ""
+
+#: src/Checks/NoindexCheck.php:47
+msgid "Search engines are allowed to index this production site."
+msgstr ""
+
+#. translators: %s: environment name, e.g. "staging".
+#: src/Checks/NoindexCheck.php:54
+#, php-format
+msgid "Indexing is disabled, as expected for a \"%s\" environment."
+msgstr ""
+
+#. translators: %s: environment name, e.g. "staging".
+#: src/Checks/NoindexCheck.php:63
+#, php-format
+msgid "This \"%s\" environment can be indexed by search engines."
+msgstr ""
+
+#: src/Checks/NoindexCheck.php:66
+msgid "Enable \"Discourage search engines from indexing this site\" in Settings > Reading so test content does not appear in search results."
+msgstr ""
+
+#: src/Checks/OpenRegistrationCheck.php:22
+msgid "Open registration does not grant privileged roles"
+msgstr ""
+
+#: src/Checks/OpenRegistrationCheck.php:31
+msgid "Public registration is disabled."
+msgstr ""
+
+#. translators: %s: role name, e.g. "administrator".
+#: src/Checks/OpenRegistrationCheck.php:40
+#, php-format
+msgid "Anyone can register and receives the \"%s\" role."
+msgstr ""
+
+#: src/Checks/OpenRegistrationCheck.php:43
+msgid "Set the new user default role to Subscriber (or disable registration) in Settings > General."
+msgstr ""
+
+#. translators: %s: role name, e.g. "subscriber".
+#: src/Checks/OpenRegistrationCheck.php:51
+#, php-format
+msgid "Public registration is open, but new users only receive the \"%s\" role."
+msgstr ""
+
+#: src/Checks/PermalinksCheck.php:20
+msgid "Pretty permalinks are enabled"
+msgstr ""
+
+#: src/Checks/PermalinksCheck.php:29
+msgid "The site uses a custom permalink structure."
+msgstr ""
+
+#: src/Checks/PermalinksCheck.php:33
+msgid "The site uses plain permalinks such as ?p=123."
+msgstr ""
+
+#: src/Checks/PermalinksCheck.php:34
+msgid "Choose a descriptive structure (for example \"Post name\") in Settings > Permalinks. Set up redirects first if the site already has indexed URLs."
+msgstr ""
+
+#: src/Checks/PrivacyPolicyCheck.php:20
+msgid "A privacy policy page is published"
+msgstr ""
+
+#: src/Checks/PrivacyPolicyCheck.php:36
+msgid "A privacy policy page is assigned and published."
+msgstr ""
+
+#: src/Checks/PrivacyPolicyCheck.php:41
+msgid "No privacy policy page is assigned."
+msgstr ""
+
+#: src/Checks/PrivacyPolicyCheck.php:42
+msgid "The assigned privacy policy page is missing or not published."
+msgstr ""
+
+#: src/Checks/PrivacyPolicyCheck.php:43
+msgid "Write the policy (WordPress provides a template) and assign the published page in Settings > Privacy."
+msgstr ""
+
+#: src/Checks/RobotsTxtCheck.php:20
+msgid "robots.txt does not block the whole site"
+msgstr ""
+
+#: src/Checks/RobotsTxtCheck.php:35
+msgid "There is no physical robots.txt; WordPress serves its own, controlled by the search visibility setting."
+msgstr ""
+
+#: src/Checks/RobotsTxtCheck.php:40
+msgid "robots.txt tells all crawlers to stay away from the entire site."
+msgstr ""
+
+#: src/Checks/RobotsTxtCheck.php:41
+msgid "Remove the \"Disallow: /\" rule for \"User-agent: *\" from the robots.txt file in the WordPress root."
+msgstr ""
+
+#: src/Checks/RobotsTxtCheck.php:45
+msgid "robots.txt does not block the whole site."
+msgstr ""
+
+#: src/Checks/SaltsCheck.php:35
+msgid "Authentication keys and salts are unique"
+msgstr ""
+
+#: src/Checks/SaltsCheck.php:55
+msgid "All eight authentication keys and salts are defined."
+msgstr ""
+
+#. translators: %s: comma separated list of constant names.
+#: src/Checks/SaltsCheck.php:61
+#, php-format
+msgid "These keys or salts are missing or still use the sample value: %s."
+msgstr ""
+
+#: src/Checks/SaltsCheck.php:64
+msgid "Generate fresh values with the WordPress.org secret-key service and put them in wp-config.php. Existing sessions will be logged out."
+msgstr ""
+
+#: src/Checks/SiteIconCheck.php:20
+msgid "A site icon is set"
+msgstr ""
+
+#: src/Checks/SiteIconCheck.php:29
+msgid "A site icon is set."
+msgstr ""
+
+#: src/Checks/SiteIconCheck.php:33
+msgid "No site icon is set, so browsers show a generic icon."
+msgstr ""
+
+#: src/Checks/SiteIconCheck.php:34
+msgid "Upload a square image of at least 512 x 512 pixels as the site icon in Appearance > Customize."
+msgstr ""
+
+#: src/Checks/SiteIdentityCheck.php:24
+msgid "Site title and tagline are set"
+msgstr ""
+
+#: src/Checks/SiteIdentityCheck.php:35
+msgid "the site title is empty"
+msgstr ""
+
+#: src/Checks/SiteIdentityCheck.php:39
+msgid "the tagline is still \"Just another WordPress site\""
+msgstr ""
+
+#: src/Checks/SiteIdentityCheck.php:43
+msgid "The site has a title and no default tagline."
+msgstr ""
+
+#. translators: %s: list of problems.
+#: src/Checks/SiteIdentityCheck.php:49
+#, php-format
+msgid "Site identity problems: %s."
+msgstr ""
+
+#: src/Checks/SiteIdentityCheck.php:52
+msgid "Set a real title and tagline (or clear the tagline) in Settings > General."
+msgstr ""
+
+#: src/Checks/SitemapCheck.php:34
+msgid "An XML sitemap is available"
+msgstr ""
+
+#: src/Checks/SitemapCheck.php:47
+msgid "The core XML sitemap is enabled."
+msgstr ""
+
+#: src/Checks/SitemapCheck.php:52
+msgid "A known SEO or sitemap plugin is active."
+msgstr ""
+
+#: src/Checks/SitemapCheck.php:57
+msgid "No XML sitemap was detected."
+msgstr ""
+
+#: src/Checks/SitemapCheck.php:58
+msgid "Enable the core sitemap (it is disabled while search engines are discouraged) or use an SEO plugin that provides one, then submit it to Search Console."
+msgstr ""
+
+#: src/Checks/TimezoneCheck.php:20
+msgid "The site timezone is set"
+msgstr ""
+
+#: src/Checks/TimezoneCheck.php:32
+msgid "A timezone is configured."
+msgstr ""
+
+#: src/Checks/TimezoneCheck.php:36
+msgid "The timezone is still the default (UTC), so scheduled posts and dates may be off."
+msgstr ""
+
+#: src/Checks/TimezoneCheck.php:37
+msgid "Choose a city in the site timezone in Settings > General. Pick UTC explicitly if that is intended."
+msgstr ""
+
+#: src/Checks/UrlConsistencyCheck.php:28
+msgid "Site URLs are public and consistent"
+msgstr ""
+
+#: src/Checks/UrlConsistencyCheck.php:41
+msgid "WordPress Address"
+msgstr ""
+
+#: src/Checks/UrlConsistencyCheck.php:42
+msgid "Site Address"
+msgstr ""
+
+#. translators: %s: setting name, e.g. "Site Address".
+#: src/Checks/UrlConsistencyCheck.php:54
+#, php-format
+msgid "%s is not a valid URL"
+msgstr ""
+
+#. translators: 1: setting name, 2: host name.
+#: src/Checks/UrlConsistencyCheck.php:66
+#, php-format
+msgid "%1$s uses a local or staging host (%2$s)"
+msgstr ""
+
+#: src/Checks/UrlConsistencyCheck.php:77
+msgid "WordPress Address and Site Address use a different host or scheme"
+msgstr ""
+
+#: src/Checks/UrlConsistencyCheck.php:82
+msgid "Both site URLs point at a public host and agree with each other."
+msgstr ""
+
+#. translators: %s: semicolon separated list of problems.
+#: src/Checks/UrlConsistencyCheck.php:88
+#, php-format
+msgid "Site URL problems: %s."
+msgstr ""
+
+#: src/Checks/UrlConsistencyCheck.php:91
+msgid "Update the URLs in Settings > General (or in wp-config.php) to the final public address, then check that no staging URLs remain in content."
+msgstr ""
+
+#: src/Export/ReportExporter.php:81
+#: src/Export/ReportExporter.php:84
+msgid "Launch readiness report"
+msgstr ""
+
+#: src/Export/ReportExporter.php:83
+msgid "Print or save as PDF"
+msgstr ""
+
+#: src/Export/ReportExporter.php:86
+msgid "Site"
+msgstr ""
+
+#: src/Export/ReportExporter.php:87
+msgid "Environment"
+msgstr ""
+
+#: src/Export/ReportExporter.php:88
+msgid "Generated"
+msgstr ""
+
+#: src/Export/ReportExporter.php:89
+msgid "Prepared for"
+msgstr ""
+
+#: src/Export/ReportExporter.php:90
+msgid "Prepared by"
+msgstr ""
+
+#: src/Export/ReportExporter.php:93
+#: assets/src/components/Summary.js:22
+msgid "Summary"
+msgstr ""
+
+#. translators: %d: readiness score from 0 to 100.
+#: src/Export/ReportExporter.php:98
+#, php-format
+msgid "Readiness score %d / 100"
+msgstr ""
+
+#. translators: 1: launch blockers, 2: failed checks, 3: accepted risks, 4: passed checks, 5: skipped checks, 6: checks that errored.
+#: src/Export/ReportExporter.php:105
+#, php-format
+msgid "Blockers: %1$d. Failed: %2$d. Accepted risks: %3$d. Passed: %4$d. Not applicable: %5$d. Could not run: %6$d."
+msgstr ""
+
+#: src/Export/ReportExporter.php:117
+msgid "Notes"
+msgstr ""
+
+#: src/Export/ReportExporter.php:120
+msgid "Automated checks"
+msgstr ""
+
+#: src/Export/ReportExporter.php:121
+#: src/Export/ReportExporter.php:153
+#: assets/src/components/ResultsPanel.js:101
+#: assets/src/components/ResultsPanel.js:152
+msgid "Status"
+msgstr ""
+
+#: src/Export/ReportExporter.php:121
+#: assets/src/components/ResultsPanel.js:115
+#: assets/src/components/ResultsPanel.js:155
+msgid "Severity"
+msgstr ""
+
+#: src/Export/ReportExporter.php:122
+#: assets/src/components/ResultsPanel.js:158
+msgid "Check"
+msgstr ""
+
+#: src/Export/ReportExporter.php:126
+#: assets/src/components/ResultsPanel.js:14
+msgid "Accepted risk"
+msgstr ""
+
+#. translators: %s: reason the risk was accepted.
+#: src/Export/ReportExporter.php:141
+#: assets/src/components/ResultsPanel.js:209
+#, php-format,js-format
+msgid "Accepted because: %s"
+msgstr ""
+
+#: src/Export/ReportExporter.php:153
+msgid "Manual handoff checklist"
+msgstr ""
+
+#: src/Export/ReportExporter.php:153
+msgid "Item"
+msgstr ""
+
+#. translators: %s: plugin version.
+#: src/Export/ReportExporter.php:165
+#, php-format
+msgid "Generated by Golive Audit %s. Automated checks cannot prove a site is correct; review the manual checklist too."
+msgstr ""
+
+#: src/Export/ReportExporter.php:248
+#: assets/src/components/Summary.js:5
+msgid "Ready to launch"
+msgstr ""
+
+#: src/Export/ReportExporter.php:250
+#: assets/src/components/Summary.js:7
+msgid "Launch blocked"
+msgstr ""
+
+#: src/Export/ReportExporter.php:252
+#: assets/src/components/Summary.js:6
+msgid "Needs attention"
+msgstr ""
+
+#: src/Export/ReportExporter.php:259
+#: assets/src/components/ResultsPanel.js:12
+#: assets/src/components/Summary.js:14
+msgid "Passed"
+msgstr ""
+
+#: src/Export/ReportExporter.php:261
+#: assets/src/components/ResultsPanel.js:13
+#: assets/src/components/Summary.js:12
+msgid "Failed"
+msgstr ""
+
+#: src/Export/ReportExporter.php:263
+#: assets/src/components/ResultsPanel.js:15
+#: assets/src/components/Summary.js:16
+msgid "Could not run"
+msgstr ""
+
+#: src/Export/ReportExporter.php:265
+#: src/Export/ReportExporter.php:285
+#: assets/src/components/ChecklistPanel.js:9
+#: assets/src/components/ResultsPanel.js:16
+#: assets/src/components/Summary.js:15
+msgid "Not applicable"
+msgstr ""
+
+#: src/Export/ReportExporter.php:272
+#: assets/src/components/ResultsPanel.js:20
+msgid "Critical"
+msgstr ""
+
+#: src/Export/ReportExporter.php:274
+#: assets/src/components/ResultsPanel.js:21
+msgid "Warning"
+msgstr ""
+
+#: src/Export/ReportExporter.php:276
+#: assets/src/components/ResultsPanel.js:22
+msgid "Low"
+msgstr ""
+
+#: src/Export/ReportExporter.php:283
+#: assets/src/components/ChecklistPanel.js:8
+msgid "Done"
+msgstr ""
+
+#: src/Export/ReportExporter.php:287
+#: assets/src/components/ChecklistPanel.js:7
+msgid "To do"
+msgstr ""
+
+#: src/Rest/Controller.php:160
+msgid "You are not allowed to use Golive Audit."
+msgstr ""
+
+#: src/Rest/Controller.php:176
+msgid "An audit is already running. Try again in a few seconds."
+msgstr ""
+
+#: src/Rest/Controller.php:187
+msgid "Unknown environment."
+msgstr ""
+
+#: src/Rest/Controller.php:208
+msgid "A waiver needs a reason."
+msgstr ""
+
+#: src/Rest/Controller.php:334
+msgid "Unknown check or checklist item."
+msgstr ""
+
+#: assets/src/App.js:12
+msgid "Something went wrong."
+msgstr ""
+
+#. translators: 1: readiness score, 2: number of launch blockers.
+#: assets/src/App.js:31
+#, js-format
+msgid "Audit finished. Readiness score %1$d, %2$d launch blockers."
+msgstr ""
+
+#: assets/src/App.js:118
+msgid "Loading…"
+msgstr ""
+
+#: assets/src/App.js:127
+msgid "Audit"
+msgstr ""
+
+#. translators: 1: checklist items finished, 2: total items.
+#: assets/src/App.js:132
+#, js-format
+msgid "Handoff checklist (%1$d/%2$d)"
+msgstr ""
+
+#: assets/src/App.js:137
+msgid "Settings"
+msgstr ""
+
+#: assets/src/App.js:196
+msgid "Running the audit…"
+msgstr ""
+
+#. translators: 1: items done, 2: items not applicable, 3: total items.
+#: assets/src/components/ChecklistPanel.js:17
+#, js-format
+msgid "%1$d done, %2$d not applicable, of %3$d items."
+msgstr ""
+
+#: assets/src/components/ChecklistPanel.js:27
+msgid "These items cannot be verified automatically. They appear in the exported report."
+msgstr ""
+
+#. translators: %s: check title.
+#: assets/src/components/ResultsPanel.js:43
+#: assets/src/components/ResultsPanel.js:246
+#, js-format
+msgid "Accept risk: %s"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:50
+msgid "Why is this acceptable?"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:51
+msgid "The reason appears in the exported report."
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:67
+#: assets/src/components/ResultsPanel.js:253
+msgid "Accept risk"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:70
+msgid "Cancel"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:105
+#: assets/src/components/ResultsPanel.js:119
+#: assets/src/components/ResultsPanel.js:131
+msgid "All"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:127
+msgid "Category"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:141
+msgid "No checks match these filters."
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:147
+msgid "Audit results"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:161
+msgid "Actions"
+msgstr ""
+
+#. translators: %s: check title.
+#: assets/src/components/ResultsPanel.js:225
+#, js-format
+msgid "Fix: %s"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:232
+msgid "Fix"
+msgstr ""
+
+#. translators: %s: check title.
+#: assets/src/components/ResultsPanel.js:269
+#, js-format
+msgid "Remove waiver: %s"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.js:276
+msgid "Remove waiver"
+msgstr ""
+
+#: assets/src/components/SettingsPanel.js:33
+msgid "These details appear on the printable report and in the JSON export."
+msgstr ""
+
+#: assets/src/components/SettingsPanel.js:40
+msgid "Agency or author name"
+msgstr ""
+
+#: assets/src/components/SettingsPanel.js:47
+msgid "Client name"
+msgstr ""
+
+#: assets/src/components/SettingsPanel.js:54
+msgid "Note for the report"
+msgstr ""
+
+#: assets/src/components/SettingsPanel.js:62
+msgid "Handoff checklist type"
+msgstr ""
+
+#: assets/src/components/SettingsPanel.js:63
+msgid "Adds items for the kind of site you are delivering. Progress is kept when you switch."
+msgstr ""
+
+#: assets/src/components/SettingsPanel.js:83
+msgid "Save settings"
+msgstr ""
+
+#: assets/src/components/SettingsPanel.js:87
+msgid "Settings saved."
+msgstr ""
+
+#: assets/src/components/Summary.js:11
+msgid "Blockers"
+msgstr ""
+
+#: assets/src/components/Summary.js:13
+msgid "Accepted risks"
+msgstr ""
+
+#: assets/src/components/Summary.js:27
+msgid "Readiness score:"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:15
+msgid "Local"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:16
+msgid "Development"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:17
+msgid "Staging"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:18
+msgid "Production"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:25
+msgid "(detected)"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:33
+msgid "Audit as environment"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:46
+msgid "Running…"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:47
+msgid "Run audit again"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:56
+msgid "Printable report"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:62
+msgid "Download CSV"
+msgstr ""
+
+#: assets/src/components/Toolbar.js:68
+msgid "Download JSON"
+msgstr ""

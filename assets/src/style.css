@@ -1,0 +1,194 @@
+.golive-audit-app {
+	max-width: 1100px;
+	margin-top: 1rem;
+}
+
+.golive-audit-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	gap: 12px 16px;
+	margin-bottom: 1rem;
+}
+
+.golive-audit-export {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-inline-start: auto;
+}
+
+.golive-audit-tabs .components-tab-panel__tabs {
+	margin-bottom: 1rem;
+}
+
+.golive-audit-summary {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 16px 32px;
+	margin-bottom: 1.25rem;
+	padding: 16px 20px;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-inline-start-width: 6px;
+}
+
+.golive-audit-summary:has( .is-blocked ) {
+	border-inline-start-color: #b32d2e;
+}
+
+.golive-audit-summary:has( .is-attention ) {
+	border-inline-start-color: #996800;
+}
+
+.golive-audit-summary:has( .is-ready ) {
+	border-inline-start-color: #007017;
+}
+
+.golive-audit-score {
+	margin: 0;
+	font-size: 1rem;
+}
+
+.golive-audit-score strong {
+	font-size: 2.6rem;
+	line-height: 1;
+}
+
+.golive-audit-verdict-label {
+	margin: 0.25rem 0 0;
+	font-size: 1.1rem;
+	font-weight: 600;
+}
+
+.is-blocked .golive-audit-verdict-label {
+	color: #b32d2e;
+}
+
+.is-attention .golive-audit-verdict-label {
+	color: #996800;
+}
+
+.is-ready .golive-audit-verdict-label {
+	color: #007017;
+}
+
+.golive-audit-counts {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 24px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.golive-audit-counts li {
+	margin: 0;
+}
+
+.golive-audit-counts .has-blockers,
+.golive-audit-counts .has-fail {
+	color: #b32d2e;
+}
+
+.golive-audit-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px 16px;
+	margin-bottom: 1rem;
+}
+
+.golive-audit-table-wrap {
+	overflow-x: auto;
+}
+
+.golive-audit-table td,
+.golive-audit-table th {
+	vertical-align: top;
+}
+
+.golive-audit-table td p {
+	margin: 0.25rem 0 0;
+}
+
+.golive-audit-category {
+	color: #646970;
+	font-size: 12px;
+}
+
+.golive-audit-recommendation {
+	font-style: italic;
+}
+
+.golive-audit-actions {
+	white-space: nowrap;
+}
+
+.golive-audit-actions .components-button {
+	display: block;
+}
+
+.golive-audit-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 3px;
+	border: 1px solid currentcolor;
+	font-weight: 600;
+	font-size: 12px;
+}
+
+.golive-audit-badge.is-pass {
+	color: #007017;
+}
+
+.golive-audit-badge.is-fail {
+	color: #b32d2e;
+}
+
+.golive-audit-badge.is-waived,
+.golive-audit-badge.is-error {
+	color: #996800;
+}
+
+.golive-audit-badge.is-skipped {
+	color: #646970;
+}
+
+.golive-audit-modal-actions,
+.golive-audit-settings-actions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.golive-audit-group {
+	margin: 0 0 1.5rem;
+	padding: 0;
+	border: 0;
+}
+
+.golive-audit-group legend {
+	margin-bottom: 0.5rem;
+	padding: 0;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.golive-audit-item {
+	max-width: 640px;
+	margin-bottom: 12px;
+}
+
+.golive-audit-settings {
+	display: grid;
+	gap: 16px;
+	max-width: 640px;
+}
+
+@media ( max-width: 600px ) {
+	.golive-audit-export {
+		margin-inline-start: 0;
+	}
+}
