@@ -3,6 +3,7 @@
  * Plugin Name:       Golive Audit
  * Description:       Launch-readiness and client-handoff audit for WordPress sites: environment-aware checks, a readiness report and WP-CLI support.
  * Version:           1.0.0
+ * Plugin URI:        https://github.com/SAH-021/golive-audit
  * Requires at least: 6.2
  * Requires PHP:      7.4
  * Author:            SAH
