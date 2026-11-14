@@ -4,6 +4,7 @@ import {
 	Button,
 	Modal,
 	SelectControl,
+	TextControl,
 	TextareaControl,
 } from '@wordpress/components';
 import { effectiveStatus, filterResults, safeUrl, sortResults } from '../utils';
@@ -84,6 +85,7 @@ export default function ResultsPanel( {
 		severity: 'all',
 		status: 'all',
 		category: 'all',
+		search: '',
 	} );
 	const [ waiving, setWaiving ] = useState( null );
 
@@ -96,6 +98,13 @@ export default function ResultsPanel( {
 	return (
 		<div className="golive-audit-results">
 			<div className="golive-audit-filters">
+				<TextControl
+					__nextHasNoMarginBottom
+					type="search"
+					label={ __( 'Search checks', 'golive-audit' ) }
+					value={ filters.search }
+					onChange={ setFilter( 'search' ) }
+				/>
 				<SelectControl
 					__nextHasNoMarginBottom
 					label={ __( 'Status', 'golive-audit' ) }

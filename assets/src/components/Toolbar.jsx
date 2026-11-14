@@ -57,6 +57,12 @@ export default function Toolbar( {
 				</Button>
 				<Button
 					variant="secondary"
+					href={ exportUrl( exportBase, 'md', environment ) }
+				>
+					{ __( 'Download Markdown', 'golive-audit' ) }
+				</Button>
+				<Button
+					variant="secondary"
 					href={ exportUrl( exportBase, 'csv', environment ) }
 				>
 					{ __( 'Download CSV', 'golive-audit' ) }

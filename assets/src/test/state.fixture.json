@@ -1,291 +1,307 @@
 {
-    "version": "1.0.0",
-    "environment": "production",
-    "environments": [
-        "local",
-        "development",
-        "staging",
-        "production"
-    ],
-    "categories": {
-        "seo": "SEO & visibility",
-        "env": "Environment & URLs",
-        "content": "Content",
-        "legal": "Privacy & legal",
-        "security": "Security basics",
-        "email": "Email",
-        "locale": "Language & region"
-    },
-    "checks": [
-        {
-            "id": "seo.search_visibility",
-            "title": "Search engine visibility matches the environment",
-            "category": "seo",
-            "severity": "critical",
-            "environments": [
-                "production",
-                "staging",
-                "development"
-            ]
-        },
-        {
-            "id": "env.url_consistency",
-            "title": "Site URLs are public and consistent",
-            "category": "env",
-            "severity": "critical",
-            "environments": [
-                "production"
-            ]
-        },
-        {
-            "id": "seo.robots_txt",
-            "title": "robots.txt does not block the whole site",
-            "category": "seo",
-            "severity": "critical",
-            "environments": [
-                "production"
-            ]
-        },
-        {
-            "id": "seo.permalinks",
-            "title": "Pretty permalinks are enabled",
-            "category": "seo",
-            "severity": "warning",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "seo.sitemap",
-            "title": "An XML sitemap is available",
-            "category": "seo",
-            "severity": "warning",
-            "environments": [
-                "production"
-            ]
-        },
-        {
-            "id": "seo.site_identity",
-            "title": "Site title and tagline are set",
-            "category": "seo",
-            "severity": "warning",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "seo.site_icon",
-            "title": "A site icon is set",
-            "category": "seo",
-            "severity": "low",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "seo.front_page",
-            "title": "The front page is configured correctly",
-            "category": "seo",
-            "severity": "warning",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "content.default_content",
-            "title": "Default sample content has been removed",
-            "category": "content",
-            "severity": "warning",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "content.comment_defaults",
-            "title": "Comment and pingback defaults are intentional",
-            "category": "content",
-            "severity": "low",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "legal.privacy_policy",
-            "title": "A privacy policy page is published",
-            "category": "legal",
-            "severity": "warning",
-            "environments": [
-                "production"
-            ]
-        },
-        {
-            "id": "security.salts",
-            "title": "Authentication keys and salts are unique",
-            "category": "security",
-            "severity": "critical",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "security.open_registration",
-            "title": "Open registration does not grant privileged roles",
-            "category": "security",
-            "severity": "critical",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "security.admin_users",
-            "title": "Administrator accounts are limited and not guessable",
-            "category": "security",
-            "severity": "warning",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "security.file_editor",
-            "title": "The dashboard file editor is disabled",
-            "category": "security",
-            "severity": "low",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "security.debug_log",
-            "title": "No leftover debug.log in wp-content",
-            "category": "security",
-            "severity": "warning",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        },
-        {
-            "id": "email.admin_address",
-            "title": "Administration email address is real",
-            "category": "email",
-            "severity": "warning",
-            "environments": [
-                "production"
-            ]
-        },
-        {
-            "id": "email.transport",
-            "title": "Outgoing email uses a configured transport",
-            "category": "email",
-            "severity": "warning",
-            "environments": [
-                "production"
-            ]
-        },
-        {
-            "id": "locale.timezone",
-            "title": "The site timezone is set",
-            "category": "locale",
-            "severity": "low",
-            "environments": [
-                "production",
-                "staging"
-            ]
-        }
-    ],
-    "waivers": {},
-    "settings": {
-        "agency_name": "",
-        "client_name": "",
-        "note": "",
-        "preset": "business"
-    },
-    "presets": {
-        "business": "Business \/ brochure site",
-        "blog": "Blog \/ publication",
-        "shop": "Online shop"
-    },
-    "export_url": "http:\/\/127.0.0.1:8080\/wp-admin\/admin-post.php?action=golive_audit_export&_wpnonce=d1ee39ac17",
-    "checklist": [
-        {
-            "id": "backup_restore_tested",
-            "group": "infrastructure",
-            "group_label": "Infrastructure",
-            "label": "A full backup exists and a restore has been tested",
-            "state": "todo"
-        },
-        {
-            "id": "dns_ssl_ready",
-            "group": "infrastructure",
-            "group_label": "Infrastructure",
-            "label": "DNS is configured and the SSL certificate renews automatically",
-            "state": "todo"
-        },
-        {
-            "id": "redirects_from_old_site",
-            "group": "infrastructure",
-            "group_label": "Infrastructure",
-            "label": "Redirects from the old site's URLs are in place (for redesigns)",
-            "state": "todo"
-        },
-        {
-            "id": "forms_tested",
-            "group": "quality",
-            "group_label": "Quality assurance",
-            "label": "Every form was submitted and the notification emails arrived",
-            "state": "todo"
-        },
-        {
-            "id": "browsers_tested",
-            "group": "quality",
-            "group_label": "Quality assurance",
-            "label": "The site was tested in the main browsers and on mobile",
-            "state": "todo"
-        },
-        {
-            "id": "error_page_ready",
-            "group": "quality",
-            "group_label": "Quality assurance",
-            "label": "A helpful 404 page exists",
-            "state": "todo"
-        },
-        {
-            "id": "analytics_setup",
-            "group": "quality",
-            "group_label": "Quality assurance",
-            "label": "Analytics and Search Console are set up",
-            "state": "todo"
-        },
-        {
-            "id": "consent_handled",
-            "group": "compliance",
-            "group_label": "Privacy & compliance",
-            "label": "Cookie consent and privacy requirements are handled for the target markets",
-            "state": "todo"
-        },
-        {
-            "id": "access_handed_over",
-            "group": "handover",
-            "group_label": "Handover",
-            "label": "Hosting, domain and admin credentials are handed over to the client",
-            "state": "todo"
-        }
-    ],
-    "checklist_progress": {
-        "total": 9,
-        "done": 0,
-        "na": 0,
-        "todo": 9,
-        "complete": false
-    }
+	"version": "1.0.0",
+	"environment": "production",
+	"environments": [
+		"local",
+		"development",
+		"staging",
+		"production"
+	],
+	"categories": {
+		"seo": "SEO & visibility",
+		"env": "Environment & URLs",
+		"content": "Content",
+		"legal": "Privacy & legal",
+		"security": "Security basics",
+		"email": "Email",
+		"locale": "Language & region"
+	},
+	"checks": [
+		{
+			"id": "seo.search_visibility",
+			"title": "Search engine visibility matches the environment",
+			"category": "seo",
+			"severity": "critical",
+			"environments": [
+				"production",
+				"staging",
+				"development"
+			]
+		},
+		{
+			"id": "env.url_consistency",
+			"title": "Site URLs are public and consistent",
+			"category": "env",
+			"severity": "critical",
+			"environments": [
+				"production"
+			]
+		},
+		{
+			"id": "seo.robots_txt",
+			"title": "robots.txt does not block the whole site",
+			"category": "seo",
+			"severity": "critical",
+			"environments": [
+				"production"
+			]
+		},
+		{
+			"id": "seo.permalinks",
+			"title": "Pretty permalinks are enabled",
+			"category": "seo",
+			"severity": "warning",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "seo.sitemap",
+			"title": "An XML sitemap is available",
+			"category": "seo",
+			"severity": "warning",
+			"environments": [
+				"production"
+			]
+		},
+		{
+			"id": "seo.site_identity",
+			"title": "Site title and tagline are set",
+			"category": "seo",
+			"severity": "warning",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "seo.site_icon",
+			"title": "A site icon is set",
+			"category": "seo",
+			"severity": "low",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "seo.front_page",
+			"title": "The front page is configured correctly",
+			"category": "seo",
+			"severity": "warning",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "content.default_content",
+			"title": "Default sample content has been removed",
+			"category": "content",
+			"severity": "warning",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "content.comment_defaults",
+			"title": "Comment and pingback defaults are intentional",
+			"category": "content",
+			"severity": "low",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "legal.privacy_policy",
+			"title": "A privacy policy page is published",
+			"category": "legal",
+			"severity": "warning",
+			"environments": [
+				"production"
+			]
+		},
+		{
+			"id": "security.salts",
+			"title": "Authentication keys and salts are unique",
+			"category": "security",
+			"severity": "critical",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "security.open_registration",
+			"title": "Open registration does not grant privileged roles",
+			"category": "security",
+			"severity": "critical",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "security.admin_users",
+			"title": "Administrator accounts are limited and not guessable",
+			"category": "security",
+			"severity": "warning",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "security.file_editor",
+			"title": "The dashboard file editor is disabled",
+			"category": "security",
+			"severity": "low",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "security.debug_log",
+			"title": "No leftover debug.log in wp-content",
+			"category": "security",
+			"severity": "warning",
+			"environments": [
+				"production",
+				"staging"
+			]
+		},
+		{
+			"id": "email.admin_address",
+			"title": "Administration email address is real",
+			"category": "email",
+			"severity": "warning",
+			"environments": [
+				"production"
+			]
+		},
+		{
+			"id": "email.transport",
+			"title": "Outgoing email uses a configured transport",
+			"category": "email",
+			"severity": "warning",
+			"environments": [
+				"production"
+			]
+		},
+		{
+			"id": "locale.timezone",
+			"title": "The site timezone is set",
+			"category": "locale",
+			"severity": "low",
+			"environments": [
+				"production",
+				"staging"
+			]
+		}
+	],
+	"waivers": {},
+	"settings": {
+		"agency_name": "",
+		"client_name": "",
+		"note": "",
+		"preset": "business",
+		"language": "auto",
+		"schedule": "off",
+		"alert_email": ""
+	},
+	"presets": {
+		"business": "Business / brochure site",
+		"blog": "Blog / publication",
+		"shop": "Online shop"
+	},
+	"export_url": "http://127.0.0.1:8080/wp-admin/admin-post.php?action=golive_audit_export&_wpnonce=d1ee39ac17",
+	"checklist": [
+		{
+			"id": "backup_restore_tested",
+			"group": "infrastructure",
+			"group_label": "Infrastructure",
+			"label": "A full backup exists and a restore has been tested",
+			"state": "todo"
+		},
+		{
+			"id": "dns_ssl_ready",
+			"group": "infrastructure",
+			"group_label": "Infrastructure",
+			"label": "DNS is configured and the SSL certificate renews automatically",
+			"state": "todo"
+		},
+		{
+			"id": "redirects_from_old_site",
+			"group": "infrastructure",
+			"group_label": "Infrastructure",
+			"label": "Redirects from the old site's URLs are in place (for redesigns)",
+			"state": "todo"
+		},
+		{
+			"id": "forms_tested",
+			"group": "quality",
+			"group_label": "Quality assurance",
+			"label": "Every form was submitted and the notification emails arrived",
+			"state": "todo"
+		},
+		{
+			"id": "browsers_tested",
+			"group": "quality",
+			"group_label": "Quality assurance",
+			"label": "The site was tested in the main browsers and on mobile",
+			"state": "todo"
+		},
+		{
+			"id": "error_page_ready",
+			"group": "quality",
+			"group_label": "Quality assurance",
+			"label": "A helpful 404 page exists",
+			"state": "todo"
+		},
+		{
+			"id": "analytics_setup",
+			"group": "quality",
+			"group_label": "Quality assurance",
+			"label": "Analytics and Search Console are set up",
+			"state": "todo"
+		},
+		{
+			"id": "consent_handled",
+			"group": "compliance",
+			"group_label": "Privacy & compliance",
+			"label": "Cookie consent and privacy requirements are handled for the target markets",
+			"state": "todo"
+		},
+		{
+			"id": "access_handed_over",
+			"group": "handover",
+			"group_label": "Handover",
+			"label": "Hosting, domain and admin credentials are handed over to the client",
+			"state": "todo"
+		}
+	],
+	"checklist_progress": {
+		"total": 9,
+		"done": 0,
+		"na": 0,
+		"todo": 9,
+		"complete": false
+	},
+	"locale": "en_US",
+	"languages": {
+		"auto": "Site default",
+		"en": "English",
+		"fa": "فارسی"
+	},
+	"schedules": {
+		"off": "Off",
+		"daily": "Daily",
+		"weekly": "Weekly"
+	},
+	"next_run": 0,
+	"history": []
 }

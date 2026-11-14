@@ -1,12 +1,18 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it } from 'vitest';
 import {
 	effectiveStatus,
 	exportUrl,
 	filterResults,
+	formatDateTime,
 	groupChecklist,
+	localizeDigits,
+	matchesSearch,
 	priority,
+	runDelta,
 	safeUrl,
+	setLocale,
 	sortResults,
+	trendPoints,
 } from './utils';
 
 const make = ( id, status, severity, waived = false ) => ( {
@@ -145,5 +151,68 @@ describe( 'safeUrl', () => {
 		expect( safeUrl( 'data:text/html,hi' ) ).toBe( '' );
 		expect( safeUrl( '' ) ).toBe( '' );
 		expect( safeUrl( undefined ) ).toBe( '' );
+	} );
+} );
+
+describe( 'search', () => {
+	const result = {
+		title: 'Authentication keys and salts are unique',
+		summary: 'Missing keys',
+		recommendation: 'Generate fresh values',
+		severity: 'critical',
+		status: 'fail',
+		waived: false,
+		category: 'security',
+	};
+
+	it( 'matches title, summary and recommendation case-insensitively', () => {
+		expect( matchesSearch( result, 'SALTS' ) ).toBe( true );
+		expect( matchesSearch( result, 'missing' ) ).toBe( true );
+		expect( matchesSearch( result, 'fresh' ) ).toBe( true );
+		expect( matchesSearch( result, 'sitemap' ) ).toBe( false );
+	} );
+
+	it( 'treats an empty query as no filter and combines with other filters', () => {
+		expect( matchesSearch( result, '  ' ) ).toBe( true );
+		expect(
+			filterResults( [ result ], { search: 'salts', severity: 'low' } )
+		).toHaveLength( 0 );
+		expect(
+			filterResults( [ result ], { search: 'salts', severity: 'critical' } )
+		).toHaveLength( 1 );
+	} );
+} );
+
+describe( 'history helpers', () => {
+	it( 'runDelta needs two runs and reports changes', () => {
+		expect( runDelta( [] ) ).toBeNull();
+		expect( runDelta( [ { score: 50, failed: [] } ] ) ).toBeNull();
+		expect(
+			runDelta( [
+				{ score: 70, failed: [ 'a', 'b' ] },
+				{ score: 65, failed: [ 'b', 'c' ] },
+			] )
+		).toEqual( { delta: -5, newFailures: [ 'c' ], fixed: [ 'a' ] } );
+	} );
+
+	it( 'trendPoints maps scores into the chart box', () => {
+		const points = trendPoints( [ { score: 0 }, { score: 100 } ], 200, 100, 10 );
+
+		expect( points[ 0 ] ).toMatchObject( { x: 10, y: 90 } );
+		expect( points[ 1 ] ).toMatchObject( { x: 190, y: 10 } );
+		expect( trendPoints( [ { score: 50 } ], 200, 100, 10 )[ 0 ].x ).toBe( 100 );
+	} );
+} );
+
+describe( 'locale helpers', () => {
+	afterEach( () => setLocale( 'en_US' ) );
+
+	it( 'uses Persian digits and the Jalali calendar for fa_IR only', () => {
+		expect( localizeDigits( 'Score 82/100' ) ).toBe( 'Score 82/100' );
+
+		setLocale( 'fa_IR' );
+
+		expect( localizeDigits( 'Score 82/100' ) ).toBe( 'Score ۸۲/۱۰۰' );
+		expect( formatDateTime( 1794479400 ) ).toContain( 'آبان' );
 	} );
 } );

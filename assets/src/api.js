@@ -30,3 +30,8 @@ export const setChecklistItem = ( item, state ) =>
 
 export const saveSettings = ( settings ) =>
 	apiFetch( { path: `${ BASE }/settings`, method: 'POST', data: settings } );
+
+export const getHistory = () => apiFetch( { path: `${ BASE }/history` } );
+
+export const clearHistory = () =>
+	apiFetch( { path: `${ BASE }/history`, method: 'DELETE' } );

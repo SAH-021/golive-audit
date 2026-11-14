@@ -192,3 +192,98 @@
 		margin-inline-start: 0;
 	}
 }
+
+.golive-audit-filters .components-base-control {
+	min-width: 180px;
+}
+
+.golive-audit-delta {
+	margin: 0.25rem 0 0;
+	font-size: 0.9rem;
+	font-weight: 600;
+}
+
+.golive-audit-delta.is-up {
+	color: #007017;
+}
+
+.golive-audit-delta.is-down {
+	color: #b32d2e;
+}
+
+.golive-audit-trend {
+	display: block;
+	width: 100%;
+	max-width: 640px;
+	height: auto;
+	margin-bottom: 1rem;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+}
+
+.golive-audit-trend-grid {
+	stroke: #dcdcde;
+	stroke-width: 1;
+}
+
+.golive-audit-trend-label {
+	fill: #646970;
+	font-size: 10px;
+}
+
+.golive-audit-trend-line {
+	fill: none;
+	stroke: #2271b1;
+	stroke-width: 2;
+	stroke-linejoin: round;
+}
+
+.golive-audit-trend-dot {
+	fill: #646970;
+}
+
+.golive-audit-trend-dot.is-ready {
+	fill: #007017;
+}
+
+.golive-audit-trend-dot.is-attention {
+	fill: #996800;
+}
+
+.golive-audit-trend-dot.is-blocked {
+	fill: #b32d2e;
+}
+
+.golive-audit-changes {
+	max-width: 640px;
+	margin-bottom: 1rem;
+	padding: 4px 16px 12px;
+	background: #fff;
+	border: 1px solid #c3c4c7;
+}
+
+.golive-audit-changes h3 {
+	margin-bottom: 0.5rem;
+}
+
+.golive-audit-changes ul {
+	margin: 0 0 0.5rem;
+	padding-inline-start: 1.25rem;
+	list-style: disc;
+}
+
+.golive-audit-changes-new {
+	margin-bottom: 0.25rem;
+	color: #b32d2e;
+	font-weight: 600;
+}
+
+.golive-audit-changes-fixed {
+	margin-bottom: 0.25rem;
+	color: #007017;
+	font-weight: 600;
+}
+
+.golive-audit-history .golive-audit-table {
+	margin-top: 0.5rem;
+}

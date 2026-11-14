@@ -1,6 +1,6 @@
 import { __, sprintf } from '@wordpress/i18n';
 import { SelectControl } from '@wordpress/components';
-import { groupChecklist } from '../utils';
+import { groupChecklist, localizeDigits } from '../utils';
 
 export default function ChecklistPanel( { rows, progress, onChange } ) {
 	const options = [
@@ -12,15 +12,17 @@ export default function ChecklistPanel( { rows, progress, onChange } ) {
 	return (
 		<div className="golive-audit-checklist">
 			<p className="golive-audit-progress">
-				{ sprintf(
-					/* translators: 1: items done, 2: items not applicable, 3: total items. */
-					__(
-						'%1$d done, %2$d not applicable, of %3$d items.',
-						'golive-audit'
-					),
-					progress.done,
-					progress.na,
-					progress.total
+				{ localizeDigits(
+					sprintf(
+						/* translators: 1: items done, 2: items not applicable, 3: total items. */
+						__(
+							'%1$d done, %2$d not applicable, of %3$d items.',
+							'golive-audit'
+						),
+						progress.done,
+						progress.na,
+						progress.total
+					)
 				) }
 			</p>
 			<p className="description">

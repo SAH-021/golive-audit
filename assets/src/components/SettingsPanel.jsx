@@ -1,16 +1,29 @@
-import { useState } from '@wordpress/element';
-import { __ } from '@wordpress/i18n';
+import { useRef, useState } from '@wordpress/element';
+import { __, sprintf } from '@wordpress/i18n';
 import {
 	Button,
 	SelectControl,
 	TextControl,
 	TextareaControl,
 } from '@wordpress/components';
+import { formatDateTime, localizeDigits } from '../utils';
 
-export default function SettingsPanel( { settings, presets, onSave } ) {
+const toOptions = ( map ) =>
+	Object.entries( map ).map( ( [ value, label ] ) => ( { value, label } ) );
+
+export default function SettingsPanel( {
+	settings,
+	presets,
+	languages,
+	schedules,
+	nextRun,
+	onSave,
+} ) {
 	const [ form, setForm ] = useState( settings );
 	const [ saving, setSaving ] = useState( false );
 	const [ saved, setSaved ] = useState( false );
+	const [ needsReload, setNeedsReload ] = useState( false );
+	const savedLanguage = useRef( settings.language );
 
 	const update = ( key ) => ( value ) => {
 		setSaved( false );
@@ -22,6 +35,10 @@ export default function SettingsPanel( { settings, presets, onSave } ) {
 		try {
 			await onSave( form );
 			setSaved( true );
+			if ( form.language !== savedLanguage.current ) {
+				savedLanguage.current = form.language;
+				setNeedsReload( true );
+			}
 		} finally {
 			setSaving( false );
 		}
@@ -31,7 +48,7 @@ export default function SettingsPanel( { settings, presets, onSave } ) {
 		<div className="golive-audit-settings">
 			<p className="description">
 				{ __(
-					'These details appear on the printable report and in the JSON export.',
+					'These details appear on the printable report and in the Markdown and JSON exports.',
 					'golive-audit'
 				) }
 			</p>
@@ -65,14 +82,53 @@ export default function SettingsPanel( { settings, presets, onSave } ) {
 					'golive-audit'
 				) }
 				value={ form.preset }
-				options={ Object.entries( presets ).map(
-					( [ value, label ] ) => ( {
-						value,
-						label,
-					} )
-				) }
+				options={ toOptions( presets ) }
 				onChange={ update( 'preset' ) }
 			/>
+			<SelectControl
+				__nextHasNoMarginBottom
+				label={ __( 'Language', 'golive-audit' ) }
+				help={ __(
+					'Used by this screen, the reports and alert emails. "Site default" follows the WordPress language.',
+					'golive-audit'
+				) }
+				value={ form.language }
+				options={ toOptions( languages ) }
+				onChange={ update( 'language' ) }
+			/>
+			<SelectControl
+				__nextHasNoMarginBottom
+				label={ __( 'Scheduled audits', 'golive-audit' ) }
+				help={
+					form.schedule !== 'off' && nextRun > 0
+						? sprintf(
+								/* translators: %s: date and time of the next scheduled audit. */
+								__( 'Next audit: %s', 'golive-audit' ),
+								localizeDigits( formatDateTime( nextRun ) )
+						  )
+						: __(
+								'Runs the audit in the background with WP-Cron and records the result in the history. An email is sent when new problems appear.',
+								'golive-audit'
+						  )
+				}
+				value={ form.schedule }
+				options={ toOptions( schedules ) }
+				onChange={ update( 'schedule' ) }
+			/>
+			{ form.schedule !== 'off' && (
+				<TextControl
+					__nextHasNoMarginBottom
+					type="email"
+					label={ __( 'Alert email address', 'golive-audit' ) }
+					help={ __(
+						'Leave empty to use the site administration email address.',
+						'golive-audit'
+					) }
+					value={ form.alert_email }
+					onChange={ update( 'alert_email' ) }
+					maxLength={ 254 }
+				/>
+			) }
 			<div className="golive-audit-settings-actions">
 				<Button
 					variant="primary"
@@ -86,6 +142,14 @@ export default function SettingsPanel( { settings, presets, onSave } ) {
 					<span role="status">
 						{ __( 'Settings saved.', 'golive-audit' ) }
 					</span>
+				) }
+				{ needsReload && (
+					<Button
+						variant="secondary"
+						onClick={ () => window.location.reload() }
+					>
+						{ __( 'Reload to apply the language', 'golive-audit' ) }
+					</Button>
 				) }
 			</div>
 		</div>
