@@ -4,7 +4,7 @@ Tags: launch checklist, site audit, pre-launch, handoff, wp-cli
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ Launch-readiness audit for WordPress: environment-aware checks, a handoff checkl
 
 Golive Audit answers one question before you launch or hand a site to a client: **is this site ready?**
 
-It runs 19 read-only checks that WordPress's built-in Site Health does not cover, understands whether it is looking at a production or a staging site, and produces a report you can hand to the client.
+It runs 25 read-only checks that WordPress's built-in Site Health does not cover, understands whether it is looking at a production or a staging site, and produces a report you can hand to the client.
 
 **What it checks**
 
@@ -73,10 +73,21 @@ Implement `GoliveAudit\Audit\CheckInterface` and register it on the `golive_audi
 
 == Changelog ==
 
+= 1.1.0 =
+* New: run history with a score trend chart and a "since the previous audit" view.
+* New: scheduled audits (daily or weekly) with an email alert when new problems appear.
+* New: Persian (فارسی) translation, right-to-left layout, Jalali dates, and a language setting (site default, English or Persian).
+* New: Markdown report, check search, score change indicator, a "Recent audits" table in the printable report.
+* New checks: lorem ipsum text, coming-soon/maintenance mode, backups and SQL dumps in the site root, install leftovers, XML-RPC, default table prefix.
+* New: 10 more handoff checklist items and `wp golive-audit history`, `wp golive-audit run --record`.
+
 = 1.0.0 =
 * First release: 19 checks, environment profiles, readiness score, accepted risks, manual handoff checklist, printable/CSV/JSON reports, REST API and WP-CLI.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Adds run history, scheduled audits, Persian support and six new checks. Run history is empty until the first audit after updating.
 
 = 1.0.0 =
 First release.

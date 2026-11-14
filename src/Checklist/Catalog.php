@@ -108,6 +108,46 @@ final class Catalog {
 				'label' => __( 'Analytics and Search Console are set up', 'golive-audit' ),
 			),
 			array(
+				'id'    => 'backups_scheduled',
+				'group' => 'infrastructure',
+				'label' => __( 'Automatic backups are scheduled and stored off the server', 'golive-audit' ),
+			),
+			array(
+				'id'    => 'uptime_monitoring',
+				'group' => 'infrastructure',
+				'label' => __( 'Uptime monitoring and failure alerts are set up', 'golive-audit' ),
+			),
+			array(
+				'id'    => 'staging_blocked',
+				'group' => 'infrastructure',
+				'label' => __( 'Old staging or test copies are password-protected or removed', 'golive-audit' ),
+			),
+			array(
+				'id'    => 'email_authentication',
+				'group' => 'infrastructure',
+				'label' => __( 'SPF, DKIM and DMARC are configured for the sending domain', 'golive-audit' ),
+			),
+			array(
+				'id'    => 'speed_tested',
+				'group' => 'quality',
+				'label' => __( 'Page speed was tested on mobile and the worst offenders fixed', 'golive-audit' ),
+			),
+			array(
+				'id'    => 'social_previews_tested',
+				'group' => 'quality',
+				'label' => __( 'Link previews were tested on social networks and messengers', 'golive-audit' ),
+			),
+			array(
+				'id'    => 'sitemap_submitted',
+				'group' => 'quality',
+				'label' => __( 'The XML sitemap is submitted to Search Console', 'golive-audit' ),
+			),
+			array(
+				'id'    => 'caches_cleared',
+				'group' => 'quality',
+				'label' => __( 'Caches (plugin, server and CDN) were cleared after the final changes', 'golive-audit' ),
+			),
+			array(
 				'id'    => 'consent_handled',
 				'group' => 'compliance',
 				'label' => __( 'Cookie consent and privacy requirements are handled for the target markets', 'golive-audit' ),
@@ -116,6 +156,11 @@ final class Catalog {
 				'id'    => 'access_handed_over',
 				'group' => 'handover',
 				'label' => __( 'Hosting, domain and admin credentials are handed over to the client', 'golive-audit' ),
+			),
+			array(
+				'id'    => 'handover_training',
+				'group' => 'handover',
+				'label' => __( 'The client was trained to edit content and knows who to contact for support', 'golive-audit' ),
 			),
 		);
 	}
@@ -157,6 +202,16 @@ final class Catalog {
 				'id'    => 'shop_order_emails',
 				'group' => 'quality',
 				'label' => __( 'Order and shipping emails were tested end to end', 'golive-audit' ),
+			),
+			array(
+				'id'    => 'shop_tax_shipping',
+				'group' => 'quality',
+				'label' => __( 'Taxes, shipping zones and shipping rates were checked with real addresses', 'golive-audit' ),
+			),
+			array(
+				'id'    => 'shop_trust_badge',
+				'group' => 'compliance',
+				'label' => __( 'Any required business registration or trust badge (for example Enamad in Iran) is displayed', 'golive-audit' ),
 			),
 		);
 	}

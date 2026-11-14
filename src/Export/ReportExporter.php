@@ -69,8 +69,9 @@ final class ReportExporter {
 	 * @param array<string, mixed> $meta         site_name, site_url, generated, agency_name, client_name, note, is_rtl, lang, version.
 	 * @param array<int, array>    $checklist    Checklist rows.
 	 * @param string               $script_nonce Nonce for the one inline script (CSP).
+	 * @param array<int, array>    $history      Recent runs, newest first: date, score, verdict, failed.
 	 */
-	public function to_html( Report $report, array $meta, array $checklist, string $script_nonce ): string {
+	public function to_html( Report $report, array $meta, array $checklist, string $script_nonce, array $history = array() ): string {
 		$summary    = $report->to_array()['summary'];
 		$categories = Categories::labels();
 		$dir        = ! empty( $meta['is_rtl'] ) ? 'rtl' : 'ltr';
@@ -150,6 +151,16 @@ final class ReportExporter {
 
 		$html .= '</tbody></table>';
 
+		if ( count( $history ) > 1 ) {
+			$html .= '<h2>' . esc_html__( 'Recent audits', 'golive-audit' ) . '</h2><table><thead><tr><th>' . esc_html__( 'Date', 'golive-audit' ) . '</th><th>' . esc_html__( 'Score', 'golive-audit' ) . '</th><th>' . esc_html__( 'Verdict', 'golive-audit' ) . '</th><th>' . esc_html__( 'Open problems', 'golive-audit' ) . '</th></tr></thead><tbody>';
+
+			foreach ( $history as $row ) {
+				$html .= '<tr><td>' . esc_html( (string) $row['date'] ) . '</td><td>' . (int) $row['score'] . '</td><td>' . esc_html( $this->verdict_label( (string) $row['verdict'] ) ) . '</td><td>' . (int) $row['failed'] . '</td></tr>';
+			}
+
+			$html .= '</tbody></table>';
+		}
+
 		if ( array() !== $checklist ) {
 			$html .= '<h2>' . esc_html__( 'Manual handoff checklist', 'golive-audit' ) . '</h2><table><thead><tr><th>' . esc_html__( 'Status', 'golive-audit' ) . '</th><th>' . esc_html__( 'Item', 'golive-audit' ) . '</th></tr></thead><tbody>';
 
@@ -174,6 +185,115 @@ final class ReportExporter {
 		$html .= '</body></html>';
 
 		return $html;
+	}
+
+	/**
+	 * Markdown report, handy for tickets, Notion, GitHub issues and chat.
+	 *
+	 * @param Report               $report    The audit report.
+	 * @param array<string, mixed> $meta      Site and branding details.
+	 * @param array<int, array>    $checklist Checklist rows.
+	 */
+	public function to_markdown( Report $report, array $meta, array $checklist ): string {
+		$summary    = $report->to_array()['summary'];
+		$categories = Categories::labels();
+		$md         = array();
+
+		$md[] = '# ' . __( 'Launch readiness report', 'golive-audit' );
+		$md[] = '';
+
+		$site = trim( trim( (string) ( $meta['site_name'] ?? '' ) ) . ' ' . (string) ( $meta['site_url'] ?? '' ) );
+		$info = array(
+			__( 'Site', 'golive-audit' )         => $site,
+			__( 'Environment', 'golive-audit' )  => $report->environment(),
+			__( 'Generated', 'golive-audit' )    => (string) ( $meta['generated'] ?? '' ),
+			__( 'Prepared for', 'golive-audit' ) => (string) ( $meta['client_name'] ?? '' ),
+			__( 'Prepared by', 'golive-audit' )  => (string) ( $meta['agency_name'] ?? '' ),
+		);
+
+		foreach ( $info as $label => $value ) {
+			if ( '' !== trim( $value ) ) {
+				$md[] = '- **' . $label . ':** ' . $this->md_text( $value );
+			}
+		}
+
+		$md[] = '';
+		$md[] = '## ' . __( 'Summary', 'golive-audit' );
+		$md[] = '';
+		$md[] = '**' . $this->verdict_label( (string) $summary['verdict'] ) . '** — ' . sprintf(
+			/* translators: %d: readiness score from 0 to 100. */
+			__( 'Readiness score %d / 100', 'golive-audit' ),
+			(int) $summary['score']
+		);
+		$md[] = '';
+		$md[] = sprintf(
+			/* translators: 1: launch blockers, 2: failed checks, 3: accepted risks, 4: passed checks, 5: skipped checks, 6: checks that errored. */
+			__( 'Blockers: %1$d. Failed: %2$d. Accepted risks: %3$d. Passed: %4$d. Not applicable: %5$d. Could not run: %6$d.', 'golive-audit' ),
+			(int) $summary['blockers'],
+			(int) $summary['fail'],
+			(int) $summary['waived'],
+			(int) $summary['pass'],
+			(int) $summary['skipped'],
+			(int) $summary['error']
+		);
+
+		$note = trim( (string) ( $meta['note'] ?? '' ) );
+
+		if ( '' !== $note ) {
+			$md[] = '';
+			$md[] = '## ' . __( 'Notes', 'golive-audit' );
+			$md[] = '';
+			$md[] = $this->md_text( $note );
+		}
+
+		$md[] = '';
+		$md[] = '## ' . __( 'Automated checks', 'golive-audit' );
+		$md[] = '';
+
+		foreach ( $this->sorted_results( $report ) as $result ) {
+			$row    = $result->to_array();
+			$status = $row['waived'] ? __( 'Accepted risk', 'golive-audit' ) : $this->status_label( $row['status'] );
+			$box    = Result::STATUS_PASS === $row['status'] || $row['waived'] ? '[x]' : '[ ]';
+
+			$md[] = '- ' . $box . ' **' . $this->md_text( $row['title'] ) . '** (' . $this->md_text( $categories[ $row['category'] ] ?? $row['category'] ) . ', ' . $this->severity_label( $row['severity'] ) . ', ' . $status . ')';
+			$md[] = '  - ' . $this->md_text( $row['summary'] );
+
+			if ( Result::STATUS_FAIL === $row['status'] && '' !== $row['recommendation'] && ! $row['waived'] ) {
+				$md[] = '  - ' . $this->md_text( $row['recommendation'] );
+			}
+
+			if ( $row['waived'] ) {
+				$md[] = '  - ' . $this->md_text(
+					sprintf(
+						/* translators: %s: reason the risk was accepted. */
+						__( 'Accepted because: %s', 'golive-audit' ),
+						$row['waive_reason']
+					)
+				);
+			}
+		}
+
+		if ( array() !== $checklist ) {
+			$md[] = '';
+			$md[] = '## ' . __( 'Manual handoff checklist', 'golive-audit' );
+			$md[] = '';
+
+			foreach ( $checklist as $item ) {
+				$state = (string) $item['state'];
+				$md[]  = '- ' . ( 'todo' === $state ? '[ ]' : '[x]' ) . ' ' . $this->md_text( (string) $item['label'] ) . ( 'na' === $state ? ' (' . $this->checklist_state_label( 'na' ) . ')' : '' );
+			}
+		}
+
+		$md[] = '';
+
+		return implode( "\n", $md );
+	}
+
+	/**
+	 * Flattens line breaks so a value cannot break the list structure.
+	 */
+	private function md_text( string $value ): string {
+		return trim( (string) preg_replace( '/\s+/u', ' ', $value ) );
 	}
 
 	/**

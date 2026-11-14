@@ -13,6 +13,7 @@ $golive_audit_options = array(
 	'golive_audit_waivers',
 	'golive_audit_checklist',
 	'golive_audit_settings',
+	'golive_audit_history',
 );
 
 if ( is_multisite() ) {
@@ -24,12 +25,16 @@ if ( is_multisite() ) {
 			delete_option( $golive_audit_option );
 		}
 
+		wp_clear_scheduled_hook( 'golive_audit_scheduled_run' );
+
 		restore_current_blog();
 	}
 } else {
 	foreach ( $golive_audit_options as $golive_audit_option ) {
 		delete_option( $golive_audit_option );
 	}
+
+	wp_clear_scheduled_hook( 'golive_audit_scheduled_run' );
 }
 
 delete_transient( 'golive_audit_running' );

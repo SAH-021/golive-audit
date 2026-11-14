@@ -14,7 +14,9 @@ use GoliveAudit\Audit\AuditRunner;
 use GoliveAudit\Audit\Categories;
 use GoliveAudit\Checklist\Catalog;
 use GoliveAudit\Checklist\ChecklistStore;
+use GoliveAudit\Cron\ScheduledAudit;
 use GoliveAudit\Plugin;
+use GoliveAudit\Storage\SettingsStore;
 use InvalidArgumentException;
 use WP_Error;
 use WP_REST_Request;
@@ -61,6 +63,23 @@ final class Controller {
 						'validate_callback' => 'rest_validate_request_arg',
 						'sanitize_callback' => 'sanitize_key',
 					),
+				),
+			)
+		);
+
+		register_rest_route(
+			self::NAMESPACE,
+			'/history',
+			array(
+				array(
+					'methods'             => WP_REST_Server::READABLE,
+					'callback'            => array( $this, 'get_history' ),
+					'permission_callback' => array( $this, 'check_permission' ),
+				),
+				array(
+					'methods'             => WP_REST_Server::DELETABLE,
+					'callback'            => array( $this, 'clear_history' ),
+					'permission_callback' => array( $this, 'check_permission' ),
 				),
 			)
 		);
@@ -139,6 +158,20 @@ final class Controller {
 						'type' => 'string',
 						'enum' => Catalog::PRESETS,
 					),
+					'language'    => array(
+						'type' => 'string',
+						'enum' => SettingsStore::LANGUAGES,
+					),
+					'schedule'    => array(
+						'type' => 'string',
+						'enum' => SettingsStore::SCHEDULES,
+					),
+					'alert_email' => array(
+						'type'              => 'string',
+						'maxLength'         => 254,
+						'validate_callback' => 'rest_validate_request_arg',
+						'sanitize_callback' => 'sanitize_email',
+					),
 				),
 			)
 		);
@@ -182,14 +215,24 @@ final class Controller {
 
 		try {
 			$environment = $request->get_param( 'environment' );
-			$report      = $this->plugin->run_audit( is_string( $environment ) && '' !== $environment ? $environment : null );
+			$report      = $this->plugin->run_audit( is_string( $environment ) && '' !== $environment ? $environment : null, true );
 		} catch ( InvalidArgumentException $e ) {
 			return new WP_Error( 'golive_audit_invalid_environment', __( 'Unknown environment.', 'golive-audit' ), array( 'status' => 400 ) );
 		} finally {
 			delete_transient( self::LOCK_KEY );
 		}
 
-		return new WP_REST_Response( $report->to_array() );
+		return new WP_REST_Response( array_merge( $report->to_array(), array( 'history' => $this->plugin->history()->all() ) ) );
+	}
+
+	public function get_history(): WP_REST_Response {
+		return new WP_REST_Response( array( 'history' => $this->plugin->history()->all() ) );
+	}
+
+	public function clear_history(): WP_REST_Response {
+		$this->plugin->history()->clear();
+
+		return new WP_REST_Response( array( 'history' => array() ) );
 	}
 
 	/**
@@ -242,7 +285,7 @@ final class Controller {
 	public function update_settings( WP_REST_Request $request ): WP_REST_Response {
 		$input = array();
 
-		foreach ( array( 'agency_name', 'client_name', 'note', 'preset' ) as $key ) {
+		foreach ( array( 'agency_name', 'client_name', 'note', 'preset', 'language', 'schedule', 'alert_email' ) as $key ) {
 			if ( null !== $request->get_param( $key ) ) {
 				$input[ $key ] = (string) $request->get_param( $key );
 			}
@@ -250,9 +293,14 @@ final class Controller {
 
 		$settings = $this->plugin->settings()->update( $input );
 
+		ScheduledAudit::sync( $settings['schedule'] );
+
 		return new WP_REST_Response(
 			array_merge(
-				array( 'settings' => $settings ),
+				array(
+					'settings' => $settings,
+					'next_run' => $this->next_run(),
+				),
 				$this->checklist_payload()
 			)
 		);
@@ -280,16 +328,38 @@ final class Controller {
 			array(
 				'version'      => GOLIVE_AUDIT_VERSION,
 				'environment'  => ( new \GoliveAudit\Support\WpSiteContext() )->environment(),
+				'locale'       => $this->plugin->effective_locale(),
 				'environments' => AuditRunner::ENVIRONMENTS,
 				'categories'   => Categories::labels(),
 				'checks'       => $checks,
 				'waivers'      => $this->waiver_map(),
 				'settings'     => $this->plugin->settings()->get(),
 				'presets'      => Catalog::preset_labels(),
+				'languages'    => array(
+					'auto' => __( 'Site default', 'golive-audit' ),
+					'en'   => 'English',
+					'fa'   => 'فارسی',
+				),
+				'schedules'    => array(
+					'off'    => __( 'Off', 'golive-audit' ),
+					'daily'  => __( 'Daily', 'golive-audit' ),
+					'weekly' => __( 'Weekly', 'golive-audit' ),
+				),
+				'next_run'     => $this->next_run(),
+				'history'      => $this->plugin->history()->all(),
 				'export_url'   => $this->export_url(),
 			),
 			$this->checklist_payload()
 		);
+	}
+
+	/**
+	 * Unix time of the next scheduled audit, or 0 when none is scheduled.
+	 */
+	private function next_run(): int {
+		$next = wp_next_scheduled( ScheduledAudit::HOOK );
+
+		return false === $next ? 0 : (int) $next;
 	}
 
 	/**

@@ -1,0 +1,1334 @@
+# Copyright (C) 2026 SAH
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Golive Audit 1.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/SAH-021/golive-audit/issues\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-11-13 12:02+0000\n"
+"Last-Translator: Golive Audit contributors\n"
+"Language-Team: Persian\n"
+"Language: fa_IR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Golive Audit i18n script\n"
+"X-Domain: golive-audit\n"
+
+#. Plugin Name of the plugin
+#: golive-audit.php
+msgid "Golive Audit"
+msgstr "گو-لایو آدیت"
+
+#. Description of the plugin
+#: golive-audit.php
+msgid "Launch-readiness and client-handoff audit for WordPress sites: environment-aware checks, run history, scheduled audits, Persian support and client-ready reports."
+msgstr "بررسی آمادگی انتشار و تحویل پروژه برای سایت‌های وردپرس: بررسی‌های وابسته به محیط، تاریخچه‌ی اجرا، ممیزی زمان‌بندی‌شده، پشتیبانی از فارسی و گزارش‌های آماده‌ی ارائه به کارفرما."
+
+#: src/Admin/AdminPage.php:46
+msgid "The dashboard has not been built. Run \"npm install && npm run build\" in the plugin folder."
+msgstr "داشبورد ساخته نشده است. در پوشه‌ی افزونه دستور «npm install && npm run build» را اجرا کنید."
+
+#: src/Admin/AdminPage.php:53
+msgid "Golive Audit needs JavaScript. You can still use WP-CLI: wp golive-audit run"
+msgstr "گو-لایو آدیت به جاوااسکریپت نیاز دارد. همچنان می‌توانید از WP-CLI استفاده کنید: wp golive-audit run"
+
+#: src/Admin/ExportHandler.php:34
+msgid "You are not allowed to export this report."
+msgstr "اجازه‌ی دریافت خروجی این گزارش را ندارید."
+
+#: src/Admin/ExportHandler.php:43
+msgid "Unknown export format."
+msgstr "قالب خروجی ناشناخته است."
+
+#. translators: %s: environment name, e.g. "local".
+#: src/Audit/AuditRunner.php:48
+#, php-format
+msgid "Not applicable to the \"%s\" environment."
+msgstr "برای محیط «%s» کاربرد ندارد."
+
+#: src/Audit/Categories.php:17
+msgid "SEO & visibility"
+msgstr "سئو و دیده‌شدن"
+
+#: src/Audit/Categories.php:18
+msgid "Environment & URLs"
+msgstr "محیط و نشانی‌ها"
+
+#: src/Audit/Categories.php:19
+msgid "Content"
+msgstr "محتوا"
+
+#: src/Audit/Categories.php:20
+msgid "Privacy & legal"
+msgstr "حریم خصوصی و قوانین"
+
+#: src/Audit/Categories.php:21
+msgid "Security basics"
+msgstr "امنیت پایه"
+
+#: src/Audit/Categories.php:22
+msgid "Email"
+msgstr "ایمیل"
+
+#: src/Audit/Categories.php:23
+msgid "Language & region"
+msgstr "زبان و منطقه"
+
+#. translators: %s: short error code.
+#: src/Audit/Result.php:80
+#, php-format
+msgid "This check could not be completed (%s)."
+msgstr "این بررسی کامل نشد (%s)."
+
+#: src/Checklist/Catalog.php:22
+msgid "Business / brochure site"
+msgstr "سایت شرکتی / معرفی"
+
+#: src/Checklist/Catalog.php:23
+msgid "Blog / publication"
+msgstr "وبلاگ / نشریه"
+
+#: src/Checklist/Catalog.php:24
+msgid "Online shop"
+msgstr "فروشگاه آنلاین"
+
+#: src/Checklist/Catalog.php:33
+msgid "Infrastructure"
+msgstr "زیرساخت"
+
+#: src/Checklist/Catalog.php:34
+msgid "Quality assurance"
+msgstr "کنترل کیفیت"
+
+#: src/Checklist/Catalog.php:35
+msgid "Privacy & compliance"
+msgstr "حریم خصوصی و انطباق"
+
+#: src/Checklist/Catalog.php:36
+msgid "Handover"
+msgstr "تحویل پروژه"
+
+#: src/Checklist/Catalog.php:78
+msgid "A full backup exists and a restore has been tested"
+msgstr "یک نسخه‌ی پشتیبان کامل وجود دارد و بازیابی آن آزمایش شده است"
+
+#: src/Checklist/Catalog.php:83
+msgid "DNS is configured and the SSL certificate renews automatically"
+msgstr "دی‌ان‌اس تنظیم شده و گواهی SSL به‌صورت خودکار تمدید می‌شود"
+
+#: src/Checklist/Catalog.php:88
+msgid "Redirects from the old site's URLs are in place (for redesigns)"
+msgstr "ریدایرکت نشانی‌های سایت قبلی انجام شده است (برای بازطراحی‌ها)"
+
+#: src/Checklist/Catalog.php:93
+msgid "Every form was submitted and the notification emails arrived"
+msgstr "همه‌ی فرم‌ها ارسال و آزمایش شده و ایمیل‌های اطلاع‌رسانی رسیده‌اند"
+
+#: src/Checklist/Catalog.php:98
+msgid "The site was tested in the main browsers and on mobile"
+msgstr "سایت در مرورگرهای اصلی و روی موبایل آزمایش شده است"
+
+#: src/Checklist/Catalog.php:103
+msgid "A helpful 404 page exists"
+msgstr "صفحه‌ی ۴۰۴ کاربردی وجود دارد"
+
+#: src/Checklist/Catalog.php:108
+msgid "Analytics and Search Console are set up"
+msgstr "آنالیتیکس و سرچ کنسول راه‌اندازی شده‌اند"
+
+#: src/Checklist/Catalog.php:113
+msgid "Automatic backups are scheduled and stored off the server"
+msgstr "پشتیبان‌گیری خودکار زمان‌بندی شده و نسخه‌ها خارج از سرور نگهداری می‌شوند"
+
+#: src/Checklist/Catalog.php:118
+msgid "Uptime monitoring and failure alerts are set up"
+msgstr "پایش در دسترس‌بودن سایت و هشدار خرابی راه‌اندازی شده است"
+
+#: src/Checklist/Catalog.php:123
+msgid "Old staging or test copies are password-protected or removed"
+msgstr "نسخه‌های قدیمی آزمایشی یا استیجینگ رمزگذاری یا حذف شده‌اند"
+
+#: src/Checklist/Catalog.php:128
+msgid "SPF, DKIM and DMARC are configured for the sending domain"
+msgstr "SPF، DKIM و DMARC برای دامنه‌ی ارسال‌کننده‌ی ایمیل تنظیم شده‌اند"
+
+#: src/Checklist/Catalog.php:133
+msgid "Page speed was tested on mobile and the worst offenders fixed"
+msgstr "سرعت صفحات روی موبایل سنجیده و موارد مشکل‌ساز رفع شده‌اند"
+
+#: src/Checklist/Catalog.php:138
+msgid "Link previews were tested on social networks and messengers"
+msgstr "پیش‌نمایش لینک در شبکه‌های اجتماعی و پیام‌رسان‌ها آزمایش شده است"
+
+#: src/Checklist/Catalog.php:143
+msgid "The XML sitemap is submitted to Search Console"
+msgstr "نقشه‌ی XML سایت در سرچ کنسول ثبت شده است"
+
+#: src/Checklist/Catalog.php:148
+msgid "Caches (plugin, server and CDN) were cleared after the final changes"
+msgstr "کش‌ها (افزونه، سرور و CDN) پس از آخرین تغییرات پاک شده‌اند"
+
+#: src/Checklist/Catalog.php:153
+msgid "Cookie consent and privacy requirements are handled for the target markets"
+msgstr "رضایت کوکی و الزامات حریم خصوصی برای بازارهای هدف رعایت شده است"
+
+#: src/Checklist/Catalog.php:158
+msgid "Hosting, domain and admin credentials are handed over to the client"
+msgstr "اطلاعات هاست، دامنه و دسترسی مدیر به کارفرما تحویل داده شده است"
+
+#: src/Checklist/Catalog.php:163
+msgid "The client was trained to edit content and knows who to contact for support"
+msgstr "به کارفرما آموزش ویرایش محتوا داده شده و می‌داند برای پشتیبانی با چه کسی تماس بگیرد"
+
+#: src/Checklist/Catalog.php:176
+msgid "The RSS feed works and any newsletter sign-up is tested"
+msgstr "فید RSS کار می‌کند و عضویت در خبرنامه (در صورت وجود) آزمایش شده است"
+
+#: src/Checklist/Catalog.php:181
+msgid "Author profiles, categories and tags have been reviewed"
+msgstr "صفحه‌ی نویسندگان، دسته‌ها و برچسب‌ها بازبینی شده‌اند"
+
+#: src/Checklist/Catalog.php:194
+msgid "The payment gateway is in live mode and a real test order was placed"
+msgstr "درگاه پرداخت در حالت واقعی است و یک سفارش آزمایشی واقعی ثبت شده است"
+
+#: src/Checklist/Catalog.php:199
+msgid "Terms, returns and shipping pages are published"
+msgstr "صفحه‌های قوانین، بازگشت کالا و ارسال منتشر شده‌اند"
+
+#: src/Checklist/Catalog.php:204
+msgid "Order and shipping emails were tested end to end"
+msgstr "ایمیل‌های سفارش و ارسال از ابتدا تا انتها آزمایش شده‌اند"
+
+#: src/Checklist/Catalog.php:209
+msgid "Taxes, shipping zones and shipping rates were checked with real addresses"
+msgstr "مالیات، مناطق ارسال و هزینه‌های ارسال با نشانی‌های واقعی بررسی شده‌اند"
+
+#: src/Checklist/Catalog.php:214
+msgid "Any required business registration or trust badge (for example Enamad in Iran) is displayed"
+msgstr "مجوز یا نماد اعتماد موردنیاز (مثلاً اینماد در ایران) در سایت نمایش داده می‌شود"
+
+#: src/Checks/AdminEmailCheck.php:33
+msgid "Administration email address is real"
+msgstr "ایمیل مدیر سایت واقعی است"
+
+#: src/Checks/AdminEmailCheck.php:47
+msgid "Set a monitored address in Settings > General so WordPress notifications reach the site owner."
+msgstr "در تنظیمات > همگانی یک ایمیل پایش‌شده وارد کنید تا اعلان‌های وردپرس به مالک سایت برسد."
+
+#: src/Checks/AdminEmailCheck.php:50
+msgid "The administration email address is missing or invalid."
+msgstr "ایمیل مدیر سایت خالی یا نامعتبر است."
+
+#. translators: %s: email domain, e.g. "example.com".
+#: src/Checks/AdminEmailCheck.php:59
+#, php-format
+msgid "The administration email address uses a placeholder or reserved domain (%s)."
+msgstr "ایمیل مدیر سایت از یک دامنه‌ی نمونه یا رزروشده استفاده می‌کند (%s)."
+
+#: src/Checks/AdminEmailCheck.php:67
+msgid "The administration email address uses a non-placeholder domain."
+msgstr "ایمیل مدیر سایت از دامنه‌ی نمونه استفاده نمی‌کند."
+
+#: src/Checks/AdminUsersCheck.php:22
+msgid "Administrator accounts are limited and not guessable"
+msgstr "حساب‌های مدیر محدود و غیرقابل حدس هستند"
+
+#: src/Checks/AdminUsersCheck.php:33
+msgid "a user named \"admin\" exists"
+msgstr "کاربری با نام «admin» وجود دارد"
+
+#. translators: 1: number of administrators, 2: recommended maximum.
+#: src/Checks/AdminUsersCheck.php:41
+#, php-format
+msgid "%1$d administrator accounts exist (more than %2$d)"
+msgstr "%1$d حساب مدیر وجود دارد (بیش از %2$d)"
+
+#: src/Checks/AdminUsersCheck.php:48
+msgid "No \"admin\" user was found and the number of administrators is small."
+msgstr "کاربری با نام «admin» پیدا نشد و تعداد مدیران کم است."
+
+#. translators: %s: list of problems.
+#: src/Checks/AdminUsersCheck.php:54
+#, php-format
+msgid "Account hygiene: %s."
+msgstr "بهداشت حساب‌ها: %s."
+
+#: src/Checks/AdminUsersCheck.php:57
+msgid "Rename or replace the \"admin\" login and give people only the role they need."
+msgstr "نام کاربری «admin» را تغییر دهید یا جایگزین کنید و به هر فرد فقط نقش موردنیازش را بدهید."
+
+#: src/Checks/ComingSoonCheck.php:37
+msgid "No coming-soon or maintenance page is active"
+msgstr "صفحه‌ی «به‌زودی» یا تعمیر و نگهداری فعال نیست"
+
+#: src/Checks/ComingSoonCheck.php:51
+msgid "WooCommerce is set to \"coming soon\", so visitors do not see the shop."
+msgstr "ووکامرس روی «به‌زودی» تنظیم شده است، پس بازدیدکنندگان فروشگاه را نمی‌بینند."
+
+#: src/Checks/ComingSoonCheck.php:52
+msgid "Set the site visibility to \"Live\" in WooCommerce > Settings > Site visibility."
+msgstr "در ووکامرس > تنظیمات > نمایش سایت، وضعیت را روی «زنده» بگذارید."
+
+#: src/Checks/ComingSoonCheck.php:60
+msgid "A coming-soon or maintenance plugin is active."
+msgstr "یک افزونه‌ی «به‌زودی» یا تعمیر و نگهداری فعال است."
+
+#: src/Checks/ComingSoonCheck.php:61
+msgid "Deactivate it, or make sure its coming-soon mode is switched off, so visitors see the real site."
+msgstr "آن را غیرفعال کنید یا مطمئن شوید حالت «به‌زودی» آن خاموش است تا بازدیدکنندگان سایت واقعی را ببینند."
+
+#: src/Checks/ComingSoonCheck.php:67
+msgid "No coming-soon or maintenance plugin or setting was detected."
+msgstr "هیچ افزونه یا تنظیمی برای صفحه‌ی «به‌زودی» یا تعمیر و نگهداری پیدا نشد."
+
+#: src/Checks/CommentDefaultsCheck.php:20
+msgid "Comment and pingback defaults are intentional"
+msgstr "پیش‌فرض‌های دیدگاه و پینگ‌بک آگاهانه انتخاب شده‌اند"
+
+#: src/Checks/CommentDefaultsCheck.php:31
+msgid "pingbacks and trackbacks are enabled for new content"
+msgstr "پینگ‌بک و ترک‌بک برای نوشته‌های جدید فعال است"
+
+#: src/Checks/CommentDefaultsCheck.php:39
+msgid "new comments are published without any moderation"
+msgstr "دیدگاه‌های جدید بدون هیچ بررسی منتشر می‌شوند"
+
+#: src/Checks/CommentDefaultsCheck.php:43
+msgid "Comment and pingback defaults look intentional."
+msgstr "پیش‌فرض‌های دیدگاه و پینگ‌بک آگاهانه به نظر می‌رسند."
+
+#. translators: %s: list of problems.
+#: src/Checks/CommentDefaultsCheck.php:49
+#, php-format
+msgid "Discussion defaults: %s."
+msgstr "پیش‌فرض‌های گفتگو: %s."
+
+#: src/Checks/CommentDefaultsCheck.php:52
+msgid "Review Settings > Discussion: disable pingbacks unless needed and require moderation or a previously approved comment."
+msgstr "تنظیمات > گفتگو را بررسی کنید: پینگ‌بک را در صورت نیاز نداشتن خاموش کنید و تأیید دیدگاه یا تأیید قبلی نویسنده را الزامی کنید."
+
+#: src/Checks/DbPrefixCheck.php:20
+msgid "The database table prefix is not the default"
+msgstr "پیشوند جدول‌های پایگاه داده پیش‌فرض نیست"
+
+#: src/Checks/DbPrefixCheck.php:29
+msgid "A custom database table prefix is used."
+msgstr "از پیشوند سفارشی برای جدول‌های پایگاه داده استفاده شده است."
+
+#: src/Checks/DbPrefixCheck.php:33
+msgid "The database table prefix is the default \"wp_\"."
+msgstr "پیشوند جدول‌های پایگاه داده همان «wp_» پیش‌فرض است."
+
+#: src/Checks/DbPrefixCheck.php:34
+msgid "Choose a custom $table_prefix in wp-config.php on new installs. Renaming tables on a live site is risky, so accept the risk if the site is already running."
+msgstr "در نصب‌های جدید یک $table_prefix سفارشی در wp-config.php انتخاب کنید. تغییر نام جدول‌ها در سایت زنده پرخطر است؛ اگر سایت از قبل فعال است، این ریسک را بپذیرید."
+
+#: src/Checks/DebugLogCheck.php:23
+msgid "No leftover debug.log in wp-content"
+msgstr "فایل debug.log قدیمی در wp-content وجود ندارد"
+
+#: src/Checks/DebugLogCheck.php:32
+msgid "No debug.log file was found in wp-content."
+msgstr "فایل debug.log در wp-content پیدا نشد."
+
+#: src/Checks/DebugLogCheck.php:36
+msgid "A debug.log file exists in wp-content."
+msgstr "فایل debug.log در wp-content وجود دارد."
+
+#: src/Checks/DebugLogCheck.php:37
+msgid "Review and delete it, turn off WP_DEBUG_LOG on live sites, and make sure your server does not serve .log files."
+msgstr "آن را بازبینی و حذف کنید، WP_DEBUG_LOG را روی سایت‌های زنده خاموش کنید و مطمئن شوید سرور فایل‌های .log را ارائه نمی‌دهد."
+
+#: src/Checks/DefaultContentCheck.php:23
+msgid "Default sample content has been removed"
+msgstr "محتوای نمونه‌ی پیش‌فرض حذف شده است"
+
+#: src/Checks/DefaultContentCheck.php:34
+msgid "the \"Hello world!\" post"
+msgstr "نوشته‌ی «Hello world!»"
+
+#: src/Checks/DefaultContentCheck.php:38
+msgid "the \"Sample Page\" page"
+msgstr "برگه‌ی «Sample Page»"
+
+#: src/Checks/DefaultContentCheck.php:42
+msgid "No default sample content was found."
+msgstr "هیچ محتوای نمونه‌ی پیش‌فرضی پیدا نشد."
+
+#. translators: %s: list of leftover items, e.g. 'the "Hello world!" post, the "Sample Page" page'.
+#: src/Checks/DefaultContentCheck.php:48
+#, php-format
+msgid "Published sample content is still present: %s."
+msgstr "محتوای نمونه‌ی منتشرشده هنوز وجود دارد: %s."
+
+#: src/Checks/DefaultContentCheck.php:51
+msgid "Delete or replace the default sample post and page before launch."
+msgstr "پیش از انتشار سایت، نوشته و برگه‌ی نمونه‌ی پیش‌فرض را حذف یا جایگزین کنید."
+
+#: src/Checks/FileEditorCheck.php:20
+msgid "The dashboard file editor is disabled"
+msgstr "ویرایشگر فایل در پیشخوان غیرفعال است"
+
+#: src/Checks/FileEditorCheck.php:29
+msgid "The dashboard file editor is disabled."
+msgstr "ویرایشگر فایل در پیشخوان غیرفعال است."
+
+#: src/Checks/FileEditorCheck.php:33
+msgid "Administrators can edit theme and plugin code from the dashboard."
+msgstr "مدیران می‌توانند کد پوسته و افزونه‌ها را از پیشخوان ویرایش کنند."
+
+#: src/Checks/FileEditorCheck.php:34
+msgid "Add define( 'DISALLOW_FILE_EDIT', true ); to wp-config.php so a compromised admin account cannot change code from the browser."
+msgstr "دستور define( 'DISALLOW_FILE_EDIT', true ); را به wp-config.php اضافه کنید تا حساب مدیرِ نفوذشده نتواند از مرورگر کد را تغییر دهد."
+
+#: src/Checks/FrontPageCheck.php:20
+msgid "The front page is configured correctly"
+msgstr "صفحه‌ی اصلی درست تنظیم شده است"
+
+#: src/Checks/FrontPageCheck.php:29
+msgid "The front page shows the latest posts."
+msgstr "صفحه‌ی اصلی آخرین نوشته‌ها را نشان می‌دهد."
+
+#: src/Checks/FrontPageCheck.php:36
+msgid "The static front page is published."
+msgstr "صفحه‌ی اصلی ایستا منتشر شده است."
+
+#: src/Checks/FrontPageCheck.php:41
+msgid "A static front page is enabled but no page is selected."
+msgstr "صفحه‌ی اصلی ایستا فعال است اما هیچ برگه‌ای انتخاب نشده است."
+
+#: src/Checks/FrontPageCheck.php:42
+msgid "The selected static front page is missing or not published."
+msgstr "برگه‌ی انتخاب‌شده به‌عنوان صفحه‌ی اصلی وجود ندارد یا منتشر نشده است."
+
+#: src/Checks/FrontPageCheck.php:43
+msgid "Pick a published page as the homepage in Settings > Reading."
+msgstr "در تنظیمات > خواندن یک برگه‌ی منتشرشده را به‌عنوان صفحه‌ی اصلی انتخاب کنید."
+
+#: src/Checks/LeftoverFilesCheck.php:22
+msgid "Install leftovers are removed from the site root"
+msgstr "باقی‌مانده‌های نصب از ریشه‌ی سایت حذف شده‌اند"
+
+#: src/Checks/LeftoverFilesCheck.php:39
+msgid "No install leftovers were found in the site root."
+msgstr "هیچ باقی‌مانده‌ای از نصب در ریشه‌ی سایت پیدا نشد."
+
+#. translators: %s: comma separated list of file names.
+#: src/Checks/LeftoverFilesCheck.php:45
+#, php-format
+msgid "These files are still in the site root: %s."
+msgstr "این فایل‌ها هنوز در ریشه‌ی سایت هستند: %s."
+
+#: src/Checks/LeftoverFilesCheck.php:48
+msgid "Delete them. readme.html and license.txt reveal the WordPress version, and error_log can expose paths and warnings."
+msgstr "آن‌ها را حذف کنید. readme.html و license.txt نسخه‌ی وردپرس را فاش می‌کنند و error_log می‌تواند مسیرها و هشدارها را افشا کند."
+
+#: src/Checks/MailTransportCheck.php:23
+msgid "Outgoing email uses a configured transport"
+msgstr "ایمیل خروجی از یک سرویس ارسال تنظیم‌شده استفاده می‌کند"
+
+#: src/Checks/MailTransportCheck.php:36
+msgid "A custom mail transport is configured. Delivery itself is not verified, so send a test message."
+msgstr "یک سرویس ارسال ایمیل سفارشی تنظیم شده است. تحویل ایمیل بررسی نشده، پس یک پیام آزمایشی بفرستید."
+
+#: src/Checks/MailTransportCheck.php:40
+msgid "No custom mail transport was detected, so WordPress will use PHP mail()."
+msgstr "هیچ سرویس ارسال ایمیل سفارشی شناسایی نشد، بنابراین وردپرس از mail() پی‌اچ‌پی استفاده می‌کند."
+
+#: src/Checks/MailTransportCheck.php:41
+msgid "Configure SMTP or a transactional email service and send a real test message, because form notifications and password resets often go missing otherwise."
+msgstr "SMTP یا یک سرویس ایمیل تراکنشی تنظیم کنید و یک پیام آزمایشی واقعی بفرستید؛ در غیر این صورت اعلان فرم‌ها و بازیابی رمز عبور اغلب گم می‌شوند."
+
+#: src/Checks/NoindexCheck.php:22
+msgid "Search engine visibility matches the environment"
+msgstr "نمایش در موتورهای جستجو با محیط سایت همخوان است"
+
+#: src/Checks/NoindexCheck.php:41
+msgid "Search engines are discouraged from indexing this production site."
+msgstr "موتورهای جستجو از فهرست‌کردن این سایت اصلی منع شده‌اند."
+
+#: src/Checks/NoindexCheck.php:42
+msgid "Untick \"Discourage search engines from indexing this site\" in Settings > Reading. If this site is not production, set WP_ENVIRONMENT_TYPE or run the audit with another environment."
+msgstr "در تنظیمات > خواندن تیک «جلوگیری از فهرست‌شدن توسط موتورهای جستجو» را بردارید. اگر این سایت محیط اصلی نیست، WP_ENVIRONMENT_TYPE را تنظیم کنید یا حالت بررسی را عوض کنید."
+
+#: src/Checks/NoindexCheck.php:47
+msgid "Search engines are allowed to index this production site."
+msgstr "موتورهای جستجو اجازه دارند این سایت اصلی را فهرست کنند."
+
+#. translators: %s: environment name, e.g. "staging".
+#: src/Checks/NoindexCheck.php:54
+#, php-format
+msgid "Indexing is disabled, as expected for a \"%s\" environment."
+msgstr "فهرست‌شدن غیرفعال است، که برای محیط «%s» مطابق انتظار است."
+
+#. translators: %s: environment name, e.g. "staging".
+#: src/Checks/NoindexCheck.php:63
+#, php-format
+msgid "This \"%s\" environment can be indexed by search engines."
+msgstr "این محیط «%s» می‌تواند توسط موتورهای جستجو فهرست شود."
+
+#: src/Checks/NoindexCheck.php:66
+msgid "Enable \"Discourage search engines from indexing this site\" in Settings > Reading so test content does not appear in search results."
+msgstr "در تنظیمات > خواندن گزینه‌ی «جلوگیری از فهرست‌شدن توسط موتورهای جستجو» را فعال کنید تا محتوای آزمایشی در نتایج جستجو ظاهر نشود."
+
+#: src/Checks/OpenRegistrationCheck.php:22
+msgid "Open registration does not grant privileged roles"
+msgstr "ثبت‌نام آزاد نقش‌های دارای دسترسی بالا نمی‌دهد"
+
+#: src/Checks/OpenRegistrationCheck.php:31
+msgid "Public registration is disabled."
+msgstr "ثبت‌نام عمومی غیرفعال است."
+
+#. translators: %s: role name, e.g. "administrator".
+#: src/Checks/OpenRegistrationCheck.php:40
+#, php-format
+msgid "Anyone can register and receives the \"%s\" role."
+msgstr "هر کسی می‌تواند ثبت‌نام کند و نقش «%s» را می‌گیرد."
+
+#: src/Checks/OpenRegistrationCheck.php:43
+msgid "Set the new user default role to Subscriber (or disable registration) in Settings > General."
+msgstr "نقش پیش‌فرض کاربران جدید را روی «مشترک» بگذارید (یا ثبت‌نام را غیرفعال کنید) در تنظیمات > همگانی."
+
+#. translators: %s: role name, e.g. "subscriber".
+#: src/Checks/OpenRegistrationCheck.php:51
+#, php-format
+msgid "Public registration is open, but new users only receive the \"%s\" role."
+msgstr "ثبت‌نام عمومی باز است، اما کاربران جدید فقط نقش «%s» را می‌گیرند."
+
+#: src/Checks/PermalinksCheck.php:20
+msgid "Pretty permalinks are enabled"
+msgstr "پیوندهای یکتای خوانا فعال هستند"
+
+#: src/Checks/PermalinksCheck.php:29
+msgid "The site uses a custom permalink structure."
+msgstr "سایت از ساختار پیوند یکتای سفارشی استفاده می‌کند."
+
+#: src/Checks/PermalinksCheck.php:33
+msgid "The site uses plain permalinks such as ?p=123."
+msgstr "سایت از پیوندهای ساده مثل ?p=123 استفاده می‌کند."
+
+#: src/Checks/PermalinksCheck.php:34
+msgid "Choose a descriptive structure (for example \"Post name\") in Settings > Permalinks. Set up redirects first if the site already has indexed URLs."
+msgstr "در تنظیمات > پیوندهای یکتا یک ساختار توصیفی (مثلاً «نام نوشته») انتخاب کنید. اگر سایت نشانی‌های فهرست‌شده دارد، ابتدا ریدایرکت‌ها را آماده کنید."
+
+#: src/Checks/PlaceholderTextCheck.php:26
+msgid "No placeholder (lorem ipsum) text is published"
+msgstr "هیچ متن نمونه‌ی (لورم ایپسوم) منتشر نشده است"
+
+#: src/Checks/PlaceholderTextCheck.php:41
+msgid "No published post or page contains lorem ipsum filler text."
+msgstr "هیچ نوشته یا برگه‌ی منتشرشده‌ای متن نمونه‌ی لورم ایپسوم ندارد."
+
+#. translators: %d: number of published posts or pages containing filler text.
+#: src/Checks/PlaceholderTextCheck.php:47
+#, php-format
+msgid "%d published post or page still contains lorem ipsum filler text."
+msgid_plural "%d published posts or pages still contain lorem ipsum filler text."
+msgstr[0] "%d نوشته یا برگه‌ی منتشرشده هنوز متن نمونه‌ی لورم ایپسوم دارد."
+
+#: src/Checks/PlaceholderTextCheck.php:55
+msgid "Search your pages for \"lorem ipsum\", then replace the filler with real content or unpublish those pages before launch."
+msgstr "عبارت «lorem ipsum» یا «لورم ایپسوم» را در برگه‌هایتان جست‌وجو کنید و متن نمونه را با محتوای واقعی عوض یا آن برگه‌ها را پیش‌نویس کنید."
+
+#: src/Checks/PrivacyPolicyCheck.php:20
+msgid "A privacy policy page is published"
+msgstr "صفحه‌ی سیاست حفظ حریم خصوصی منتشر شده است"
+
+#: src/Checks/PrivacyPolicyCheck.php:36
+msgid "A privacy policy page is assigned and published."
+msgstr "صفحه‌ی سیاست حفظ حریم خصوصی تعیین و منتشر شده است."
+
+#: src/Checks/PrivacyPolicyCheck.php:41
+msgid "No privacy policy page is assigned."
+msgstr "هیچ صفحه‌ای به‌عنوان سیاست حفظ حریم خصوصی تعیین نشده است."
+
+#: src/Checks/PrivacyPolicyCheck.php:42
+msgid "The assigned privacy policy page is missing or not published."
+msgstr "صفحه‌ی تعیین‌شده برای سیاست حفظ حریم خصوصی وجود ندارد یا منتشر نشده است."
+
+#: src/Checks/PrivacyPolicyCheck.php:43
+msgid "Write the policy (WordPress provides a template) and assign the published page in Settings > Privacy."
+msgstr "سیاست را بنویسید (وردپرس یک الگو ارائه می‌دهد) و صفحه‌ی منتشرشده را در تنظیمات > حریم خصوصی تعیین کنید."
+
+#: src/Checks/RobotsTxtCheck.php:20
+msgid "robots.txt does not block the whole site"
+msgstr "فایل robots.txt کل سایت را مسدود نمی‌کند"
+
+#: src/Checks/RobotsTxtCheck.php:35
+msgid "There is no physical robots.txt; WordPress serves its own, controlled by the search visibility setting."
+msgstr "فایل robots.txt فیزیکی وجود ندارد؛ وردپرس فایل خودش را ارائه می‌دهد که با تنظیم دیده‌شدن در موتورهای جستجو کنترل می‌شود."
+
+#: src/Checks/RobotsTxtCheck.php:40
+msgid "robots.txt tells all crawlers to stay away from the entire site."
+msgstr "فایل robots.txt به همه‌ی خزنده‌ها می‌گوید از کل سایت دور بمانند."
+
+#: src/Checks/RobotsTxtCheck.php:41
+msgid "Remove the \"Disallow: /\" rule for \"User-agent: *\" from the robots.txt file in the WordPress root."
+msgstr "قانون «Disallow: /» مربوط به «User-agent: *» را از فایل robots.txt در ریشه‌ی وردپرس حذف کنید."
+
+#: src/Checks/RobotsTxtCheck.php:45
+msgid "robots.txt does not block the whole site."
+msgstr "فایل robots.txt کل سایت را مسدود نمی‌کند."
+
+#: src/Checks/SaltsCheck.php:35
+msgid "Authentication keys and salts are unique"
+msgstr "کلیدها و نمک‌های احراز هویت یکتا هستند"
+
+#: src/Checks/SaltsCheck.php:55
+msgid "All eight authentication keys and salts are defined."
+msgstr "هر هشت کلید و نمک احراز هویت تعریف شده‌اند."
+
+#. translators: %s: comma separated list of constant names.
+#: src/Checks/SaltsCheck.php:61
+#, php-format
+msgid "These keys or salts are missing or still use the sample value: %s."
+msgstr "این کلیدها یا نمک‌ها وجود ندارند یا هنوز مقدار نمونه دارند: %s."
+
+#: src/Checks/SaltsCheck.php:64
+msgid "Generate fresh values with the WordPress.org secret-key service and put them in wp-config.php. Existing sessions will be logged out."
+msgstr "با سرویس تولید کلید امنیتی WordPress.org مقادیر تازه بسازید و در wp-config.php قرار دهید. نشست‌های فعلی خارج می‌شوند."
+
+#: src/Checks/SensitiveFilesCheck.php:43
+msgid "No backups, database dumps or debug scripts in the site root"
+msgstr "فایل پشتیبان، خروجی پایگاه داده یا اسکریپت اشکال‌زدایی در ریشه‌ی سایت نیست"
+
+#: src/Checks/SensitiveFilesCheck.php:60
+msgid "No well-known backup, dump or debug files were found in the site root."
+msgstr "هیچ فایل پشتیبان، خروجی پایگاه داده یا اسکریپت اشکال‌زدایی شناخته‌شده‌ای در ریشه‌ی سایت پیدا نشد."
+
+#. translators: %s: comma separated list of file names.
+#: src/Checks/SensitiveFilesCheck.php:66
+#, php-format
+msgid "Sensitive files exist in the site root: %s."
+msgstr "فایل‌های حساس در ریشه‌ی سایت وجود دارند: %s."
+
+#: src/Checks/SensitiveFilesCheck.php:69
+msgid "Delete these files or move them outside the web root. A readable wp-config backup or SQL dump can expose database passwords and customer data."
+msgstr "این فایل‌ها را حذف کنید یا به بیرون از ریشه‌ی وب منتقل کنید. پشتیبان قابل‌خواندنِ wp-config یا خروجی SQL می‌تواند رمزهای پایگاه داده و اطلاعات مشتریان را افشا کند."
+
+#: src/Checks/SiteIconCheck.php:20
+msgid "A site icon is set"
+msgstr "نمادک سایت (فاوآیکون) تنظیم شده است"
+
+#: src/Checks/SiteIconCheck.php:29
+msgid "A site icon is set."
+msgstr "نمادک سایت تنظیم شده است."
+
+#: src/Checks/SiteIconCheck.php:33
+msgid "No site icon is set, so browsers show a generic icon."
+msgstr "نمادک سایت تنظیم نشده است، پس مرورگرها نماد عمومی نشان می‌دهند."
+
+#: src/Checks/SiteIconCheck.php:34
+msgid "Upload a square image of at least 512 x 512 pixels as the site icon in Appearance > Customize."
+msgstr "در نمایش > سفارشی‌سازی یک تصویر مربع حداقل ۵۱۲ در ۵۱۲ پیکسل به‌عنوان نمادک سایت بارگذاری کنید."
+
+#: src/Checks/SiteIdentityCheck.php:24
+msgid "Site title and tagline are set"
+msgstr "عنوان و توضیح کوتاه سایت تنظیم شده‌اند"
+
+#: src/Checks/SiteIdentityCheck.php:35
+msgid "the site title is empty"
+msgstr "عنوان سایت خالی است"
+
+#: src/Checks/SiteIdentityCheck.php:39
+msgid "the tagline is still \"Just another WordPress site\""
+msgstr "توضیح کوتاه هنوز «Just another WordPress site» است"
+
+#: src/Checks/SiteIdentityCheck.php:43
+msgid "The site has a title and no default tagline."
+msgstr "سایت عنوان دارد و توضیح کوتاه پیش‌فرض ندارد."
+
+#. translators: %s: list of problems.
+#: src/Checks/SiteIdentityCheck.php:49
+#, php-format
+msgid "Site identity problems: %s."
+msgstr "مشکلات هویت سایت: %s."
+
+#: src/Checks/SiteIdentityCheck.php:52
+msgid "Set a real title and tagline (or clear the tagline) in Settings > General."
+msgstr "در تنظیمات > همگانی یک عنوان و توضیح کوتاه واقعی بنویسید (یا توضیح کوتاه را خالی کنید)."
+
+#: src/Checks/SitemapCheck.php:34
+msgid "An XML sitemap is available"
+msgstr "نقشه‌ی XML سایت در دسترس است"
+
+#: src/Checks/SitemapCheck.php:47
+msgid "The core XML sitemap is enabled."
+msgstr "نقشه‌ی XML هسته‌ی وردپرس فعال است."
+
+#: src/Checks/SitemapCheck.php:52
+msgid "A known SEO or sitemap plugin is active."
+msgstr "یک افزونه‌ی سئو یا نقشه‌ی سایت شناخته‌شده فعال است."
+
+#: src/Checks/SitemapCheck.php:57
+msgid "No XML sitemap was detected."
+msgstr "هیچ نقشه‌ی XML سایتی شناسایی نشد."
+
+#: src/Checks/SitemapCheck.php:58
+msgid "Enable the core sitemap (it is disabled while search engines are discouraged) or use an SEO plugin that provides one, then submit it to Search Console."
+msgstr "نقشه‌ی هسته را فعال کنید (تا وقتی موتورهای جستجو منع شده‌اند غیرفعال است) یا از یک افزونه‌ی سئو که نقشه می‌سازد استفاده کنید و سپس آن را در سرچ کنسول ثبت کنید."
+
+#: src/Checks/TimezoneCheck.php:20
+msgid "The site timezone is set"
+msgstr "منطقه‌ی زمانی سایت تنظیم شده است"
+
+#: src/Checks/TimezoneCheck.php:32
+msgid "A timezone is configured."
+msgstr "یک منطقه‌ی زمانی تنظیم شده است."
+
+#: src/Checks/TimezoneCheck.php:36
+msgid "The timezone is still the default (UTC), so scheduled posts and dates may be off."
+msgstr "منطقه‌ی زمانی هنوز پیش‌فرض (UTC) است، پس نوشته‌های زمان‌بندی‌شده و تاریخ‌ها ممکن است جابه‌جا باشند."
+
+#: src/Checks/TimezoneCheck.php:37
+msgid "Choose a city in the site timezone in Settings > General. Pick UTC explicitly if that is intended."
+msgstr "در تنظیمات > همگانی یک شهر را به‌عنوان منطقه‌ی زمانی سایت انتخاب کنید. اگر UTC مدنظر است، آن را صریحاً انتخاب کنید."
+
+#: src/Checks/UrlConsistencyCheck.php:28
+msgid "Site URLs are public and consistent"
+msgstr "نشانی‌های سایت عمومی و هماهنگ هستند"
+
+#: src/Checks/UrlConsistencyCheck.php:41
+msgid "WordPress Address"
+msgstr "نشانی وردپرس"
+
+#: src/Checks/UrlConsistencyCheck.php:42
+msgid "Site Address"
+msgstr "نشانی سایت"
+
+#. translators: %s: setting name, e.g. "Site Address".
+#: src/Checks/UrlConsistencyCheck.php:54
+#, php-format
+msgid "%s is not a valid URL"
+msgstr "%s نشانی معتبری نیست"
+
+#. translators: 1: setting name, 2: host name.
+#: src/Checks/UrlConsistencyCheck.php:66
+#, php-format
+msgid "%1$s uses a local or staging host (%2$s)"
+msgstr "%1$s از یک میزبان محلی یا آزمایشی (%2$s) استفاده می‌کند"
+
+#: src/Checks/UrlConsistencyCheck.php:77
+msgid "WordPress Address and Site Address use a different host or scheme"
+msgstr "نشانی وردپرس و نشانی سایت میزبان یا پروتکل متفاوتی دارند"
+
+#: src/Checks/UrlConsistencyCheck.php:82
+msgid "Both site URLs point at a public host and agree with each other."
+msgstr "هر دو نشانی سایت به یک میزبان عمومی اشاره می‌کنند و با هم هماهنگ‌اند."
+
+#. translators: %s: semicolon separated list of problems.
+#: src/Checks/UrlConsistencyCheck.php:88
+#, php-format
+msgid "Site URL problems: %s."
+msgstr "مشکلات نشانی سایت: %s."
+
+#: src/Checks/UrlConsistencyCheck.php:91
+msgid "Update the URLs in Settings > General (or in wp-config.php) to the final public address, then check that no staging URLs remain in content."
+msgstr "نشانی‌ها را در تنظیمات > همگانی (یا در wp-config.php) به نشانی نهایی و عمومی تغییر دهید و بررسی کنید هیچ نشانی آزمایشی در محتوا نمانده باشد."
+
+#: src/Checks/XmlRpcCheck.php:20
+msgid "XML-RPC is disabled unless it is needed"
+msgstr "XML-RPC در صورت نیاز نداشتن غیرفعال است"
+
+#: src/Checks/XmlRpcCheck.php:29
+msgid "XML-RPC is disabled."
+msgstr "XML-RPC غیرفعال است."
+
+#: src/Checks/XmlRpcCheck.php:33
+msgid "XML-RPC is enabled."
+msgstr "XML-RPC فعال است."
+
+#: src/Checks/XmlRpcCheck.php:34
+msgid "Disable it with the xmlrpc_enabled filter or a security plugin, unless you use the WordPress mobile app, Jetpack or another service that needs it. Accept the risk if it is needed."
+msgstr "با فیلتر xmlrpc_enabled یا یک افزونه‌ی امنیتی آن را غیرفعال کنید، مگر اینکه از اپلیکیشن موبایل وردپرس، جت‌پک یا سرویس دیگری استفاده می‌کنید که به آن نیاز دارد. در این صورت ریسک را بپذیرید."
+
+#: src/Export/ReportExporter.php:82
+#: src/Export/ReportExporter.php:86
+#: src/Export/ReportExporter.php:202
+msgid "Launch readiness report"
+msgstr "گزارش آمادگی انتشار"
+
+#: src/Export/ReportExporter.php:85
+msgid "Print or save as PDF"
+msgstr "چاپ یا ذخیره به‌صورت PDF"
+
+#: src/Export/ReportExporter.php:88
+#: src/Export/ReportExporter.php:207
+msgid "Site"
+msgstr "سایت"
+
+#: src/Export/ReportExporter.php:89
+#: src/Export/ReportExporter.php:208
+#: assets/src/components/HistoryPanel.jsx:218
+msgid "Environment"
+msgstr "محیط"
+
+#: src/Export/ReportExporter.php:90
+#: src/Export/ReportExporter.php:209
+msgid "Generated"
+msgstr "تاریخ تولید"
+
+#: src/Export/ReportExporter.php:91
+#: src/Export/ReportExporter.php:210
+msgid "Prepared for"
+msgstr "تهیه‌شده برای"
+
+#: src/Export/ReportExporter.php:92
+#: src/Export/ReportExporter.php:211
+msgid "Prepared by"
+msgstr "تهیه‌کننده"
+
+#: src/Export/ReportExporter.php:95
+#: src/Export/ReportExporter.php:221
+#: assets/src/components/Summary.jsx:23
+msgid "Summary"
+msgstr "خلاصه"
+
+#. translators: %d: readiness score from 0 to 100.
+#: src/Export/ReportExporter.php:100
+#: src/Export/ReportExporter.php:225
+#, php-format
+msgid "Readiness score %d / 100"
+msgstr "امتیاز آمادگی %d از ۱۰۰"
+
+#. translators: 1: launch blockers, 2: failed checks, 3: accepted risks, 4: passed checks, 5: skipped checks, 6: checks that errored.
+#: src/Export/ReportExporter.php:107
+#: src/Export/ReportExporter.php:231
+#, php-format
+msgid "Blockers: %1$d. Failed: %2$d. Accepted risks: %3$d. Passed: %4$d. Not applicable: %5$d. Could not run: %6$d."
+msgstr "مانع‌ها: %1$d. ناموفق: %2$d. ریسک‌های پذیرفته‌شده: %3$d. موفق: %4$d. غیرقابل‌اجرا: %5$d. اجرا نشده: %6$d."
+
+#: src/Export/ReportExporter.php:119
+#: src/Export/ReportExporter.php:244
+msgid "Notes"
+msgstr "یادداشت‌ها"
+
+#: src/Export/ReportExporter.php:122
+#: src/Export/ReportExporter.php:250
+msgid "Automated checks"
+msgstr "بررسی‌های خودکار"
+
+#: src/Export/ReportExporter.php:123
+#: src/Export/ReportExporter.php:165
+#: assets/src/components/ResultsPanel.jsx:110
+#: assets/src/components/ResultsPanel.jsx:161
+msgid "Status"
+msgstr "وضعیت"
+
+#: src/Export/ReportExporter.php:123
+#: assets/src/components/ResultsPanel.jsx:124
+#: assets/src/components/ResultsPanel.jsx:164
+msgid "Severity"
+msgstr "اهمیت"
+
+#: src/Export/ReportExporter.php:124
+#: assets/src/components/ResultsPanel.jsx:167
+msgid "Check"
+msgstr "بررسی"
+
+#: src/Export/ReportExporter.php:128
+#: src/Export/ReportExporter.php:255
+#: assets/src/components/ResultsPanel.jsx:15
+msgid "Accepted risk"
+msgstr "ریسک پذیرفته‌شده"
+
+#. translators: %s: reason the risk was accepted.
+#: src/Export/ReportExporter.php:143
+#: src/Export/ReportExporter.php:269
+#: assets/src/components/ResultsPanel.jsx:218
+#, php-format
+msgid "Accepted because: %s"
+msgstr "پذیرفته شده به این دلیل: %s"
+
+#: src/Export/ReportExporter.php:155
+msgid "Recent audits"
+msgstr "ممیزی‌های اخیر"
+
+#: src/Export/ReportExporter.php:155
+#: assets/src/components/HistoryPanel.jsx:216
+msgid "Date"
+msgstr "تاریخ"
+
+#: src/Export/ReportExporter.php:155
+#: assets/src/components/HistoryPanel.jsx:220
+msgid "Score"
+msgstr "امتیاز"
+
+#: src/Export/ReportExporter.php:155
+#: assets/src/components/HistoryPanel.jsx:222
+msgid "Verdict"
+msgstr "نتیجه"
+
+#: src/Export/ReportExporter.php:155
+#: assets/src/components/HistoryPanel.jsx:225
+msgid "Open problems"
+msgstr "مشکلات باز"
+
+#: src/Export/ReportExporter.php:165
+#: src/Export/ReportExporter.php:278
+msgid "Manual handoff checklist"
+msgstr "چک‌لیست دستی تحویل پروژه"
+
+#: src/Export/ReportExporter.php:165
+msgid "Item"
+msgstr "مورد"
+
+#. translators: %s: plugin version.
+#: src/Export/ReportExporter.php:177
+#, php-format
+msgid "Generated by Golive Audit %s. Automated checks cannot prove a site is correct; review the manual checklist too."
+msgstr "این گزارش با گو-لایو آدیت %s تولید شده است. بررسی‌های خودکار نمی‌توانند درستیِ کامل یک سایت را ثابت کنند؛ چک‌لیست دستی را هم مرور کنید."
+
+#: src/Export/ReportExporter.php:372
+#: src/Notify/AlertMessage.php:114
+#: assets/src/App.jsx:153
+#: assets/src/components/Summary.jsx:6
+msgid "Ready to launch"
+msgstr "آماده‌ی انتشار"
+
+#: src/Export/ReportExporter.php:374
+#: src/Notify/AlertMessage.php:116
+#: assets/src/App.jsx:155
+#: assets/src/components/Summary.jsx:8
+msgid "Launch blocked"
+msgstr "انتشار مسدود است"
+
+#: src/Export/ReportExporter.php:376
+#: src/Notify/AlertMessage.php:118
+#: assets/src/App.jsx:154
+#: assets/src/components/Summary.jsx:7
+msgid "Needs attention"
+msgstr "نیازمند توجه"
+
+#: src/Export/ReportExporter.php:383
+#: assets/src/components/ResultsPanel.jsx:13
+#: assets/src/components/Summary.jsx:15
+msgid "Passed"
+msgstr "موفق"
+
+#: src/Export/ReportExporter.php:385
+#: assets/src/components/ResultsPanel.jsx:14
+#: assets/src/components/Summary.jsx:13
+msgid "Failed"
+msgstr "ناموفق"
+
+#: src/Export/ReportExporter.php:387
+#: assets/src/components/ResultsPanel.jsx:16
+#: assets/src/components/Summary.jsx:17
+msgid "Could not run"
+msgstr "اجرا نشد"
+
+#: src/Export/ReportExporter.php:389
+#: src/Export/ReportExporter.php:409
+#: assets/src/components/ChecklistPanel.jsx:9
+#: assets/src/components/ResultsPanel.jsx:17
+#: assets/src/components/Summary.jsx:16
+msgid "Not applicable"
+msgstr "غیرقابل‌اجرا"
+
+#: src/Export/ReportExporter.php:396
+#: assets/src/components/ResultsPanel.jsx:21
+msgid "Critical"
+msgstr "بحرانی"
+
+#: src/Export/ReportExporter.php:398
+#: assets/src/components/ResultsPanel.jsx:22
+msgid "Warning"
+msgstr "هشدار"
+
+#: src/Export/ReportExporter.php:400
+#: assets/src/components/ResultsPanel.jsx:23
+msgid "Low"
+msgstr "کم‌اهمیت"
+
+#: src/Export/ReportExporter.php:407
+#: assets/src/components/ChecklistPanel.jsx:8
+msgid "Done"
+msgstr "انجام شد"
+
+#: src/Export/ReportExporter.php:411
+#: assets/src/components/ChecklistPanel.jsx:7
+msgid "To do"
+msgstr "باید انجام شود"
+
+#. translators: 1: site name, 2: readiness score from 0 to 100.
+#: src/Notify/AlertMessage.php:43
+#, php-format
+msgid "[%1$s] Golive Audit found new problems (score %2$d/100)"
+msgstr "[%1$s] گو-لایو آدیت مشکلات جدیدی پیدا کرد (امتیاز %2$d از ۱۰۰)"
+
+#. translators: 1: environment name, 2: readiness score, 3: change in score since the last audit.
+#: src/Notify/AlertMessage.php:51
+#, php-format
+msgid "Environment: %1$s. Readiness score: %2$d/100 (%3$+d since the last audit)."
+msgstr "محیط: %1$s. امتیاز آمادگی: %2$d از ۱۰۰ (%3$+d نسبت به ممیزی قبلی)."
+
+#. translators: 1: verdict, 2: number of launch blockers.
+#: src/Notify/AlertMessage.php:58
+#, php-format
+msgid "Verdict: %1$s. Launch blockers: %2$d."
+msgstr "نتیجه: %1$s. مانع‌های انتشار: %2$d."
+
+#: src/Notify/AlertMessage.php:77
+msgid "Open problems:"
+msgstr "مشکلات باز:"
+
+#: src/Notify/AlertMessage.php:77
+msgid "New problems since the last audit:"
+msgstr "مشکلات جدید از ممیزی قبلی:"
+
+#. translators: %d: number of problems fixed since the last audit.
+#: src/Notify/AlertMessage.php:89
+#, php-format
+msgid "%d problem was fixed since the last audit."
+msgid_plural "%d problems were fixed since the last audit."
+msgstr[0] "%d مشکل از ممیزی قبلی رفع شده است."
+
+#. translators: %s: URL of the Golive Audit dashboard.
+#: src/Notify/AlertMessage.php:100
+#, php-format
+msgid "Open the dashboard: %s"
+msgstr "پیشخوان را باز کنید: %s"
+
+#: src/Rest/Controller.php:193
+msgid "You are not allowed to use Golive Audit."
+msgstr "اجازه‌ی استفاده از گو-لایو آدیت را ندارید."
+
+#: src/Rest/Controller.php:209
+msgid "An audit is already running. Try again in a few seconds."
+msgstr "یک ممیزی در حال اجراست. چند ثانیه‌ی دیگر دوباره تلاش کنید."
+
+#: src/Rest/Controller.php:220
+msgid "Unknown environment."
+msgstr "محیط ناشناخته است."
+
+#: src/Rest/Controller.php:251
+msgid "A waiver needs a reason."
+msgstr "پذیرش ریسک نیاز به دلیل دارد."
+
+#: src/Rest/Controller.php:339
+msgid "Site default"
+msgstr "پیش‌فرض سایت"
+
+#: src/Rest/Controller.php:344
+msgid "Off"
+msgstr "خاموش"
+
+#: src/Rest/Controller.php:345
+msgid "Daily"
+msgstr "روزانه"
+
+#: src/Rest/Controller.php:346
+msgid "Weekly"
+msgstr "هفتگی"
+
+#: src/Rest/Controller.php:404
+msgid "Unknown check or checklist item."
+msgstr "بررسی یا مورد چک‌لیست ناشناخته است."
+
+#: assets/src/App.jsx:14
+msgid "Something went wrong."
+msgstr "مشکلی پیش آمد."
+
+#. translators: 1: readiness score, 2: number of launch blockers.
+#: assets/src/App.jsx:38
+#, javascript-format
+msgid "Audit finished. Readiness score %1$d, %2$d launch blockers."
+msgstr "ممیزی تمام شد. امتیاز آمادگی %1$d، تعداد مانع‌های انتشار: %2$d."
+
+#: assets/src/App.jsx:138
+msgid "Loading…"
+msgstr "در حال بارگذاری…"
+
+#: assets/src/App.jsx:147
+#: assets/src/components/Toolbar.jsx:15
+msgid "Local"
+msgstr "محلی (Local)"
+
+#: assets/src/App.jsx:148
+#: assets/src/components/Toolbar.jsx:16
+msgid "Development"
+msgstr "توسعه (Development)"
+
+#: assets/src/App.jsx:149
+#: assets/src/components/Toolbar.jsx:17
+msgid "Staging"
+msgstr "آزمایشی (Staging)"
+
+#: assets/src/App.jsx:150
+#: assets/src/components/Toolbar.jsx:18
+msgid "Production"
+msgstr "اصلی (Production)"
+
+#: assets/src/App.jsx:158
+msgid "Audit"
+msgstr "ممیزی"
+
+#. translators: 1: checklist items finished, 2: total items.
+#: assets/src/App.jsx:164
+#, javascript-format
+msgid "Handoff checklist (%1$d/%2$d)"
+msgstr "چک‌لیست تحویل (%1$d/%2$d)"
+
+#. translators: %d: number of recorded audits.
+#: assets/src/App.jsx:175
+#, javascript-format
+msgid "History (%d)"
+msgstr "تاریخچه (%d)"
+
+#: assets/src/App.jsx:180
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: assets/src/App.jsx:256
+msgid "Running the audit…"
+msgstr "در حال اجرای ممیزی…"
+
+#. translators: 1: items done, 2: items not applicable, 3: total items.
+#: assets/src/components/ChecklistPanel.jsx:18
+#, javascript-format
+msgid "%1$d done, %2$d not applicable, of %3$d items."
+msgstr "%1$d انجام شده، %2$d غیرقابل‌اجرا، از %3$d مورد."
+
+#: assets/src/components/ChecklistPanel.jsx:29
+msgid "These items cannot be verified automatically. They appear in the exported report."
+msgstr "این موارد را نمی‌شود خودکار بررسی کرد. در گزارش خروجی نمایش داده می‌شوند."
+
+#. translators: 1: number of audits, 2: first score, 3: latest score.
+#: assets/src/components/HistoryPanel.jsx:31
+#, javascript-format
+msgid "Readiness score over %1$d audits, from %2$d to %3$d."
+msgstr "روند امتیاز آمادگی در %1$d ممیزی، از %2$d به %3$d."
+
+#: assets/src/components/HistoryPanel.jsx:92
+msgid "Clear audit history?"
+msgstr "تاریخچه‌ی ممیزی پاک شود؟"
+
+#: assets/src/components/HistoryPanel.jsx:96
+msgid "The recorded runs and the trend chart are deleted. Accepted risks and checklist progress are kept."
+msgstr "اجراهای ثبت‌شده و نمودار روند حذف می‌شوند. ریسک‌های پذیرفته‌شده و پیشرفت چک‌لیست حفظ می‌شود."
+
+#: assets/src/components/HistoryPanel.jsx:109
+#: assets/src/components/HistoryPanel.jsx:251
+msgid "Clear history"
+msgstr "پاک‌کردن تاریخچه"
+
+#: assets/src/components/HistoryPanel.jsx:112
+#: assets/src/components/ResultsPanel.jsx:71
+msgid "Cancel"
+msgstr "انصراف"
+
+#: assets/src/components/HistoryPanel.jsx:131
+msgid "No audits recorded yet. Every audit you run from this screen is recorded here."
+msgstr "هنوز ممیزی‌ای ثبت نشده است. هر ممیزی که از این صفحه اجرا کنید اینجا ثبت می‌شود."
+
+#: assets/src/components/HistoryPanel.jsx:150
+msgid "Since the previous audit"
+msgstr "از ممیزی قبلی تا حالا"
+
+#: assets/src/components/HistoryPanel.jsx:154
+msgid "No problems appeared or were fixed."
+msgstr "مشکل تازه‌ای پیدا نشده و مشکلی هم رفع نشده است."
+
+#. translators: %d: number of new problems.
+#: assets/src/components/HistoryPanel.jsx:166
+#, javascript-format
+msgid "%d new problem"
+msgid_plural "%d new problems"
+msgstr[0] "%d مشکل جدید"
+
+#. translators: %d: number of fixed problems.
+#: assets/src/components/HistoryPanel.jsx:189
+#, javascript-format
+msgid "%d problem fixed"
+msgid_plural "%d problems fixed"
+msgstr[0] "%d مشکل رفع شد"
+
+#: assets/src/components/HistoryPanel.jsx:212
+msgid "Audit history"
+msgstr "تاریخچه‌ی ممیزی"
+
+#. translators: %s: check title.
+#: assets/src/components/ResultsPanel.jsx:44
+#: assets/src/components/ResultsPanel.jsx:255
+#, javascript-format
+msgid "Accept risk: %s"
+msgstr "پذیرش ریسک: %s"
+
+#: assets/src/components/ResultsPanel.jsx:51
+msgid "Why is this acceptable?"
+msgstr "چرا این مورد قابل‌قبول است؟"
+
+#: assets/src/components/ResultsPanel.jsx:52
+msgid "The reason appears in the exported report."
+msgstr "دلیل در گزارش خروجی نمایش داده می‌شود."
+
+#: assets/src/components/ResultsPanel.jsx:68
+#: assets/src/components/ResultsPanel.jsx:262
+msgid "Accept risk"
+msgstr "پذیرش ریسک"
+
+#: assets/src/components/ResultsPanel.jsx:104
+msgid "Search checks"
+msgstr "جست‌وجو در بررسی‌ها"
+
+#: assets/src/components/ResultsPanel.jsx:114
+#: assets/src/components/ResultsPanel.jsx:128
+#: assets/src/components/ResultsPanel.jsx:140
+msgid "All"
+msgstr "همه"
+
+#: assets/src/components/ResultsPanel.jsx:136
+msgid "Category"
+msgstr "دسته‌بندی"
+
+#: assets/src/components/ResultsPanel.jsx:150
+msgid "No checks match these filters."
+msgstr "هیچ بررسی‌ای با این فیلترها مطابقت ندارد."
+
+#: assets/src/components/ResultsPanel.jsx:156
+msgid "Audit results"
+msgstr "نتایج ممیزی"
+
+#: assets/src/components/ResultsPanel.jsx:170
+msgid "Actions"
+msgstr "عملیات"
+
+#. translators: %s: check title.
+#: assets/src/components/ResultsPanel.jsx:234
+#, javascript-format
+msgid "Fix: %s"
+msgstr "رفع: %s"
+
+#: assets/src/components/ResultsPanel.jsx:241
+msgid "Fix"
+msgstr "رفع"
+
+#. translators: %s: check title.
+#: assets/src/components/ResultsPanel.jsx:278
+#, javascript-format
+msgid "Remove waiver: %s"
+msgstr "حذف پذیرش ریسک: %s"
+
+#: assets/src/components/ResultsPanel.jsx:285
+msgid "Remove waiver"
+msgstr "حذف پذیرش ریسک"
+
+#: assets/src/components/SettingsPanel.jsx:50
+msgid "These details appear on the printable report and in the Markdown and JSON exports."
+msgstr "این اطلاعات روی گزارش چاپی و در خروجی‌های Markdown و JSON نمایش داده می‌شوند."
+
+#: assets/src/components/SettingsPanel.jsx:57
+msgid "Agency or author name"
+msgstr "نام آژانس یا تهیه‌کننده"
+
+#: assets/src/components/SettingsPanel.jsx:64
+msgid "Client name"
+msgstr "نام کارفرما"
+
+#: assets/src/components/SettingsPanel.jsx:71
+msgid "Note for the report"
+msgstr "یادداشت برای گزارش"
+
+#: assets/src/components/SettingsPanel.jsx:79
+msgid "Handoff checklist type"
+msgstr "نوع چک‌لیست تحویل"
+
+#: assets/src/components/SettingsPanel.jsx:80
+msgid "Adds items for the kind of site you are delivering. Progress is kept when you switch."
+msgstr "موارد مناسب نوع سایتی که تحویل می‌دهید اضافه می‌شود. با تغییر نوع، پیشرفت شما حفظ می‌شود."
+
+#: assets/src/components/SettingsPanel.jsx:90
+msgid "Language"
+msgstr "زبان"
+
+#: assets/src/components/SettingsPanel.jsx:91
+msgid "Used by this screen, the reports and alert emails. \"Site default\" follows the WordPress language."
+msgstr "برای همین صفحه، گزارش‌ها و ایمیل‌های هشدار استفاده می‌شود. «پیش‌فرض سایت» از زبان وردپرس پیروی می‌کند."
+
+#: assets/src/components/SettingsPanel.jsx:101
+msgid "Scheduled audits"
+msgstr "ممیزی زمان‌بندی‌شده"
+
+#. translators: %s: date and time of the next scheduled audit.
+#: assets/src/components/SettingsPanel.jsx:106
+#, javascript-format
+msgid "Next audit: %s"
+msgstr "ممیزی بعدی: %s"
+
+#: assets/src/components/SettingsPanel.jsx:109
+msgid "Runs the audit in the background with WP-Cron and records the result in the history. An email is sent when new problems appear."
+msgstr "ممیزی را با WP-Cron در پس‌زمینه اجرا و نتیجه را در تاریخچه ثبت می‌کند. با پیدا شدن مشکل جدید، ایمیل ارسال می‌شود."
+
+#: assets/src/components/SettingsPanel.jsx:122
+msgid "Alert email address"
+msgstr "نشانی ایمیل هشدار"
+
+#: assets/src/components/SettingsPanel.jsx:123
+msgid "Leave empty to use the site administration email address."
+msgstr "برای استفاده از ایمیل مدیر سایت خالی بگذارید."
+
+#: assets/src/components/SettingsPanel.jsx:139
+msgid "Save settings"
+msgstr "ذخیره‌ی تنظیمات"
+
+#: assets/src/components/SettingsPanel.jsx:143
+msgid "Settings saved."
+msgstr "تنظیمات ذخیره شد."
+
+#: assets/src/components/SettingsPanel.jsx:151
+msgid "Reload to apply the language"
+msgstr "برای اعمال زبان، صفحه را دوباره بارگذاری کنید"
+
+#: assets/src/components/Summary.jsx:12
+msgid "Blockers"
+msgstr "مانع‌ها"
+
+#: assets/src/components/Summary.jsx:14
+msgid "Accepted risks"
+msgstr "ریسک‌های پذیرفته‌شده"
+
+#: assets/src/components/Summary.jsx:28
+msgid "Readiness score:"
+msgstr "امتیاز آمادگی:"
+
+#. translators: %s: signed change in the readiness score, e.g. +5 or -3.
+#: assets/src/components/Summary.jsx:45
+#, javascript-format
+msgid "%s since the previous audit"
+msgstr "%s نسبت به ممیزی قبلی"
+
+#: assets/src/components/Toolbar.jsx:25
+msgid "(detected)"
+msgstr "(شناسایی‌شده)"
+
+#: assets/src/components/Toolbar.jsx:33
+msgid "Audit as environment"
+msgstr "ممیزی در محیط"
+
+#: assets/src/components/Toolbar.jsx:46
+msgid "Running…"
+msgstr "در حال اجرا…"
+
+#: assets/src/components/Toolbar.jsx:47
+msgid "Run audit again"
+msgstr "اجرای دوباره‌ی ممیزی"
+
+#: assets/src/components/Toolbar.jsx:56
+msgid "Printable report"
+msgstr "گزارش قابل‌چاپ"
+
+#: assets/src/components/Toolbar.jsx:62
+msgid "Download Markdown"
+msgstr "دانلود Markdown"
+
+#: assets/src/components/Toolbar.jsx:68
+msgid "Download CSV"
+msgstr "دانلود CSV"
+
+#: assets/src/components/Toolbar.jsx:74
+msgid "Download JSON"
+msgstr "دانلود JSON"
+

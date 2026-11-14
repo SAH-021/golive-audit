@@ -86,4 +86,19 @@ interface SiteContext {
 	 * Absolute admin URL, used for "fix it here" links.
 	 */
 	public function admin_url( string $path ): string;
+
+	/**
+	 * Whether the XML-RPC endpoint is enabled (the `xmlrpc_enabled` filter result).
+	 */
+	public function xmlrpc_enabled(): bool;
+
+	/**
+	 * The database table prefix, for example "wp_".
+	 */
+	public function db_prefix(): string;
+
+	/**
+	 * Number of published posts and pages whose title or content contains the text.
+	 */
+	public function count_published_posts_matching( string $needle ): int;
 }

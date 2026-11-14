@@ -71,4 +71,16 @@ final class EnvironmentOverride implements SiteContext {
 	public function admin_url( string $path ): string {
 		return $this->inner->admin_url( $path );
 	}
+
+	public function xmlrpc_enabled(): bool {
+		return $this->inner->xmlrpc_enabled();
+	}
+
+	public function db_prefix(): string {
+		return $this->inner->db_prefix();
+	}
+
+	public function count_published_posts_matching( string $needle ): int {
+		return $this->inner->count_published_posts_matching( $needle );
+	}
 }

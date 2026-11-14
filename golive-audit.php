@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name:       Golive Audit
- * Description:       Launch-readiness and client-handoff audit for WordPress sites: environment-aware checks, a readiness report and WP-CLI support.
- * Version:           1.0.0
+ * Description:       Launch-readiness and client-handoff audit for WordPress sites: environment-aware checks, run history, scheduled audits, Persian support and client-ready reports.
+ * Version:           1.1.0
  * Plugin URI:        https://github.com/SAH-021/golive-audit
  * Requires at least: 6.2
  * Requires PHP:      7.4
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'GOLIVE_AUDIT_VERSION', '1.0.0' );
+define( 'GOLIVE_AUDIT_VERSION', '1.1.0' );
 define( 'GOLIVE_AUDIT_FILE', __FILE__ );
 define( 'GOLIVE_AUDIT_DIR', plugin_dir_path( __FILE__ ) );
 
@@ -40,5 +40,7 @@ spl_autoload_register(
 		}
 	}
 );
+
+register_deactivation_hook( __FILE__, array( \GoliveAudit\Cron\ScheduledAudit::class, 'clear' ) );
 
 \GoliveAudit\Plugin::instance()->boot();

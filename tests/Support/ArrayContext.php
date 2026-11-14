@@ -19,7 +19,7 @@ final class ArrayContext implements SiteContext {
 	 * @param array<string, mixed> $options     Option values by name.
 	 * @param string[]             $posts       Published posts as "type:slug".
 	 * @param array<string, mixed> $extra       Optional: constants, root_files, content_files, statuses,
-	 *                                          usernames, role_counts, sitemaps, plugins, mail.
+	 *                                          usernames, role_counts, sitemaps, plugins, mail, xmlrpc, db_prefix, matches.
 	 */
 	public function __construct( string $environment = 'production', array $options = array(), array $posts = array(), array $extra = array() ) {
 		$this->environment = $environment;
@@ -78,5 +78,17 @@ final class ArrayContext implements SiteContext {
 
 	public function admin_url( string $path ): string {
 		return 'https://example.test/wp-admin/' . $path;
+	}
+
+	public function xmlrpc_enabled(): bool {
+		return (bool) ( $this->extra['xmlrpc'] ?? true );
+	}
+
+	public function db_prefix(): string {
+		return (string) ( $this->extra['db_prefix'] ?? 'xk3_' );
+	}
+
+	public function count_published_posts_matching( string $needle ): int {
+		return (int) ( $this->extra['matches'][ $needle ] ?? 0 );
 	}
 }

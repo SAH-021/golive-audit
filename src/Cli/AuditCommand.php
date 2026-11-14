@@ -50,10 +50,16 @@ final class AuditCommand {
 	 *   - critical
 	 * ---
 	 *
+	 * [--record]
+	 * : Add this run to the history shown in the dashboard.
+	 *
 	 * ## EXAMPLES
 	 *
 	 *     # Audit as production and fail the build on any warning or worse.
 	 *     wp golive-audit run --env=production --fail-on=warning
+	 *
+	 *     # Keep the result in the dashboard history.
+	 *     wp golive-audit run --record
 	 *
 	 * @param array $args       Positional arguments (unused).
 	 * @param array $assoc_args Associative arguments.
@@ -63,7 +69,7 @@ final class AuditCommand {
 		$format      = (string) \WP_CLI\Utils\get_flag_value( $assoc_args, 'format', 'table' );
 		$fail_on     = (string) \WP_CLI\Utils\get_flag_value( $assoc_args, 'fail-on', 'critical' );
 
-		$report = Plugin::instance()->run_audit( $environment );
+		$report = Plugin::instance()->run_audit( $environment, (bool) \WP_CLI\Utils\get_flag_value( $assoc_args, 'record', false ) );
 
 		if ( 'json' === $format ) {
 			\WP_CLI::line( (string) wp_json_encode( $report->to_array(), JSON_PRETTY_PRINT ) );
@@ -128,5 +134,41 @@ final class AuditCommand {
 		}
 
 		\WP_CLI\Utils\format_items( $format, $items, array( 'id', 'category', 'severity', 'environments' ) );
+	}
+
+	/**
+	 * Shows the stored audit history, newest first.
+	 *
+	 * ## OPTIONS
+	 *
+	 * [--format=<format>]
+	 * : Output format.
+	 * ---
+	 * default: table
+	 * options:
+	 *   - table
+	 *   - json
+	 *   - csv
+	 * ---
+	 *
+	 * @param array $args       Positional arguments (unused).
+	 * @param array $assoc_args Associative arguments.
+	 */
+	public function history( $args, $assoc_args ): void {
+		$format = (string) \WP_CLI\Utils\get_flag_value( $assoc_args, 'format', 'table' );
+		$items  = array();
+
+		foreach ( array_reverse( Plugin::instance()->history()->all() ) as $entry ) {
+			$items[] = array(
+				'date'        => gmdate( 'Y-m-d H:i', (int) $entry['t'] ) . ' UTC',
+				'environment' => $entry['env'],
+				'score'       => $entry['score'],
+				'verdict'     => $entry['verdict'],
+				'blockers'    => $entry['blockers'],
+				'failed'      => count( $entry['failed'] ),
+			);
+		}
+
+		\WP_CLI\Utils\format_items( $format, $items, array( 'date', 'environment', 'score', 'verdict', 'blockers', 'failed' ) );
 	}
 }

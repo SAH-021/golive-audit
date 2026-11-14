@@ -147,4 +147,37 @@ final class StoresTest extends TestCase {
 			}
 		}
 	}
+
+	public function test_settings_language_schedule_and_alert_email_are_validated(): void {
+		$settings = new SettingsStore( new MemoryOptionStore() );
+
+		$defaults = $settings->get();
+		$this->assertSame( 'auto', $defaults['language'] );
+		$this->assertSame( 'off', $defaults['schedule'] );
+		$this->assertSame( '', $defaults['alert_email'] );
+
+		$updated = $settings->update(
+			array(
+				'language'    => 'fa',
+				'schedule'    => 'weekly',
+				'alert_email' => '  owner@client-site.com ',
+			)
+		);
+
+		$this->assertSame( 'fa', $updated['language'] );
+		$this->assertSame( 'weekly', $updated['schedule'] );
+		$this->assertSame( 'owner@client-site.com', $updated['alert_email'] );
+
+		$rejected = $settings->update(
+			array(
+				'language'    => 'klingon',
+				'schedule'    => 'hourly',
+				'alert_email' => 'not-an-email',
+			)
+		);
+
+		$this->assertSame( 'auto', $rejected['language'] );
+		$this->assertSame( 'off', $rejected['schedule'] );
+		$this->assertSame( '', $rejected['alert_email'] );
+	}
 }

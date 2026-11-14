@@ -44,8 +44,8 @@ final class DefaultChecksTest extends TestCase {
 		}
 	}
 
-	public function test_version_1_ships_nineteen_checks(): void {
-		$this->assertCount( 19, Plugin::instance()->default_checks() );
+	public function test_version_1_1_ships_twenty_five_checks(): void {
+		$this->assertCount( 25, Plugin::instance()->default_checks() );
 	}
 
 	public function test_every_check_survives_a_bare_context_without_errors(): void {

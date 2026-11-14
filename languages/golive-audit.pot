@@ -1,50 +1,42 @@
-# Copyright (C) 2026 YOUR NAME
+# Copyright (C) 2026 SAH
 # This file is distributed under the GPL-2.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Golive Audit 1.0.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/golive-audit\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: Golive Audit 1.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/SAH-021/golive-audit/issues\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-30T10:44:35+00:00\n"
+"POT-Creation-Date: 2026-11-13 12:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Golive Audit i18n script\n"
 "X-Domain: golive-audit\n"
 
 #. Plugin Name of the plugin
 #: golive-audit.php
-#: src/Admin/AdminPage.php:23
-#: src/Admin/AdminPage.php:24
-#: src/Admin/AdminPage.php:35
 msgid "Golive Audit"
 msgstr ""
 
 #. Description of the plugin
 #: golive-audit.php
-msgid "Launch-readiness and client-handoff audit for WordPress sites: environment-aware checks, a readiness report and WP-CLI support."
+msgid "Launch-readiness and client-handoff audit for WordPress sites: environment-aware checks, run history, scheduled audits, Persian support and client-ready reports."
 msgstr ""
 
-#. Author of the plugin
-#: golive-audit.php
-msgid "YOUR NAME"
-msgstr ""
-
-#: src/Admin/AdminPage.php:38
+#: src/Admin/AdminPage.php:46
 msgid "The dashboard has not been built. Run \"npm install && npm run build\" in the plugin folder."
 msgstr ""
 
-#: src/Admin/AdminPage.php:42
+#: src/Admin/AdminPage.php:53
 msgid "Golive Audit needs JavaScript. You can still use WP-CLI: wp golive-audit run"
 msgstr ""
 
-#: src/Admin/ExportHandler.php:32
+#: src/Admin/ExportHandler.php:34
 msgid "You are not allowed to export this report."
 msgstr ""
 
-#: src/Admin/ExportHandler.php:41
+#: src/Admin/ExportHandler.php:43
 msgid "Unknown export format."
 msgstr ""
 
@@ -145,31 +137,75 @@ msgid "Analytics and Search Console are set up"
 msgstr ""
 
 #: src/Checklist/Catalog.php:113
-msgid "Cookie consent and privacy requirements are handled for the target markets"
+msgid "Automatic backups are scheduled and stored off the server"
 msgstr ""
 
 #: src/Checklist/Catalog.php:118
+msgid "Uptime monitoring and failure alerts are set up"
+msgstr ""
+
+#: src/Checklist/Catalog.php:123
+msgid "Old staging or test copies are password-protected or removed"
+msgstr ""
+
+#: src/Checklist/Catalog.php:128
+msgid "SPF, DKIM and DMARC are configured for the sending domain"
+msgstr ""
+
+#: src/Checklist/Catalog.php:133
+msgid "Page speed was tested on mobile and the worst offenders fixed"
+msgstr ""
+
+#: src/Checklist/Catalog.php:138
+msgid "Link previews were tested on social networks and messengers"
+msgstr ""
+
+#: src/Checklist/Catalog.php:143
+msgid "The XML sitemap is submitted to Search Console"
+msgstr ""
+
+#: src/Checklist/Catalog.php:148
+msgid "Caches (plugin, server and CDN) were cleared after the final changes"
+msgstr ""
+
+#: src/Checklist/Catalog.php:153
+msgid "Cookie consent and privacy requirements are handled for the target markets"
+msgstr ""
+
+#: src/Checklist/Catalog.php:158
 msgid "Hosting, domain and admin credentials are handed over to the client"
 msgstr ""
 
-#: src/Checklist/Catalog.php:131
+#: src/Checklist/Catalog.php:163
+msgid "The client was trained to edit content and knows who to contact for support"
+msgstr ""
+
+#: src/Checklist/Catalog.php:176
 msgid "The RSS feed works and any newsletter sign-up is tested"
 msgstr ""
 
-#: src/Checklist/Catalog.php:136
+#: src/Checklist/Catalog.php:181
 msgid "Author profiles, categories and tags have been reviewed"
 msgstr ""
 
-#: src/Checklist/Catalog.php:149
+#: src/Checklist/Catalog.php:194
 msgid "The payment gateway is in live mode and a real test order was placed"
 msgstr ""
 
-#: src/Checklist/Catalog.php:154
+#: src/Checklist/Catalog.php:199
 msgid "Terms, returns and shipping pages are published"
 msgstr ""
 
-#: src/Checklist/Catalog.php:159
+#: src/Checklist/Catalog.php:204
 msgid "Order and shipping emails were tested end to end"
+msgstr ""
+
+#: src/Checklist/Catalog.php:209
+msgid "Taxes, shipping zones and shipping rates were checked with real addresses"
+msgstr ""
+
+#: src/Checklist/Catalog.php:214
+msgid "Any required business registration or trust badge (for example Enamad in Iran) is displayed"
 msgstr ""
 
 #: src/Checks/AdminEmailCheck.php:33
@@ -222,6 +258,30 @@ msgstr ""
 msgid "Rename or replace the \"admin\" login and give people only the role they need."
 msgstr ""
 
+#: src/Checks/ComingSoonCheck.php:37
+msgid "No coming-soon or maintenance page is active"
+msgstr ""
+
+#: src/Checks/ComingSoonCheck.php:51
+msgid "WooCommerce is set to \"coming soon\", so visitors do not see the shop."
+msgstr ""
+
+#: src/Checks/ComingSoonCheck.php:52
+msgid "Set the site visibility to \"Live\" in WooCommerce > Settings > Site visibility."
+msgstr ""
+
+#: src/Checks/ComingSoonCheck.php:60
+msgid "A coming-soon or maintenance plugin is active."
+msgstr ""
+
+#: src/Checks/ComingSoonCheck.php:61
+msgid "Deactivate it, or make sure its coming-soon mode is switched off, so visitors see the real site."
+msgstr ""
+
+#: src/Checks/ComingSoonCheck.php:67
+msgid "No coming-soon or maintenance plugin or setting was detected."
+msgstr ""
+
 #: src/Checks/CommentDefaultsCheck.php:20
 msgid "Comment and pingback defaults are intentional"
 msgstr ""
@@ -246,6 +306,22 @@ msgstr ""
 
 #: src/Checks/CommentDefaultsCheck.php:52
 msgid "Review Settings > Discussion: disable pingbacks unless needed and require moderation or a previously approved comment."
+msgstr ""
+
+#: src/Checks/DbPrefixCheck.php:20
+msgid "The database table prefix is not the default"
+msgstr ""
+
+#: src/Checks/DbPrefixCheck.php:29
+msgid "A custom database table prefix is used."
+msgstr ""
+
+#: src/Checks/DbPrefixCheck.php:33
+msgid "The database table prefix is the default \"wp_\"."
+msgstr ""
+
+#: src/Checks/DbPrefixCheck.php:34
+msgid "Choose a custom $table_prefix in wp-config.php on new installs. Renaming tables on a live site is risky, so accept the risk if the site is already running."
 msgstr ""
 
 #: src/Checks/DebugLogCheck.php:23
@@ -328,6 +404,24 @@ msgstr ""
 
 #: src/Checks/FrontPageCheck.php:43
 msgid "Pick a published page as the homepage in Settings > Reading."
+msgstr ""
+
+#: src/Checks/LeftoverFilesCheck.php:22
+msgid "Install leftovers are removed from the site root"
+msgstr ""
+
+#: src/Checks/LeftoverFilesCheck.php:39
+msgid "No install leftovers were found in the site root."
+msgstr ""
+
+#. translators: %s: comma separated list of file names.
+#: src/Checks/LeftoverFilesCheck.php:45
+#, php-format
+msgid "These files are still in the site root: %s."
+msgstr ""
+
+#: src/Checks/LeftoverFilesCheck.php:48
+msgid "Delete them. readme.html and license.txt reveal the WordPress version, and error_log can expose paths and warnings."
 msgstr ""
 
 #: src/Checks/MailTransportCheck.php:23
@@ -418,6 +512,26 @@ msgstr ""
 msgid "Choose a descriptive structure (for example \"Post name\") in Settings > Permalinks. Set up redirects first if the site already has indexed URLs."
 msgstr ""
 
+#: src/Checks/PlaceholderTextCheck.php:26
+msgid "No placeholder (lorem ipsum) text is published"
+msgstr ""
+
+#: src/Checks/PlaceholderTextCheck.php:41
+msgid "No published post or page contains lorem ipsum filler text."
+msgstr ""
+
+#. translators: %d: number of published posts or pages containing filler text.
+#: src/Checks/PlaceholderTextCheck.php:47
+#, php-format
+msgid "%d published post or page still contains lorem ipsum filler text."
+msgid_plural "%d published posts or pages still contain lorem ipsum filler text."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Checks/PlaceholderTextCheck.php:55
+msgid "Search your pages for \"lorem ipsum\", then replace the filler with real content or unpublish those pages before launch."
+msgstr ""
+
 #: src/Checks/PrivacyPolicyCheck.php:20
 msgid "A privacy policy page is published"
 msgstr ""
@@ -474,6 +588,24 @@ msgstr ""
 
 #: src/Checks/SaltsCheck.php:64
 msgid "Generate fresh values with the WordPress.org secret-key service and put them in wp-config.php. Existing sessions will be logged out."
+msgstr ""
+
+#: src/Checks/SensitiveFilesCheck.php:43
+msgid "No backups, database dumps or debug scripts in the site root"
+msgstr ""
+
+#: src/Checks/SensitiveFilesCheck.php:60
+msgid "No well-known backup, dump or debug files were found in the site root."
+msgstr ""
+
+#. translators: %s: comma separated list of file names.
+#: src/Checks/SensitiveFilesCheck.php:66
+#, php-format
+msgid "Sensitive files exist in the site root: %s."
+msgstr ""
+
+#: src/Checks/SensitiveFilesCheck.php:69
+msgid "Delete these files or move them outside the web root. A readable wp-config backup or SQL dump can expose database passwords and customer data."
 msgstr ""
 
 #: src/Checks/SiteIconCheck.php:20
@@ -596,382 +728,610 @@ msgstr ""
 msgid "Update the URLs in Settings > General (or in wp-config.php) to the final public address, then check that no staging URLs remain in content."
 msgstr ""
 
-#: src/Export/ReportExporter.php:81
-#: src/Export/ReportExporter.php:84
+#: src/Checks/XmlRpcCheck.php:20
+msgid "XML-RPC is disabled unless it is needed"
+msgstr ""
+
+#: src/Checks/XmlRpcCheck.php:29
+msgid "XML-RPC is disabled."
+msgstr ""
+
+#: src/Checks/XmlRpcCheck.php:33
+msgid "XML-RPC is enabled."
+msgstr ""
+
+#: src/Checks/XmlRpcCheck.php:34
+msgid "Disable it with the xmlrpc_enabled filter or a security plugin, unless you use the WordPress mobile app, Jetpack or another service that needs it. Accept the risk if it is needed."
+msgstr ""
+
+#: src/Export/ReportExporter.php:82
+#: src/Export/ReportExporter.php:86
+#: src/Export/ReportExporter.php:202
 msgid "Launch readiness report"
 msgstr ""
 
-#: src/Export/ReportExporter.php:83
+#: src/Export/ReportExporter.php:85
 msgid "Print or save as PDF"
 msgstr ""
 
-#: src/Export/ReportExporter.php:86
+#: src/Export/ReportExporter.php:88
+#: src/Export/ReportExporter.php:207
 msgid "Site"
 msgstr ""
 
-#: src/Export/ReportExporter.php:87
+#: src/Export/ReportExporter.php:89
+#: src/Export/ReportExporter.php:208
+#: assets/src/components/HistoryPanel.jsx:218
 msgid "Environment"
 msgstr ""
 
-#: src/Export/ReportExporter.php:88
+#: src/Export/ReportExporter.php:90
+#: src/Export/ReportExporter.php:209
 msgid "Generated"
 msgstr ""
 
-#: src/Export/ReportExporter.php:89
+#: src/Export/ReportExporter.php:91
+#: src/Export/ReportExporter.php:210
 msgid "Prepared for"
 msgstr ""
 
-#: src/Export/ReportExporter.php:90
+#: src/Export/ReportExporter.php:92
+#: src/Export/ReportExporter.php:211
 msgid "Prepared by"
 msgstr ""
 
-#: src/Export/ReportExporter.php:93
-#: assets/src/components/Summary.js:22
+#: src/Export/ReportExporter.php:95
+#: src/Export/ReportExporter.php:221
+#: assets/src/components/Summary.jsx:23
 msgid "Summary"
 msgstr ""
 
 #. translators: %d: readiness score from 0 to 100.
-#: src/Export/ReportExporter.php:98
+#: src/Export/ReportExporter.php:100
+#: src/Export/ReportExporter.php:225
 #, php-format
 msgid "Readiness score %d / 100"
 msgstr ""
 
 #. translators: 1: launch blockers, 2: failed checks, 3: accepted risks, 4: passed checks, 5: skipped checks, 6: checks that errored.
-#: src/Export/ReportExporter.php:105
+#: src/Export/ReportExporter.php:107
+#: src/Export/ReportExporter.php:231
 #, php-format
 msgid "Blockers: %1$d. Failed: %2$d. Accepted risks: %3$d. Passed: %4$d. Not applicable: %5$d. Could not run: %6$d."
 msgstr ""
 
-#: src/Export/ReportExporter.php:117
+#: src/Export/ReportExporter.php:119
+#: src/Export/ReportExporter.php:244
 msgid "Notes"
 msgstr ""
 
-#: src/Export/ReportExporter.php:120
+#: src/Export/ReportExporter.php:122
+#: src/Export/ReportExporter.php:250
 msgid "Automated checks"
 msgstr ""
 
-#: src/Export/ReportExporter.php:121
-#: src/Export/ReportExporter.php:153
-#: assets/src/components/ResultsPanel.js:101
-#: assets/src/components/ResultsPanel.js:152
+#: src/Export/ReportExporter.php:123
+#: src/Export/ReportExporter.php:165
+#: assets/src/components/ResultsPanel.jsx:110
+#: assets/src/components/ResultsPanel.jsx:161
 msgid "Status"
 msgstr ""
 
-#: src/Export/ReportExporter.php:121
-#: assets/src/components/ResultsPanel.js:115
-#: assets/src/components/ResultsPanel.js:155
+#: src/Export/ReportExporter.php:123
+#: assets/src/components/ResultsPanel.jsx:124
+#: assets/src/components/ResultsPanel.jsx:164
 msgid "Severity"
 msgstr ""
 
-#: src/Export/ReportExporter.php:122
-#: assets/src/components/ResultsPanel.js:158
+#: src/Export/ReportExporter.php:124
+#: assets/src/components/ResultsPanel.jsx:167
 msgid "Check"
 msgstr ""
 
-#: src/Export/ReportExporter.php:126
-#: assets/src/components/ResultsPanel.js:14
+#: src/Export/ReportExporter.php:128
+#: src/Export/ReportExporter.php:255
+#: assets/src/components/ResultsPanel.jsx:15
 msgid "Accepted risk"
 msgstr ""
 
 #. translators: %s: reason the risk was accepted.
-#: src/Export/ReportExporter.php:141
-#: assets/src/components/ResultsPanel.js:209
-#, php-format,js-format
+#: src/Export/ReportExporter.php:143
+#: src/Export/ReportExporter.php:269
+#: assets/src/components/ResultsPanel.jsx:218
+#, php-format
 msgid "Accepted because: %s"
 msgstr ""
 
-#: src/Export/ReportExporter.php:153
+#: src/Export/ReportExporter.php:155
+msgid "Recent audits"
+msgstr ""
+
+#: src/Export/ReportExporter.php:155
+#: assets/src/components/HistoryPanel.jsx:216
+msgid "Date"
+msgstr ""
+
+#: src/Export/ReportExporter.php:155
+#: assets/src/components/HistoryPanel.jsx:220
+msgid "Score"
+msgstr ""
+
+#: src/Export/ReportExporter.php:155
+#: assets/src/components/HistoryPanel.jsx:222
+msgid "Verdict"
+msgstr ""
+
+#: src/Export/ReportExporter.php:155
+#: assets/src/components/HistoryPanel.jsx:225
+msgid "Open problems"
+msgstr ""
+
+#: src/Export/ReportExporter.php:165
+#: src/Export/ReportExporter.php:278
 msgid "Manual handoff checklist"
 msgstr ""
 
-#: src/Export/ReportExporter.php:153
+#: src/Export/ReportExporter.php:165
 msgid "Item"
 msgstr ""
 
 #. translators: %s: plugin version.
-#: src/Export/ReportExporter.php:165
+#: src/Export/ReportExporter.php:177
 #, php-format
 msgid "Generated by Golive Audit %s. Automated checks cannot prove a site is correct; review the manual checklist too."
 msgstr ""
 
-#: src/Export/ReportExporter.php:248
-#: assets/src/components/Summary.js:5
+#: src/Export/ReportExporter.php:372
+#: src/Notify/AlertMessage.php:114
+#: assets/src/App.jsx:153
+#: assets/src/components/Summary.jsx:6
 msgid "Ready to launch"
 msgstr ""
 
-#: src/Export/ReportExporter.php:250
-#: assets/src/components/Summary.js:7
+#: src/Export/ReportExporter.php:374
+#: src/Notify/AlertMessage.php:116
+#: assets/src/App.jsx:155
+#: assets/src/components/Summary.jsx:8
 msgid "Launch blocked"
 msgstr ""
 
-#: src/Export/ReportExporter.php:252
-#: assets/src/components/Summary.js:6
+#: src/Export/ReportExporter.php:376
+#: src/Notify/AlertMessage.php:118
+#: assets/src/App.jsx:154
+#: assets/src/components/Summary.jsx:7
 msgid "Needs attention"
 msgstr ""
 
-#: src/Export/ReportExporter.php:259
-#: assets/src/components/ResultsPanel.js:12
-#: assets/src/components/Summary.js:14
+#: src/Export/ReportExporter.php:383
+#: assets/src/components/ResultsPanel.jsx:13
+#: assets/src/components/Summary.jsx:15
 msgid "Passed"
 msgstr ""
 
-#: src/Export/ReportExporter.php:261
-#: assets/src/components/ResultsPanel.js:13
-#: assets/src/components/Summary.js:12
+#: src/Export/ReportExporter.php:385
+#: assets/src/components/ResultsPanel.jsx:14
+#: assets/src/components/Summary.jsx:13
 msgid "Failed"
 msgstr ""
 
-#: src/Export/ReportExporter.php:263
-#: assets/src/components/ResultsPanel.js:15
-#: assets/src/components/Summary.js:16
+#: src/Export/ReportExporter.php:387
+#: assets/src/components/ResultsPanel.jsx:16
+#: assets/src/components/Summary.jsx:17
 msgid "Could not run"
 msgstr ""
 
-#: src/Export/ReportExporter.php:265
-#: src/Export/ReportExporter.php:285
-#: assets/src/components/ChecklistPanel.js:9
-#: assets/src/components/ResultsPanel.js:16
-#: assets/src/components/Summary.js:15
+#: src/Export/ReportExporter.php:389
+#: src/Export/ReportExporter.php:409
+#: assets/src/components/ChecklistPanel.jsx:9
+#: assets/src/components/ResultsPanel.jsx:17
+#: assets/src/components/Summary.jsx:16
 msgid "Not applicable"
 msgstr ""
 
-#: src/Export/ReportExporter.php:272
-#: assets/src/components/ResultsPanel.js:20
+#: src/Export/ReportExporter.php:396
+#: assets/src/components/ResultsPanel.jsx:21
 msgid "Critical"
 msgstr ""
 
-#: src/Export/ReportExporter.php:274
-#: assets/src/components/ResultsPanel.js:21
+#: src/Export/ReportExporter.php:398
+#: assets/src/components/ResultsPanel.jsx:22
 msgid "Warning"
 msgstr ""
 
-#: src/Export/ReportExporter.php:276
-#: assets/src/components/ResultsPanel.js:22
+#: src/Export/ReportExporter.php:400
+#: assets/src/components/ResultsPanel.jsx:23
 msgid "Low"
 msgstr ""
 
-#: src/Export/ReportExporter.php:283
-#: assets/src/components/ChecklistPanel.js:8
+#: src/Export/ReportExporter.php:407
+#: assets/src/components/ChecklistPanel.jsx:8
 msgid "Done"
 msgstr ""
 
-#: src/Export/ReportExporter.php:287
-#: assets/src/components/ChecklistPanel.js:7
+#: src/Export/ReportExporter.php:411
+#: assets/src/components/ChecklistPanel.jsx:7
 msgid "To do"
 msgstr ""
 
-#: src/Rest/Controller.php:160
+#. translators: 1: site name, 2: readiness score from 0 to 100.
+#: src/Notify/AlertMessage.php:43
+#, php-format
+msgid "[%1$s] Golive Audit found new problems (score %2$d/100)"
+msgstr ""
+
+#. translators: 1: environment name, 2: readiness score, 3: change in score since the last audit.
+#: src/Notify/AlertMessage.php:51
+#, php-format
+msgid "Environment: %1$s. Readiness score: %2$d/100 (%3$+d since the last audit)."
+msgstr ""
+
+#. translators: 1: verdict, 2: number of launch blockers.
+#: src/Notify/AlertMessage.php:58
+#, php-format
+msgid "Verdict: %1$s. Launch blockers: %2$d."
+msgstr ""
+
+#: src/Notify/AlertMessage.php:77
+msgid "Open problems:"
+msgstr ""
+
+#: src/Notify/AlertMessage.php:77
+msgid "New problems since the last audit:"
+msgstr ""
+
+#. translators: %d: number of problems fixed since the last audit.
+#: src/Notify/AlertMessage.php:89
+#, php-format
+msgid "%d problem was fixed since the last audit."
+msgid_plural "%d problems were fixed since the last audit."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: URL of the Golive Audit dashboard.
+#: src/Notify/AlertMessage.php:100
+#, php-format
+msgid "Open the dashboard: %s"
+msgstr ""
+
+#: src/Rest/Controller.php:193
 msgid "You are not allowed to use Golive Audit."
 msgstr ""
 
-#: src/Rest/Controller.php:176
+#: src/Rest/Controller.php:209
 msgid "An audit is already running. Try again in a few seconds."
 msgstr ""
 
-#: src/Rest/Controller.php:187
+#: src/Rest/Controller.php:220
 msgid "Unknown environment."
 msgstr ""
 
-#: src/Rest/Controller.php:208
+#: src/Rest/Controller.php:251
 msgid "A waiver needs a reason."
 msgstr ""
 
-#: src/Rest/Controller.php:334
+#: src/Rest/Controller.php:339
+msgid "Site default"
+msgstr ""
+
+#: src/Rest/Controller.php:344
+msgid "Off"
+msgstr ""
+
+#: src/Rest/Controller.php:345
+msgid "Daily"
+msgstr ""
+
+#: src/Rest/Controller.php:346
+msgid "Weekly"
+msgstr ""
+
+#: src/Rest/Controller.php:404
 msgid "Unknown check or checklist item."
 msgstr ""
 
-#: assets/src/App.js:12
+#: assets/src/App.jsx:14
 msgid "Something went wrong."
 msgstr ""
 
 #. translators: 1: readiness score, 2: number of launch blockers.
-#: assets/src/App.js:31
-#, js-format
+#: assets/src/App.jsx:38
+#, javascript-format
 msgid "Audit finished. Readiness score %1$d, %2$d launch blockers."
 msgstr ""
 
-#: assets/src/App.js:118
+#: assets/src/App.jsx:138
 msgid "Loading…"
 msgstr ""
 
-#: assets/src/App.js:127
+#: assets/src/App.jsx:147
+#: assets/src/components/Toolbar.jsx:15
+msgid "Local"
+msgstr ""
+
+#: assets/src/App.jsx:148
+#: assets/src/components/Toolbar.jsx:16
+msgid "Development"
+msgstr ""
+
+#: assets/src/App.jsx:149
+#: assets/src/components/Toolbar.jsx:17
+msgid "Staging"
+msgstr ""
+
+#: assets/src/App.jsx:150
+#: assets/src/components/Toolbar.jsx:18
+msgid "Production"
+msgstr ""
+
+#: assets/src/App.jsx:158
 msgid "Audit"
 msgstr ""
 
 #. translators: 1: checklist items finished, 2: total items.
-#: assets/src/App.js:132
-#, js-format
+#: assets/src/App.jsx:164
+#, javascript-format
 msgid "Handoff checklist (%1$d/%2$d)"
 msgstr ""
 
-#: assets/src/App.js:137
+#. translators: %d: number of recorded audits.
+#: assets/src/App.jsx:175
+#, javascript-format
+msgid "History (%d)"
+msgstr ""
+
+#: assets/src/App.jsx:180
 msgid "Settings"
 msgstr ""
 
-#: assets/src/App.js:196
+#: assets/src/App.jsx:256
 msgid "Running the audit…"
 msgstr ""
 
 #. translators: 1: items done, 2: items not applicable, 3: total items.
-#: assets/src/components/ChecklistPanel.js:17
-#, js-format
+#: assets/src/components/ChecklistPanel.jsx:18
+#, javascript-format
 msgid "%1$d done, %2$d not applicable, of %3$d items."
 msgstr ""
 
-#: assets/src/components/ChecklistPanel.js:27
+#: assets/src/components/ChecklistPanel.jsx:29
 msgid "These items cannot be verified automatically. They appear in the exported report."
 msgstr ""
 
-#. translators: %s: check title.
-#: assets/src/components/ResultsPanel.js:43
-#: assets/src/components/ResultsPanel.js:246
-#, js-format
-msgid "Accept risk: %s"
+#. translators: 1: number of audits, 2: first score, 3: latest score.
+#: assets/src/components/HistoryPanel.jsx:31
+#, javascript-format
+msgid "Readiness score over %1$d audits, from %2$d to %3$d."
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:50
-msgid "Why is this acceptable?"
+#: assets/src/components/HistoryPanel.jsx:92
+msgid "Clear audit history?"
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:51
-msgid "The reason appears in the exported report."
+#: assets/src/components/HistoryPanel.jsx:96
+msgid "The recorded runs and the trend chart are deleted. Accepted risks and checklist progress are kept."
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:67
-#: assets/src/components/ResultsPanel.js:253
-msgid "Accept risk"
+#: assets/src/components/HistoryPanel.jsx:109
+#: assets/src/components/HistoryPanel.jsx:251
+msgid "Clear history"
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:70
+#: assets/src/components/HistoryPanel.jsx:112
+#: assets/src/components/ResultsPanel.jsx:71
 msgid "Cancel"
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:105
-#: assets/src/components/ResultsPanel.js:119
-#: assets/src/components/ResultsPanel.js:131
+#: assets/src/components/HistoryPanel.jsx:131
+msgid "No audits recorded yet. Every audit you run from this screen is recorded here."
+msgstr ""
+
+#: assets/src/components/HistoryPanel.jsx:150
+msgid "Since the previous audit"
+msgstr ""
+
+#: assets/src/components/HistoryPanel.jsx:154
+msgid "No problems appeared or were fixed."
+msgstr ""
+
+#. translators: %d: number of new problems.
+#: assets/src/components/HistoryPanel.jsx:166
+#, javascript-format
+msgid "%d new problem"
+msgid_plural "%d new problems"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of fixed problems.
+#: assets/src/components/HistoryPanel.jsx:189
+#, javascript-format
+msgid "%d problem fixed"
+msgid_plural "%d problems fixed"
+msgstr[0] ""
+msgstr[1] ""
+
+#: assets/src/components/HistoryPanel.jsx:212
+msgid "Audit history"
+msgstr ""
+
+#. translators: %s: check title.
+#: assets/src/components/ResultsPanel.jsx:44
+#: assets/src/components/ResultsPanel.jsx:255
+#, javascript-format
+msgid "Accept risk: %s"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.jsx:51
+msgid "Why is this acceptable?"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.jsx:52
+msgid "The reason appears in the exported report."
+msgstr ""
+
+#: assets/src/components/ResultsPanel.jsx:68
+#: assets/src/components/ResultsPanel.jsx:262
+msgid "Accept risk"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.jsx:104
+msgid "Search checks"
+msgstr ""
+
+#: assets/src/components/ResultsPanel.jsx:114
+#: assets/src/components/ResultsPanel.jsx:128
+#: assets/src/components/ResultsPanel.jsx:140
 msgid "All"
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:127
+#: assets/src/components/ResultsPanel.jsx:136
 msgid "Category"
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:141
+#: assets/src/components/ResultsPanel.jsx:150
 msgid "No checks match these filters."
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:147
+#: assets/src/components/ResultsPanel.jsx:156
 msgid "Audit results"
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:161
+#: assets/src/components/ResultsPanel.jsx:170
 msgid "Actions"
 msgstr ""
 
 #. translators: %s: check title.
-#: assets/src/components/ResultsPanel.js:225
-#, js-format
+#: assets/src/components/ResultsPanel.jsx:234
+#, javascript-format
 msgid "Fix: %s"
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:232
+#: assets/src/components/ResultsPanel.jsx:241
 msgid "Fix"
 msgstr ""
 
 #. translators: %s: check title.
-#: assets/src/components/ResultsPanel.js:269
-#, js-format
+#: assets/src/components/ResultsPanel.jsx:278
+#, javascript-format
 msgid "Remove waiver: %s"
 msgstr ""
 
-#: assets/src/components/ResultsPanel.js:276
+#: assets/src/components/ResultsPanel.jsx:285
 msgid "Remove waiver"
 msgstr ""
 
-#: assets/src/components/SettingsPanel.js:33
-msgid "These details appear on the printable report and in the JSON export."
+#: assets/src/components/SettingsPanel.jsx:50
+msgid "These details appear on the printable report and in the Markdown and JSON exports."
 msgstr ""
 
-#: assets/src/components/SettingsPanel.js:40
+#: assets/src/components/SettingsPanel.jsx:57
 msgid "Agency or author name"
 msgstr ""
 
-#: assets/src/components/SettingsPanel.js:47
+#: assets/src/components/SettingsPanel.jsx:64
 msgid "Client name"
 msgstr ""
 
-#: assets/src/components/SettingsPanel.js:54
+#: assets/src/components/SettingsPanel.jsx:71
 msgid "Note for the report"
 msgstr ""
 
-#: assets/src/components/SettingsPanel.js:62
+#: assets/src/components/SettingsPanel.jsx:79
 msgid "Handoff checklist type"
 msgstr ""
 
-#: assets/src/components/SettingsPanel.js:63
+#: assets/src/components/SettingsPanel.jsx:80
 msgid "Adds items for the kind of site you are delivering. Progress is kept when you switch."
 msgstr ""
 
-#: assets/src/components/SettingsPanel.js:83
+#: assets/src/components/SettingsPanel.jsx:90
+msgid "Language"
+msgstr ""
+
+#: assets/src/components/SettingsPanel.jsx:91
+msgid "Used by this screen, the reports and alert emails. \"Site default\" follows the WordPress language."
+msgstr ""
+
+#: assets/src/components/SettingsPanel.jsx:101
+msgid "Scheduled audits"
+msgstr ""
+
+#. translators: %s: date and time of the next scheduled audit.
+#: assets/src/components/SettingsPanel.jsx:106
+#, javascript-format
+msgid "Next audit: %s"
+msgstr ""
+
+#: assets/src/components/SettingsPanel.jsx:109
+msgid "Runs the audit in the background with WP-Cron and records the result in the history. An email is sent when new problems appear."
+msgstr ""
+
+#: assets/src/components/SettingsPanel.jsx:122
+msgid "Alert email address"
+msgstr ""
+
+#: assets/src/components/SettingsPanel.jsx:123
+msgid "Leave empty to use the site administration email address."
+msgstr ""
+
+#: assets/src/components/SettingsPanel.jsx:139
 msgid "Save settings"
 msgstr ""
 
-#: assets/src/components/SettingsPanel.js:87
+#: assets/src/components/SettingsPanel.jsx:143
 msgid "Settings saved."
 msgstr ""
 
-#: assets/src/components/Summary.js:11
+#: assets/src/components/SettingsPanel.jsx:151
+msgid "Reload to apply the language"
+msgstr ""
+
+#: assets/src/components/Summary.jsx:12
 msgid "Blockers"
 msgstr ""
 
-#: assets/src/components/Summary.js:13
+#: assets/src/components/Summary.jsx:14
 msgid "Accepted risks"
 msgstr ""
 
-#: assets/src/components/Summary.js:27
+#: assets/src/components/Summary.jsx:28
 msgid "Readiness score:"
 msgstr ""
 
-#: assets/src/components/Toolbar.js:15
-msgid "Local"
+#. translators: %s: signed change in the readiness score, e.g. +5 or -3.
+#: assets/src/components/Summary.jsx:45
+#, javascript-format
+msgid "%s since the previous audit"
 msgstr ""
 
-#: assets/src/components/Toolbar.js:16
-msgid "Development"
-msgstr ""
-
-#: assets/src/components/Toolbar.js:17
-msgid "Staging"
-msgstr ""
-
-#: assets/src/components/Toolbar.js:18
-msgid "Production"
-msgstr ""
-
-#: assets/src/components/Toolbar.js:25
+#: assets/src/components/Toolbar.jsx:25
 msgid "(detected)"
 msgstr ""
 
-#: assets/src/components/Toolbar.js:33
+#: assets/src/components/Toolbar.jsx:33
 msgid "Audit as environment"
 msgstr ""
 
-#: assets/src/components/Toolbar.js:46
+#: assets/src/components/Toolbar.jsx:46
 msgid "Running…"
 msgstr ""
 
-#: assets/src/components/Toolbar.js:47
+#: assets/src/components/Toolbar.jsx:47
 msgid "Run audit again"
 msgstr ""
 
-#: assets/src/components/Toolbar.js:56
+#: assets/src/components/Toolbar.jsx:56
 msgid "Printable report"
 msgstr ""
 
-#: assets/src/components/Toolbar.js:62
+#: assets/src/components/Toolbar.jsx:62
+msgid "Download Markdown"
+msgstr ""
+
+#: assets/src/components/Toolbar.jsx:68
 msgid "Download CSV"
 msgstr ""
 
-#: assets/src/components/Toolbar.js:68
+#: assets/src/components/Toolbar.jsx:74
 msgid "Download JSON"
 msgstr ""
+

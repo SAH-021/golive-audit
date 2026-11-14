@@ -28,7 +28,9 @@ Because checks never call WordPress functions, the whole engine runs under plain
 - **Waivers are data, not logic.** `AuditService` applies stored waivers to a finished `Report`. Waived failures count as earned in the score but stay visible.
 - **Score vs verdict.** The score is severity-weighted (critical 10, warning 3, low 1). The verdict is separate because one critical failure must block launch regardless of the score.
 - **Reports are re-run on export.** The export endpoint runs a fresh audit, so a downloaded report always matches the current site.
-- **No history in 1.0.** Nothing about past runs is stored; the three stored options are waivers, checklist progress and settings.
+- **History is snapshots only.** `HistoryStore` keeps the last 30 runs as score, verdict, counts and the IDs of unwaived failures, never summaries. A rerun with an identical state refreshes the newest entry instead of adding one. Stored options: waivers, checklist progress, settings and history.
+- **Scheduled audits.** `Cron\ScheduledAudit` runs on WP-Cron, records the run and passes the diff against the previous run to `Notify\AlertMessage`, which returns null when nothing new appeared, so a persistent problem does not email every day.
+- **Language is a setting, not a locale hack.** `Support\Language` maps the setting to a locale; `Plugin` applies it through the `plugin_locale` filter for this text domain only, and `AdminPage` injects the matching JavaScript translation file. Reports use `Support\Jalali` (pure PHP) for Persian dates.
 
 ## Extending
 

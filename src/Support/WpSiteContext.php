@@ -9,6 +9,7 @@ namespace GoliveAudit\Support;
 
 use GoliveAudit\Audit\AuditRunner;
 use GoliveAudit\Audit\SiteContext;
+use WP_Query;
 use WP_User_Query;
 
 final class WpSiteContext implements SiteContext {
@@ -104,6 +105,41 @@ final class WpSiteContext implements SiteContext {
 
 	public function admin_url( string $path ): string {
 		return admin_url( $path );
+	}
+
+	public function xmlrpc_enabled(): bool {
+		/** This filter is documented in wp-includes/class-wp-xmlrpc-server.php */
+		return (bool) apply_filters( 'xmlrpc_enabled', true );
+	}
+
+	public function db_prefix(): string {
+		global $wpdb;
+
+		return isset( $wpdb->prefix ) ? (string) $wpdb->prefix : '';
+	}
+
+	public function count_published_posts_matching( string $needle ): int {
+		$needle = trim( $needle );
+
+		if ( '' === $needle ) {
+			return 0;
+		}
+
+		$query = new WP_Query(
+			array(
+				's'                      => $needle,
+				'post_type'              => array( 'post', 'page' ),
+				'post_status'            => 'publish',
+				'posts_per_page'         => 1,
+				'fields'                 => 'ids',
+				'no_found_rows'          => false,
+				'update_post_meta_cache' => false,
+				'update_post_term_cache' => false,
+				'ignore_sticky_posts'    => true,
+			)
+		);
+
+		return (int) $query->found_posts;
 	}
 
 	/**

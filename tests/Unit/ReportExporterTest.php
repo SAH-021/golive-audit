@@ -125,4 +125,48 @@ final class ReportExporterTest extends TestCase {
 		$this->assertSame( 'Acme', $data['meta']['site_name'] );
 		$this->assertSame( 'production', $data['report']['environment'] );
 	}
+
+	public function test_markdown_lists_checks_and_flattens_line_breaks(): void {
+		$fail   = Result::fail( new FakeCheck( 'seo.thing', Result::SEVERITY_CRITICAL ), "Line one\nline two", 'Do this' );
+		$report = new Report( 'production', array( $fail ), 0, '1.1.0' );
+
+		$md = ( new ReportExporter() )->to_markdown(
+			$report,
+			array(
+				'site_name' => 'Acme',
+				'site_url'  => 'https://acme.test',
+			),
+			array(
+				array(
+					'state' => 'done',
+					'label' => 'Backups tested',
+				),
+				array(
+					'state' => 'todo',
+					'label' => 'Forms tested',
+				),
+			)
+		);
+
+		$this->assertStringStartsWith( '# ', $md );
+		$this->assertStringContainsString( 'Line one line two', $md );
+		$this->assertStringContainsString( '- [ ] **Fake check**', $md );
+		$this->assertStringContainsString( '- [x] Backups tested', $md );
+		$this->assertStringContainsString( '- [ ] Forms tested', $md );
+	}
+
+	public function test_html_report_shows_recent_audits_only_with_two_or_more_runs(): void {
+		$exporter = new ReportExporter();
+		$one      = array(
+			array(
+				'date'    => '2026-11-12',
+				'score'   => 80,
+				'verdict' => 'attention',
+				'failed'  => 2,
+			),
+		);
+
+		$this->assertStringNotContainsString( 'Recent audits', $exporter->to_html( $this->report(), array(), array(), 'n', $one ) );
+		$this->assertStringContainsString( 'Recent audits', $exporter->to_html( $this->report(), array(), array(), 'n', array_merge( $one, $one ) ) );
+	}
 }

@@ -7,11 +7,19 @@
 
 namespace GoliveAudit\Admin;
 
+use GoliveAudit\Plugin;
+use GoliveAudit\Support\Language;
+
 final class AdminPage {
 
 	public const SLUG = 'golive-audit';
 
+	private Plugin $plugin;
 	private string $hook_suffix = '';
+
+	public function __construct( Plugin $plugin ) {
+		$this->plugin = $plugin;
+	}
 
 	public function register(): void {
 		add_action( 'admin_menu', array( $this, 'add_menu' ) );
@@ -38,7 +46,10 @@ final class AdminPage {
 			echo '<div class="notice notice-error"><p>' . esc_html__( 'The dashboard has not been built. Run "npm install && npm run build" in the plugin folder.', 'golive-audit' ) . '</p></div>';
 		}
 
-		echo '<div id="golive-audit-root"></div>';
+		$locale = $this->plugin->effective_locale();
+		$dir    = Language::is_rtl_locale( $locale ) ? 'rtl' : 'ltr';
+
+		echo '<div id="golive-audit-root" dir="' . esc_attr( $dir ) . '"></div>';
 		echo '<noscript><p>' . esc_html__( 'Golive Audit needs JavaScript. You can still use WP-CLI: wp golive-audit run', 'golive-audit' ) . '</p></noscript>';
 		echo '</div>';
 	}
@@ -66,7 +77,7 @@ final class AdminPage {
 			$asset['version'],
 			true
 		);
-		wp_set_script_translations( 'golive-audit-admin', 'golive-audit' );
+		$this->load_script_translations();
 
 		$style = GOLIVE_AUDIT_DIR . 'assets/build/style-index.css';
 
@@ -79,5 +90,53 @@ final class AdminPage {
 			);
 			wp_style_add_data( 'golive-audit-admin', 'rtl', 'replace' );
 		}
+	}
+
+	/**
+	 * Loads the dashboard's JavaScript translations.
+	 *
+	 * Following the site language uses WordPress' own loader with the bundled
+	 * languages folder as a fallback location. A forced Persian dashboard injects
+	 * the bundled file directly; a forced English one loads nothing.
+	 */
+	private function load_script_translations(): void {
+		$override = Language::override_locale( $this->plugin->settings()->get()['language'] );
+
+		if ( '' === $override ) {
+			wp_set_script_translations( 'golive-audit-admin', 'golive-audit', GOLIVE_AUDIT_DIR . 'languages' );
+
+			return;
+		}
+
+		if ( 'en_US' === $override ) {
+			return;
+		}
+
+		// Same file names WordPress itself looks for: the md5 of the script path (WP-CLI "make-json") or the handle.
+		$base = GOLIVE_AUDIT_DIR . 'languages/golive-audit-' . $override . '-';
+		$file = '';
+
+		foreach ( array( md5( 'assets/build/index.js' ), 'golive-audit-admin' ) as $suffix ) {
+			if ( is_readable( $base . $suffix . '.json' ) ) {
+				$file = $base . $suffix . '.json';
+				break;
+			}
+		}
+
+		if ( '' === $file ) {
+			return;
+		}
+
+		$data = wp_json_file_decode( $file, array( 'associative' => true ) );
+
+		if ( ! is_array( $data ) || ! isset( $data['locale_data'] ) ) {
+			return;
+		}
+
+		wp_add_inline_script(
+			'golive-audit-admin',
+			'( function ( domain, translations ) { var localeData = translations.locale_data[ domain ] || translations.locale_data.messages; localeData[ "" ].domain = domain; wp.i18n.setLocaleData( localeData, domain ); } )( "golive-audit", ' . wp_json_encode( $data ) . ' );',
+			'before'
+		);
 	}
 }

@@ -17,11 +17,14 @@ use GoliveAudit\Audit\Report;
 use GoliveAudit\Checklist\ChecklistStore;
 use GoliveAudit\Checks;
 use GoliveAudit\Cli\AuditCommand;
+use GoliveAudit\Cron\ScheduledAudit;
 use GoliveAudit\Rest\Controller;
+use GoliveAudit\Storage\HistoryStore;
 use GoliveAudit\Storage\OptionStore;
 use GoliveAudit\Storage\SettingsStore;
 use GoliveAudit\Storage\WaiverStore;
 use GoliveAudit\Storage\WpOptionStore;
+use GoliveAudit\Support\Language;
 use GoliveAudit\Support\WpSiteContext;
 
 final class Plugin {
@@ -33,6 +36,7 @@ final class Plugin {
 	private ?WaiverStore $waivers      = null;
 	private ?SettingsStore $settings   = null;
 	private ?ChecklistStore $checklist = null;
+	private ?HistoryStore $history     = null;
 
 	public static function instance(): self {
 		if ( null === self::$instance ) {
@@ -43,6 +47,11 @@ final class Plugin {
 	}
 
 	public function boot(): void {
+		add_filter( 'plugin_locale', array( $this, 'filter_plugin_locale' ), 10, 2 );
+		add_action( 'init', array( $this, 'load_translations' ) );
+
+		( new ScheduledAudit( $this ) )->register();
+
 		add_action(
 			'rest_api_init',
 			function (): void {
@@ -51,13 +60,54 @@ final class Plugin {
 		);
 
 		if ( is_admin() ) {
-			( new AdminPage() )->register();
+			( new AdminPage( $this ) )->register();
 			( new ExportHandler( $this ) )->register();
 		}
 
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			\WP_CLI::add_command( 'golive-audit', AuditCommand::class );
 		}
+	}
+
+	/**
+	 * Applies the "language" setting to this plugin's text domain only.
+	 *
+	 * @param string $locale Locale WordPress would use.
+	 * @param string $domain Text domain being loaded.
+	 */
+	public function filter_plugin_locale( $locale, $domain ) {
+		if ( 'golive-audit' !== $domain ) {
+			return $locale;
+		}
+
+		$override = Language::override_locale( $this->settings()->get()['language'] );
+
+		return '' !== $override ? $override : $locale;
+	}
+
+	/**
+	 * Loads the bundled translations (Persian is included). English is forced
+	 * by installing an empty translation set, so a site language never leaks in.
+	 */
+	public function load_translations(): void {
+		if ( 'en_US' === Language::override_locale( $this->settings()->get()['language'] ) ) {
+			global $l10n;
+
+			$l10n['golive-audit'] = new \NOOP_Translations();
+
+			return;
+		}
+
+		load_plugin_textdomain( 'golive-audit', false, dirname( plugin_basename( GOLIVE_AUDIT_FILE ) ) . '/languages' );
+	}
+
+	/**
+	 * The locale this plugin currently speaks: the forced one, or the user's/site's.
+	 */
+	public function effective_locale(): string {
+		$override = Language::override_locale( $this->settings()->get()['language'] );
+
+		return '' !== $override ? $override : determine_locale();
 	}
 
 	/**
@@ -109,16 +159,30 @@ final class Plugin {
 		return $this->checklist;
 	}
 
+	public function history(): HistoryStore {
+		if ( null === $this->history ) {
+			$this->history = new HistoryStore( $this->option_store() );
+		}
+
+		return $this->history;
+	}
+
 	/**
 	 * Runs every applicable check against this site and applies stored waivers.
 	 *
 	 * @param string|null $environment Optional environment override.
+	 * @param bool        $record      Whether to add the run to the history.
 	 */
-	public function run_audit( ?string $environment = null ): Report {
+	public function run_audit( ?string $environment = null, bool $record = false ): Report {
 		$runner  = new AuditRunner( $this->registry(), GOLIVE_AUDIT_VERSION );
 		$service = new AuditService( $runner, $this->waivers() );
+		$report  = $service->run( new WpSiteContext(), $environment );
 
-		return $service->run( new WpSiteContext(), $environment );
+		if ( $record ) {
+			$this->history()->record( $report );
+		}
+
+		return $report;
 	}
 
 	/**
@@ -130,6 +194,7 @@ final class Plugin {
 		return array(
 			new Checks\NoindexCheck(),
 			new Checks\UrlConsistencyCheck(),
+			new Checks\ComingSoonCheck(),
 			new Checks\RobotsTxtCheck(),
 			new Checks\PermalinksCheck(),
 			new Checks\SitemapCheck(),
@@ -137,6 +202,7 @@ final class Plugin {
 			new Checks\SiteIconCheck(),
 			new Checks\FrontPageCheck(),
 			new Checks\DefaultContentCheck(),
+			new Checks\PlaceholderTextCheck(),
 			new Checks\CommentDefaultsCheck(),
 			new Checks\PrivacyPolicyCheck(),
 			new Checks\SaltsCheck(),
@@ -144,6 +210,10 @@ final class Plugin {
 			new Checks\AdminUsersCheck(),
 			new Checks\FileEditorCheck(),
 			new Checks\DebugLogCheck(),
+			new Checks\SensitiveFilesCheck(),
+			new Checks\LeftoverFilesCheck(),
+			new Checks\XmlRpcCheck(),
+			new Checks\DbPrefixCheck(),
 			new Checks\AdminEmailCheck(),
 			new Checks\MailTransportCheck(),
 			new Checks\TimezoneCheck(),

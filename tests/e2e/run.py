@@ -64,7 +64,7 @@ check('anonymous POST /audit is rejected', s in (401, 403), s)
 
 bob = Client(); bob.login('bob', 'bobpass')
 check('subscriber logged in', bool(bob.nonce))
-for method, route in (('GET', '/state'), ('POST', '/audit'), ('PUT', '/waivers/seo.sitemap'), ('PUT', '/checklist/forms_tested'), ('POST', '/settings')):
+for method, route in (('GET', '/state'), ('GET', '/history'), ('DELETE', '/history'), ('POST', '/audit'), ('PUT', '/waivers/seo.sitemap'), ('PUT', '/checklist/forms_tested'), ('POST', '/settings')):
     s, _, _ = bob.rest(method, route, {'reason': 'x', 'state': 'done'})
     check(f'subscriber {method} {route} is forbidden', s == 403, s)
 
@@ -74,8 +74,9 @@ check('cookie auth without a REST nonce is rejected', s in (401, 403), s)
 # --- State ---
 s, state, _ = admin.rest('GET', '/state')
 check('admin GET /state is 200', s == 200, s)
-check('state lists 19 checks', len(state.get('checks', [])) == 19)
-check('state carries version 1.0.0', state.get('version') == '1.0.0')
+check('state lists 25 checks', len(state.get('checks', [])) == 25)
+check('state carries version 1.1.0', state.get('version') == '1.1.0')
+check('state carries history, languages, schedules and locale', all(k in state for k in ('history', 'languages', 'schedules', 'locale', 'next_run')))
 check('state has export_url with a nonce', '_wpnonce=' in state.get('export_url', '') and 'golive_audit_export' in state.get('export_url', ''))
 check('checklist rows exist', len(state.get('checklist', [])) >= 9)
 export_url = state['export_url']
@@ -84,7 +85,7 @@ export_url = state['export_url']
 s, report, _ = admin.rest('POST', '/audit')
 check('POST /audit is 200', s == 200, s)
 check('report has summary/score/verdict', {'score', 'verdict', 'blockers'} <= set(report.get('summary', {})))
-check('19 results returned', len(report.get('results', [])) == 19)
+check('25 results returned', len(report.get('results', [])) == 25)
 s, rep_st, _ = admin.rest('POST', '/audit', {'environment': 'staging'})
 check('environment override works', s == 200 and rep_st['environment'] == 'staging')
 s, bad, _ = admin.rest('POST', '/audit', {'environment': 'prod'})
@@ -132,6 +133,25 @@ check('switching to the shop preset adds items', len(body['checklist']) > 9)
 s, _, _ = admin.rest('POST', '/settings', {'preset': 'bogus'})
 check('unknown preset is rejected (400)', s == 400, s)
 
+# --- History, language and schedule (1.1) ---
+s, body, _ = admin.rest('POST', '/audit')
+check('audit response carries the history', s == 200 and isinstance(body.get('history'), list) and len(body['history']) >= 1, s)
+s, body, _ = admin.rest('GET', '/history')
+check('GET /history lists recorded runs without summaries', s == 200 and body['history'] and 'summary' not in json.dumps(body['history']), s)
+s, body, _ = admin.rest('POST', '/settings', {'language': 'fa', 'schedule': 'weekly', 'alert_email': 'owner@example.com'})
+check('language, schedule and alert email are saved', s == 200 and body['settings']['language'] == 'fa' and body['settings']['schedule'] == 'weekly' and body['settings']['alert_email'] == 'owner@example.com', body)
+check('weekly schedule creates a cron event', body.get('next_run', 0) > 0, body.get('next_run'))
+s, _, _ = admin.rest('POST', '/settings', {'language': 'klingon'})
+check('unknown language is rejected (400)', s == 400, s)
+s, _, _ = admin.rest('POST', '/settings', {'schedule': 'hourly'})
+check('unknown schedule is rejected (400)', s == 400, s)
+s, html, _ = admin.req('GET', '/wp-admin/tools.php?page=golive-audit')
+check('forced Persian makes the dashboard root right-to-left', 'dir="rtl"' in html and 'id="golive-audit-root"' in html)
+s, body, _ = admin.rest('POST', '/settings', {'language': 'auto', 'schedule': 'off', 'alert_email': ''})
+check('schedule off removes the cron event', s == 200 and body.get('next_run') == 0, body.get('next_run'))
+s, body, _ = admin.rest('DELETE', '/history')
+check('DELETE /history empties the history', s == 200 and body['history'] == [], s)
+
 # --- Exports ---
 def export(fmt, env=None, url=None):
     u = (url or export_url) + '&format=' + fmt + (('&environment=' + env) if env else '')
@@ -141,6 +161,9 @@ s, body, h = export('csv')
 check('CSV export is 200 text/csv attachment', s == 200 and 'text/csv' in h.get('Content-Type', '') and 'attachment' in h.get('Content-Disposition', ''), (s, dict(h)))
 check('CSV starts with a UTF-8 BOM and the header row', body.startswith('\ufeff"id","title"'))
 check('CSV has one row per check', body.count('\r\n') == 20, body.count('\r\n'))
+s, body, h = export('md')
+check('Markdown export is 200 text/markdown attachment', s == 200 and 'text/markdown' in h.get('Content-Type', '') and 'attachment' in h.get('Content-Disposition', '') and body.startswith('# '), (s, dict(h)))
+check('Markdown export never contains the admin email address', 'dev@example.com' not in body)
 s, body, h = export('json')
 data = json.loads(body) if s == 200 else {}
 check('JSON export is valid and bundles meta/report/checklist', s == 200 and set(data) == {'meta', 'report', 'checklist'}, s)
